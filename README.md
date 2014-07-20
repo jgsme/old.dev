@@ -1,2 +1,1 @@
-log
-===
+# http://dev.jgs.me
