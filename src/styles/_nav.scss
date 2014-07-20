@@ -9,10 +9,6 @@ nav {
   a {
     color: white;
     text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   @include breakpoint(big-phone) {
@@ -72,9 +68,6 @@ $mobileNavLineHeight: 2.2em;
   font-size: 1.4em;
 
   a {
-    display: block;
-    padding: 0 0 .55em;
-
     @include breakpoint(big-phone) {
       display: block;
       padding: 0;
@@ -107,11 +100,22 @@ $mobileNavLineHeight: 2.2em;
 
     &:hover {
       text-decoration: none;
-      color: $baseTextColor;
     }
   }
 
   @include breakpoint(big-phone) {
     display: none;
+  }
+}
+
+.button {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 3px;
+
+  &:hover {
+    background-color: #59b1eb;
+    transition: all .3s;
+    text-decoration: none;
   }
 }

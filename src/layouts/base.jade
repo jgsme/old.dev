@@ -22,15 +22,15 @@ html
     #fb-root
     nav
       h1.name
-        a(href="#{data.baseUrl}") Kaihatsu
+        a.button(href="#{data.baseUrl}") Kaihatsu
       .menu.icon-menu
       ul.nav-links
         li.text-link
-          a(href="#{data.baseUrl}archives.html") archives
+          a.button(href="#{data.baseUrl}archives.html") archives
 
       .social-media
-        a.icon-github(href="https://github.com/e-jigsaw")
-        a.icon-twitter(href="https://twitter.com/neo6120")
+        a.icon-github.button(href="https://github.com/e-jigsaw")
+        a.icon-twitter.button(href="https://twitter.com/neo6120")
     .content
       block content
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js", type="text/javascript")

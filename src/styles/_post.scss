@@ -3,6 +3,12 @@
   margin: 1em 0;
   padding-bottom: 5px;
   position: relative;
+  background-color: rgba(0, 0, 0, 0);
+
+  &:hover {
+    background-color: #59b1eb;
+    transition: all .3s;
+  }
 
   a {
     text-decoration: none;
@@ -14,6 +20,11 @@
   padding-right: 4.9em;
   margin: 0 0 5px;
   font-size: 2em;
+
+  &:hover {
+    color: #fff;
+    transition: all .3s;
+  }
 
   @include breakpoint(big-phone) {
     font-size: 1.7em;
