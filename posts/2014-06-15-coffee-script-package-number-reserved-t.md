@@ -1,7 +1,8 @@
 {
   title: "coffee-script では package が reserved になってるので変数として使えない",
   date: "2014-06-15",
-  description: "coffee-script では package が reserved になってるので変数として使えない"
+  description: "coffee-script では package が reserved になってるので変数として使えない",
+  url: "package-is-reserved-on-coffee-script"
 }
 
 http://coffeescript.org/documentation/docs/lexer.html#section-66

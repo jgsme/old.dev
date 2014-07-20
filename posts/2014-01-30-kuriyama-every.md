@@ -1,7 +1,8 @@
 {
   title: "栗山さんを毎日見れるようにした",
   date: "2014-01-30",
-  description: "栗山さんを毎日見れるようにした"
+  description: "栗山さんを毎日見れるようにした",
+  url: "kuriyama-san-saikou"
 }
 
 ![](http://25.media.tumblr.com/4597e75f432494136b42f06716e45a09/tumblr_n06zcilVpq1qa749mo1_1280.jpg)

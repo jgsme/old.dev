@@ -1,7 +1,8 @@
 {
   title: "alias up='cd ../'",
   date: "2014-07-02",
-  description: "alias up='cd ../'"
+  description: "alias up='cd ../'",
+  url: "up-is-awesome-alias"
 }
 
 https://github.com/e-jigsaw/dotfiles/commit/866a1363b1f29916f285937957b49510a6daa578

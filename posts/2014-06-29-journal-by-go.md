@@ -1,7 +1,8 @@
 {
   title: "激ヤバ鬼便利日報ツールを Go でリプレースした",
   date: "2014-06-29",
-  description: "激ヤバ鬼便利日報ツールを Go でリプレースした"
+  description: "激ヤバ鬼便利日報ツールを Go でリプレースした",
+  url: "replaced-journal-by-go"
 }
 
 https://github.com/e-jigsaw/journal

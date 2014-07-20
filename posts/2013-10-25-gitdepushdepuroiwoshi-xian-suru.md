@@ -1,7 +1,8 @@
 {
   title: "gitでpushデプロイを実現する",
   date: "2013-10-25",
-  description: "gitでpushデプロイを実現する"
+  description: "gitでpushデプロイを実現する",
+  url: "git-push-deploy"
 }
 
 参考: http://qiita.com/fnobi/items/98bd5d1c83c010842733

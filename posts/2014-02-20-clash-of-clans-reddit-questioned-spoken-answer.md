@@ -1,7 +1,8 @@
 {
   title: "Clash of Clans のチームが Reddit で質問に答える企画をやっている",
   date: "2014-02-20",
-  description: "Clash of Clans のチームが Reddit で質問に答える企画をやっている"
+  description: "Clash of Clans のチームが Reddit で質問に答える企画をやっている",
+  url: "clash-of-clans-on-reddit"
 }
 
 Clash of Clans はとても面白いゲームで、かれこれ1年ほど遊んでいる。このゲームはフォーラムでの議論も盛んで、開発チームもしっかり応える姿勢で臨んでいることが垣間見えてとてもいい。そんな Clash of Clans のチームがはてブライクな Reddit で質問に答える企画をやっていて面白かったのでいくつかピックアップしたい。

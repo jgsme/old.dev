@@ -1,7 +1,8 @@
 {
   title: "第3回Rails寺子屋に参加してきた",
   date: "2014-01-18",
-  description: "第3回Rails寺子屋に参加してきた"
+  description: "第3回Rails寺子屋に参加してきた",
+  url: "went-3rd-rails-terakoya"
 }
 
 Rails寺子屋 http://rails.terakoya.io/

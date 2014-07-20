@@ -1,7 +1,8 @@
 {
   title: "node.jsのmongooseでnestしたobjectをpopulateする",
   date: "2013-09-25",
-  description: "node.jsのmongooseでnestしたobjectをpopulateする"
+  description: "node.jsのmongooseでnestしたobjectをpopulateする",
+  url: "mongoose-nest-populate"
 }
 
 

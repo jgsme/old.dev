@@ -1,7 +1,8 @@
 {
   title: "ghq と gopath の兼ね合い",
   date: "2014-06-30",
-  description: "ghq と gopath の兼ね合い"
+  description: "ghq と gopath の兼ね合い",
+  url: "ghq-and-gopath"
 }
 
 # TL;DR

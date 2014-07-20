@@ -1,7 +1,8 @@
 {
   title: "logwatch で vps のログを毎日チェックする",
   date: "2013-12-11",
-  description: "logwatch で vps のログを毎日チェックする"
+  description: "logwatch で vps のログを毎日チェックする",
+  url: "logwatch-is-awesome"
 }
 
 http://dogmap.jp/2011/05/12/vps-security/

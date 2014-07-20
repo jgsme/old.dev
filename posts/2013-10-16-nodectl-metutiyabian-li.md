@@ -1,7 +1,8 @@
 {
   title: "nodectl めっちゃ便利",
   date: "2013-10-16",
-  description: "nodectl めっちゃ便利"
+  description: "nodectl めっちゃ便利",
+  url: "nodectl-is-awesome"
 }
 
 https://github.com/geta6/nodectl

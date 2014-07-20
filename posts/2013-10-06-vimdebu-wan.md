@@ -1,7 +1,8 @@
 {
   title: "vimで補完",
   date: "2013-10-06",
-  description: "vimで補完"
+  description: "vimで補完",
+  url: "vim-comp"
 }
 
 vim で補完をしたい。

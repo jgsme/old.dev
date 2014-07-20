@@ -1,7 +1,8 @@
 {
   title: "hubotとhipchatでウワサのChatOpsの準備",
   date: "2013-10-22",
-  description: "hubotとhipchatでウワサのChatOpsの準備"
+  description: "hubotとhipchatでウワサのChatOpsの準備",
+  url: "chatops-with-hubot"
 }
 
 むかし見かけたけど、あまり便利さがわからなかったのでスルーしていた `hubot` が面白そうだったので、ちょっと触ってみることにした。

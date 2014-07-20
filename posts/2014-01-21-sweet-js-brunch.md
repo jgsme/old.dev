@@ -1,7 +1,8 @@
 {
   title: "sweet-js-brunch をつくった",
   date: "2014-01-21",
-  description: "sweet-js-brunch をつくった"
+  description: "sweet-js-brunch をつくった",
+  url: "made-sweet-js-brunch"
 }
 
 https://github.com/e-jigsaw/sweet-js-brunch

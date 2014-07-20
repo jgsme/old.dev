@@ -1,7 +1,8 @@
 {
   title: "vagrant-berkshelf plugin がインストールできないときの対処",
   date: "2013-12-14",
-  description: "vagrant-berkshelf plugin がインストールできないときの対処"
+  description: "vagrant-berkshelf plugin がインストールできないときの対処",
+  url: "vagrant-berkshelf-crash"
 }
 # **Vagrant の最新版をインストールしろ**
 
