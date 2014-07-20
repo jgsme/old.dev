@@ -88,7 +88,7 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      dist: 'dist'
+      dist: ['dist', '.grunt', '.sass-cache']
     },
     'gh-pages': {
       options: {
