@@ -105,7 +105,7 @@ module.exports = function (grunt) {
     'copy'
   ]);
 
-  grunt.registerTask('deploy', ['build', 'gh-pages']);
+  grunt.registerTask('deploy', ['clean', 'build', 'gh-pages']);
 
   grunt.registerTask('server', [
     'build',
