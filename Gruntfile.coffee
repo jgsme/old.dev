@@ -103,6 +103,28 @@ module.exports = (grunt) ->
     'watch'
   ]
 
+  grunt.registerTask 'write', ->
+    fs = require 'fs'
+    inquirer = require 'inquirer'
+    done = @async()
+    inquirer.prompt
+      type: 'input'
+      name: 'title'
+      message: 'title'
+    , (titleAnswer)->
+      inquirer.prompt
+        type: 'input'
+        name: 'url'
+        message: 'url'
+      , (urlAnswer)->
+        now = new Date()
+        zerocomp = (num)-> if num.toString().length is 1 then "0#{num}" else num.toString()
+        strNow = "#{now.getFullYear()}-#{zerocomp(now.getMonth()+1)}-#{zerocomp(now.getDate())}"
+        fs.writeFile "posts/#{strNow}-#{urlAnswer.url}.md", "{\n  title: \"#{titleAnswer.title}\",\n  date: \"#{strNow}\",\n  description: \"#{titleAnswer.title}\",\n  url: \"#{urlAnswer.url}\"\n}\n\n", (err)->
+          console.log err if err?
+          done()
+
+
   grunt.registerTask 'default', 'server'
 
   require('load-grunt-tasks')(grunt)
