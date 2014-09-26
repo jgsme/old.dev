@@ -7,7 +7,7 @@
 
 http://www.githubarchive.org/
 
-Githut(http://githut.info/)という Github の解析サイトがあって、仕掛けを調べていたらGithubはpublicなtimelineをオープンデータとして公開しているらしい。
+[Githut](http://githut.info/)という Github の解析サイトがあって、仕掛けを調べていたらGithubはpublicなtimelineをオープンデータとして公開しているらしい。
 
 Githutの[README](https://github.com/littleark/githut/blob/da6e8e89c33c3eb93b106b1c0d45d5681efb2da5/README.md)にもある通り
 
