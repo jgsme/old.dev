@@ -1,0 +1,14 @@
+{
+  title: "rptをアップデートした",
+  date: "2014-10-04",
+  description: "rptをアップデートした",
+  url: "rpt-updated"
+}
+
+http://rpt.jgs.me
+
+[昨日](http://dev.jgs.me/posts/created-rpt/)つくった RPT をアップデートした。リダイレクトすると複数回ランダムしたいときとかに不便なので、結局 Web のインターフェースをつくることにした。
+
+最初は API に Vue.js がアクセスして表示するシステムにしてみたんだけど、([このへん](https://github.com/jgsme/rpt/tree/db343c78f998bf0a22b1b13a14d9677b1e1b64a8))表示がワンテンポ遅れて不便だったのでやめた。
+
+リダイレクトするやつは別に残しておいて、特にブラウザから通信したりしないで表示するような感じになって満足した。
