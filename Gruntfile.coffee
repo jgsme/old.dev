@@ -13,6 +13,12 @@ module.exports = (grunt) ->
           pagination:
             postsPerPage: 1
             listPage: 'src/pages/index.jade'
+          rss:
+            title: 'Kaihatsu'
+            description: 'Development log'
+            author: 'jigsaw (http://jgs.me)'
+            url: 'http://dev.jgs.me'
+            numPosts: 5
 
     compass:
       dist:
@@ -123,7 +129,6 @@ module.exports = (grunt) ->
         fs.writeFile "posts/#{strNow}-#{urlAnswer.url}.md", "{\n  title: \"#{titleAnswer.title}\",\n  date: \"#{strNow}\",\n  description: \"#{titleAnswer.title}\",\n  url: \"#{urlAnswer.url}\"\n}\n\n", (err)->
           console.log err if err?
           done()
-
 
   grunt.registerTask 'default', 'server'
 
