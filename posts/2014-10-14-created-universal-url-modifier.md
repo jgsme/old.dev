@@ -1,0 +1,22 @@
+{
+  title: "universal-url-modifier をつくった",
+  date: "2014-10-14",
+  description: "universal-url-modifier をつくった",
+  url: "created-universal-url-modifier"
+}
+
+https://github.com/e-jigsaw/universal-url-modifier
+
+`README` にも書いたんだけど、結構前から [r7kamura/amazon-url-modifier](https://github.com/r7kamura/amazon-url-modifier) を使わせてもらっていて、便利だなー、とおもっていた。ちなみに作者の[記事](http://r7kamura.hatenablog.com/entry/2014/08/04/150113)の
+
+> ブックマークレットを押せば動くとかではなくて、勝手に効果を発揮してほしいよね。
+
+というあたりに共感した。
+
+で、自分はというと Amazon に限らず何度も何度も手動で URL を補完することが結構あって「じゃあこの拡張がいろんなサイトに対応してればいいよね」というような思いつきが少し前にあった。それから暫く経って、今日ふと作ろうと思い立ってつくった。吉日だ。
+
+最初は AutoPager みたいにどっかに中央集権的なスクリプトサーバを置いて、extension はそのローダだけ書く、みたいな実装にしようと思ってたんだけど、セキュリティ的な話とかもあるし extension 内で完結させるようにした。必要になったら都度適当にスクリプト書いて継ぎ足していけばいいやー、という発想。
+
+とりあえずオリジナルの Amazon の方を適当にコピーさせてもらって、さらに一番頻度の高い Twitter の画像を自動で `:large` にしてくれるやつをつくった。あといくつか自動で URL 補完してほしいやつがあるのであとでつくる。
+
+コードはめっちゃシンプルで、Twitter の方に関してはワンライナーである。基本的に正規表現をモリモリ書けば終わる話なのでまた思い立ったらベースで継ぎ足していきたい。
