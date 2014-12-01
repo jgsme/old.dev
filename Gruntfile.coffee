@@ -20,12 +20,6 @@ module.exports = (grunt) ->
             url: 'http://dev.jgs.me'
             numPosts: 5
 
-    compass:
-      dist:
-        options:
-          sassDir: 'src/styles'
-          cssDir: 'dist/styles'
-
     copy:
       dist:
         files: [
@@ -49,9 +43,9 @@ module.exports = (grunt) ->
           'src/pages/**'
         ]
         tasks: ['pages']
-      compass:
+      stylus:
         files: ['src/styles/**']
-        tasks: ['compass']
+        tasks: ['stylus']
       copy:
         files: [
           'src/images/**'
@@ -92,7 +86,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'build', [
     'clean'
     'pages'
-    'compass'
+    'stylus'
     'copy'
   ]
 
