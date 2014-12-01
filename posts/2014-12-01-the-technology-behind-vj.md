@@ -1,7 +1,7 @@
 {
-  title: "VJを支える技術(フロント編)",
+  title: "#kosenvj を支える技術(フロント編)",
   date: "2014-12-01",
-  description: "VJを支える技術(フロント編)",
+  description: "#kosenvj を支える技術(フロント編)",
   url: "the-technology-behind-vj"
 }
 
