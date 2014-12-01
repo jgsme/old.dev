@@ -29,11 +29,17 @@ module.exports = (grunt) ->
           src: [
             'images/**'
             'scripts/**'
-            'styles/**.css'
-            'styles/fonts/**'
             'CNAME'
           ]
         ]
+      style:
+        files:
+          'dist/styles/github-markdown.css': 'github-markdown-css/github-markdown.css'
+
+    stylus:
+      compile:
+        files:
+          'dist/styles/main.css': 'src/styles/main.styl'
 
     watch:
       pages:
@@ -49,9 +55,6 @@ module.exports = (grunt) ->
       copy:
         files: [
           'src/images/**'
-          'src/scripts/**'
-          'src/styles/**.css'
-          'src/styles/fonts/**'
         ]
         tasks: ['copy']
       dist:
