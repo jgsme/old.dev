@@ -25,10 +25,12 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 # `brew file`
 
-以前は `brew bundle` が使えたので `Brewfile` で管理していたところ、`brew bundle` が nerf されたので管理を断念していた。そこで知ったのが `brew file` である。
+以前は `brew bundle` が使えたので `Brewfile` で管理していたところ、`brew bundle` が nerf されたので管理を断念していた。今回調べてみて知ったのが `brew file` である。
 
 * https://github.com/rcmdnk/homebrew-file
-* https://github.com/e-jigsaw/dotfiles/blob/47ed526b8af57ded7c2a11203b031200fc906fc8/Brewfile
+  * 本家リポジトリ
+* https://github.com/e-jigsaw/dotfiles/blob/0b0322c01b2b0ece3832c89fb626a90e1ac9961e/Brewfile
+  * オレの最高の `Brewfile` (執筆時点)
 
 (めっちゃ便利)
 
@@ -203,3 +205,7 @@ Yosemite になってさらにアクセシビリティのアクセシビリテ�
 * Bartender で不要だけどちょっと要ぐらいのやつをまとめる
 * Menumeter で CPU, メモリ, ネットワークのグラフとかを出す
 * ファストユーザスイッチャーを消す
+
+# まとめ
+
+Yosemite なマシンが2台きたので Package manage as Code 的なことを試した。実際には Mac mini の方でもろもろ試行錯誤をして `Brewfile` を更新して Macbook Air の方にデプロイしてお手軽に環境を構築できることを確認した。
