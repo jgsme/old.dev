@@ -122,8 +122,8 @@ $ sh install.sh
 
 # Trackpad
 
-* スクロール方向反転も気持ち悪いのでオフ
-* Launchpad は使わないのでオフ
+* スクロール方向反転は気持ち悪いのでオフ
+* Launchpad も使わないのでオフ
 * 通知センターも使わないのでオフ
 
 ## BetterTouchTool
