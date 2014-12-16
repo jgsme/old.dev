@@ -156,10 +156,33 @@ https://github.com/caskroom/homebrew-cask/pull/8124
     <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::JIS_EISUU</autogen>
     <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::JIS_KANA</autogen>
   </item>
+  <item>
+    <name>fn+backslash to backslash</name>
+    <identifier>remap.fn_backslash_to_backslash</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::BACKSLASH, ModifierFlag::FN | ModifierFlag::SHIFT_L,
+      KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
+    </autogen>
+    <autogen>
+      __KeyToKey__
+      KeyCode::BACKSLASH, ModifierFlag::FN,
+      KeyCode::BACKSLASH, ModifierFlag::OPTION_L
+    </autogen>
+  </item>
 </root>
 ```
 
 という設定を書いて、左右の Shift 空押しで切り替わるようにしている。cmd にしてるひとが多いとおもうけど、cmd だと後続のキーでコマンドが実行されてめんどくさい事態が起きやすかったので Shift にした。Shift だと後続のキーと合わせて認識されても大文字が入力されるだけなのでリカバーがききやすい。
+
+それから、Macbook Air 用に HHK っぽい Remap を書いた。
+
+* Backquote -> Esc
+* delete -> Backquote
+* Backslash -> delete
+* fn+Backslash -> Backslash
+
+普段 HHK に慣れすぎて無意識でバックスラッシュを連打してしまうのでまずはこれを変えたかった。そうすると元々の delete が空くので delete にはバッククオートを当てた。あと Esc のつもりでバッククオートも連打してしまうのでここを Esc にした。するとバックスラッシュの行き場がなくなるので、しぶしぶ fn+Backslash でもともとの Backslash が出るようにした。これを XML に書いたんだけど、Modflag に option を設定しないと円マークが出てきてウザかった。順番の方も先に shift との組み合わせを先に書かないと縦棒が出なかった。
 
 あと key repeat を体感に合わせて調整して最高の key repeat を設定した。とても入力がはかどる。
 
