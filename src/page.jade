@@ -2,20 +2,7 @@ extends layout
 
 block links
   link(href='/github-markdown.css', rel='stylesheet', type='text/css')
+  link(href='/page.css', rel='stylesheet', type='text/css')
 
 block body
-  header.pure-u-1-1
-    a(href='/')
-      h1 Kaihatsu
-  
-  #articleContainer
-    article.markdown-body!= body
-  
-  footer.pure-u-1-1
-    ul
-      li
-        a.button(href="/archives.html") Archives
-      li
-        a.button(href="http://jgs.me") Home
-      li
-        a.button(href="https://github.com/jgsme/log") Github repository
+  article.markdown-body!= body

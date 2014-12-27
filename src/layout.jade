@@ -6,4 +6,18 @@ html
     link(href='/layout.css', rel='stylesheet', type='text/css')
     block links
   body
-    block body
+    header.pure-u-1-1
+      a(href='/')
+        h1 Kaihatsu
+
+    #articleContainer
+      block body
+
+    footer.pure-u-1-1
+      ul
+        li
+          a.button(href="/archives") Archives
+        li
+          a.button(href="http://jgs.me") Home
+        li
+          a.button(href="https://github.com/jgsme/log") Github repository

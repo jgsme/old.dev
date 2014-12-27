@@ -1,0 +1,8 @@
+extends layout
+
+block body
+  article
+    ul
+      each article in data
+        li
+          a(href="#{article.url}") #{article.title}
