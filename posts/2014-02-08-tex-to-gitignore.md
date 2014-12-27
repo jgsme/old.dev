@@ -1,10 +1,4 @@
-{
-  title: "TeX 向けの .gitignore",
-  date: "2014-02-08",
-  description: "TeX 向けの .gitignore",
-  url: "gitignore-for-tex"
-}
-
+# TeX 向けの .gitignore
 アレがアレで現在進行形でめちゃくちゃTeXしている。転ばぬ先の杖の杖として、何重にもバックアップをしつつバージョン管理もしている。とはいえ、TeXはビルドするときにやたらファイルが生成されてgitで管理する邪魔になるので `.gitignore` に不要な拡張子を列挙して目に入らないようにするのがよいだろう。
 
 完成版

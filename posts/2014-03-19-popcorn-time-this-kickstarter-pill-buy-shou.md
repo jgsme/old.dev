@@ -1,10 +1,4 @@
-{
-  title: "Popcorn Timeは今すぐKickstarterあたりに丸ごと買収されてほしい",
-  date: "2014-03-19",
-  description: "Popcorn Timeは今すぐKickstarterあたりに丸ごと買収されてほしい",
-  url: "popcorn-time-is-awesome"
-}
-
+# Popcorn Timeは今すぐKickstarterあたりに丸ごと買収されてほしい
 ![](http://user-image.logdown.io/user/5835/blog/5854/post/189632/FhMvHmZYQT29o4YVH2bA_%202014-03-19%200.13.16.png)
 
 Techcrunch で Popcorn Time がキテる、そして死んだ、そして蘇った、という記事をひと通り読んで、ソースコードが Github で公開されてると知ったのでとりあえず見に行った。

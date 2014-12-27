@@ -1,10 +1,4 @@
-{
-  title: "vimで補完",
-  date: "2013-10-06",
-  description: "vimで補完",
-  url: "vim-comp"
-}
-
+# vimで補完
 vim で補完をしたい。
 
 完成形:

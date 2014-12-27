@@ -1,10 +1,4 @@
-{
-  title: "twitter の userstream が突然調子悪くなる案件",
-  date: "2013-12-12",
-  description: "twitter の userstream が突然調子悪くなる案件",
-  url: "twitter-userstream-garbage"
-}
-
+# twitter の userstream が突然調子悪くなる案件
  `node.js` から twitter の userstream を扱うのには、`ntwitter` は挙動がバギーなので `user-stream` を使っている。
 
 https://github.com/aivis/user-stream

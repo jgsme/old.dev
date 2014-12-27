@@ -1,10 +1,4 @@
-{
-  title: "JavascriptBattleのルールを日本語訳してみた",
-  date: "2014-10-09",
-  description: "JavascriptBattleのルールを日本語訳してみた",
-  url: "translated-JavascriptBattle-rules-in-japanese"
-}
-
+# JavascriptBattleのルールを日本語訳してみた
 https://github.com/JavascriptBattle/hero-starter
 
 JavascriptBattle という AI を作って戦わせる系のゲームを発見して、結構面白そうだったので遊んでみている。

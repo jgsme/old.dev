@@ -1,10 +1,4 @@
-{
-  title: "VPSにgitのリモートリポジトリをつくる",
-  date: "2013-10-06",
-  description: "VPSにgitのリモートリポジトリをつくる",
-  url: "vps-git-remote-repo"
-}
-
+# VPSにgitのリモートリポジトリをつくる
 初回のみ
 
 ```

@@ -1,10 +1,4 @@
-{
-  title: "nodectl めっちゃ便利",
-  date: "2013-10-16",
-  description: "nodectl めっちゃ便利",
-  url: "nodectl-is-awesome"
-}
-
+# nodectl めっちゃ便利
 https://github.com/geta6/nodectl
 
 node.js のプロジェクトを走らせるときに、ファイルを監視して再起動だったり、環境やポートの情報も `.nodectl.json` に設定を書いておくだけでいい。便利。サンプルの json は README.md が詳しいので略。

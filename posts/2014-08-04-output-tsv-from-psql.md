@@ -1,10 +1,4 @@
-{
-  title: "psql -> tsv",
-  date: "2014-08-04",
-  description: "psql -> tsv",
-  url: "output-tsv-from-psql"
-}
-
+# psql -> tsv
 http://d.hatena.ne.jp/choplin/20101222/1292995497
 
 psql で tsv を出したい。

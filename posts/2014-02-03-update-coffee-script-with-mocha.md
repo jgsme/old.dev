@@ -1,10 +1,4 @@
-{
-  title: "coffee-script を 1.7 にしたら mocha が死ぬときの対応",
-  date: "2014-02-03",
-  description: "coffee-script を 1.7 にしたら mocha が死ぬときの対応",
-  url: "coffee-1-7-mocha-crash"
-}
-
+# coffee-script を 1.7 にしたら mocha が死ぬときの対応
 coffee-script のバージョン1.7がリリースされたので、アップデートしたら mocha が
 
 ```

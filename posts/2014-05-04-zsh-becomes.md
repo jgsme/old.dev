@@ -1,10 +1,4 @@
-{
-  title: "zsh のキーバインドを変える",
-  date: "2014-05-04",
-  description: "zsh のキーバインドを変える",
-  url: "change-zsh-key-bind"
-}
-
+# zsh のキーバインドを変える
 最近3ヶ月に1回ぐらいやってくる「エディタとかシェルを強くしたい」月間に突入していて、継続的にdotfilesの手入れをしている。本日の手入れはキーバインド。
 
 https://github.com/e-jigsaw/dotfiles/commit/428ee60610c88ac61d632e09d5e7239b67a16820

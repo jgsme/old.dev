@@ -1,10 +1,4 @@
-{
-  title: "api blueprint のインデントでつまずいた",
-  date: "2014-08-20",
-  description: "api blueprint のインデントでつまずいた",
-  url: "api-blueprint-indent"
-}
-
+# api blueprint のインデントでつまずいた
 # TL;DR
 
 * `API Blueprint` の markdown は 4スペース

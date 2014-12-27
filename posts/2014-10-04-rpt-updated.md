@@ -1,10 +1,4 @@
-{
-  title: "rptをアップデートした",
-  date: "2014-10-04",
-  description: "rptをアップデートした",
-  url: "rpt-updated"
-}
-
+# rptをアップデートした
 http://rpt.jgs.me
 
 [昨日](http://dev.jgs.me/posts/created-rpt/)つくった RPT をアップデートした。リダイレクトすると複数回ランダムしたいときとかに不便なので、結局 Web のインターフェースをつくることにした。

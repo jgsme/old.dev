@@ -1,10 +1,4 @@
-{
-  title: "iMac買ったらBluetooth使えなかったけどなんとかなった",
-  date: "2014-03-21",
-  description: "iMac買ったらBluetooth使えなかったけどなんとかなった",
-  url: "imac-bluetooth-is-crash"
-}
-
+# iMac買ったらBluetooth使えなかったけどなんとかなった
 どうもどうも、うっかりiMacを買ってしまいましたこんばんは。
 
 さっそくセットアップしよう...！と意気揚々と電源を入れて設定画面にいったものの、Wireless KeyboardもMagick Trackpadも認識されず、操作不能な状態に。仕方がないのでしぶしぶ有線のキーボードを接続して事無きを得たものの、起動後にもBluetoothがメニューバーに表示されないし、システム環境設定にも表示されない。困った。

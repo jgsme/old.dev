@@ -1,10 +1,4 @@
-{
-  title: "hubotとhipchatでウワサのChatOpsの準備",
-  date: "2013-10-22",
-  description: "hubotとhipchatでウワサのChatOpsの準備",
-  url: "chatops-with-hubot"
-}
-
+# hubotとhipchatでウワサのChatOpsの準備
 むかし見かけたけど、あまり便利さがわからなかったのでスルーしていた `hubot` が面白そうだったので、ちょっと触ってみることにした。
 
 目標は、サービスのデプロイや、通知なんかを一手に管理できる状態。

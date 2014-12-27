@@ -1,10 +1,4 @@
-{
-  title: "nginxでサブドメインの指定",
-  date: "2013-10-06",
-  description: "nginxでサブドメインの指定",
-  url: "nginx-sub-domain"
-}
-
+# nginxでサブドメインの指定
 nginxでサブドメインの指定をするときにはサブドメインの分だけ `server` を書いておけばいいっぽい。
 
 ```

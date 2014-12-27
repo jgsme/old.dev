@@ -1,10 +1,4 @@
-{
-  title: "bottlejsでDIを試す",
-  date: "2014-10-08",
-  description: "bottlejsでDIを試す",
-  url: "dependency-injection-in-node-js"
-}
-
+# bottlejsでDIを試す
 https://github.com/young-steveo/bottlejs
 
 # tl;dr

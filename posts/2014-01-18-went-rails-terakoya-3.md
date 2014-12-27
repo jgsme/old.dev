@@ -1,10 +1,4 @@
-{
-  title: "第3回Rails寺子屋に参加してきた",
-  date: "2014-01-18",
-  description: "第3回Rails寺子屋に参加してきた",
-  url: "went-3rd-rails-terakoya"
-}
-
+# 第3回Rails寺子屋に参加してきた
 Rails寺子屋 http://rails.terakoya.io/
 
 Railsはメジャーバージョンが上がる度に「そろそろ本格的に体得しておこう...」と意気込んではじめるものの、railstutorialをやってふむう？となって以降あまり触らないという不遜な付き合いを続けてきたのだけれど、たまたま都合がついたのでエイヤッと参加してきた。

@@ -1,10 +1,4 @@
-{
-  title: "facebook-flow first impression",
-  date: "2014-11-19",
-  description: "facebook-flow first impression",
-  url: "facebook-flow-first-impression"
-}
-
+# facebook-flow first impression
 http://flowtype.org/
 
 既に数人 Facebook Flow の感想を上げていたのでリンクを貼っておく

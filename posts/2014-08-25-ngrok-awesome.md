@@ -1,10 +1,4 @@
-{
-  title: "ngrok 便利",
-  date: "2014-08-25",
-  description: "ngrok 便利",
-  url: "ngrok-awesome"
-}
-
+# ngrok 便利
 https://ngrok.com/
 
 ngrok、なんとなく star つけたのがだいぶ前で触れてすらいなかったのだけれど、今日携帯端末向けにデバッグするために使ったらめっちゃ便利だった。

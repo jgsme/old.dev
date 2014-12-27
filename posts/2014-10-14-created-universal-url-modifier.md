@@ -1,10 +1,4 @@
-{
-  title: "universal-url-modifier をつくった",
-  date: "2014-10-14",
-  description: "universal-url-modifier をつくった",
-  url: "created-universal-url-modifier"
-}
-
+# universal-url-modifier をつくった
 https://github.com/e-jigsaw/universal-url-modifier
 
 `README` にも書いたんだけど、結構前から [r7kamura/amazon-url-modifier](https://github.com/r7kamura/amazon-url-modifier) を使わせてもらっていて、便利だなー、とおもっていた。ちなみに作者の[記事](http://r7kamura.hatenablog.com/entry/2014/08/04/150113)の
