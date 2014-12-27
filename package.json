@@ -18,6 +18,9 @@
   "dependencies": {
     "coffee-script": "^1.8.0",
     "gulp": "^3.8.10",
-    "gulp-markdown": "^1.0.0"
+    "gulp-data": "^1.1.1",
+    "gulp-jade-template": "0.0.4",
+    "gulp-markdown": "^1.0.0",
+    "through2": "^0.6.3"
   }
 }
