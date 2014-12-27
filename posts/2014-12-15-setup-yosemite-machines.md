@@ -1,4 +1,4 @@
-# Yosemite マシンゲットしたので環境を整えた
+# [Yosemite マシンゲットしたので環境を整えた](/2014/12/15/setup-yosemite-machines.html)
 
 https://github.com/e-jigsaw/dotfiles
 

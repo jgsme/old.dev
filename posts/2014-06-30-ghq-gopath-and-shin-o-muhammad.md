@@ -1,4 +1,4 @@
-# ghq と gopath の兼ね合い
+# [ghq と gopath の兼ね合い](/2014/06/30/ghq-gopath-and-shin-o-muhammad.html)
 
 # TL;DR
 

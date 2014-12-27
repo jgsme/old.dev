@@ -1,4 +1,4 @@
-# さくらvpsの初期設定
+# [さくらvpsの初期設定](/2013/09/27/sakuravpsfalsechu-qi-she-ding.html)
 
 超絶追い詰められて勢いでさくらVPSを構築した。
 

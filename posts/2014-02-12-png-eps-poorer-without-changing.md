@@ -1,4 +1,4 @@
-# png を eps に変換
+# [png を eps に変換](/2014/02/12/png-eps-poorer-without-changing.html)
 
 TeXしてると、pngで画像を貼れなくてイライラしますね。面倒ですが eps に変換します。`ImageMagick` がインストールしてあれば
 

@@ -1,4 +1,4 @@
-# node.jsのmongooseでnestしたobjectをpopulateする
+# [node.jsのmongooseでnestしたobjectをpopulateする](/2013/09/25/nested-mongoose.html)
 
 
 `node.js` の `mongoose` でネストしたドキュメントを `populate` したいときの話。

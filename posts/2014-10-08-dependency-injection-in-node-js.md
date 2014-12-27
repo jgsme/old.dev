@@ -1,4 +1,4 @@
-# bottlejsでDIを試す
+# [bottlejsでDIを試す](/2014/10/08/dependency-injection-in-node-js.html)
 
 https://github.com/young-steveo/bottlejs
 

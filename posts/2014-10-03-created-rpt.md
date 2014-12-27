@@ -1,4 +1,4 @@
-# tumblrからランダムに写真を表示するサービスをつくった
+# [tumblrからランダムに写真を表示するサービスをつくった](/2014/10/03/created-rpt.html)
 
 https://github.com/jgsme/rpt
 

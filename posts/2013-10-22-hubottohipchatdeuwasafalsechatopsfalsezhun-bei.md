@@ -1,4 +1,4 @@
-# hubotとhipchatでウワサのChatOpsの準備
+# [hubotとhipchatでウワサのChatOpsの準備](/2013/10/22/hubottohipchatdeuwasafalsechatopsfalsezhun-bei.html)
 
 むかし見かけたけど、あまり便利さがわからなかったのでスルーしていた `hubot` が面白そうだったので、ちょっと触ってみることにした。
 

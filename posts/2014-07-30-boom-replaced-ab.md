@@ -1,4 +1,4 @@
-# boom で ab
+# [boom で ab](/2014/07/30/boom-replaced-ab.html)
 
 
 https://github.com/rakyll/boom

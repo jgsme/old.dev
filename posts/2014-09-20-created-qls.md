@@ -1,4 +1,4 @@
-# qls というコマンドをつくった
+# [qls というコマンドをつくった](/2014/09/20/created-qls.html)
 
 https://github.com/e-jigsaw/qls
 

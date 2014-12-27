@@ -1,4 +1,4 @@
-# vagrant-berkshelf plugin がインストールできないときの対処
+# [vagrant-berkshelf plugin がインストールできないときの対処](/2013/12/14/vagrant-berkshelf-plugin.html)
 
 
 以上。

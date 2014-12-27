@@ -1,4 +1,4 @@
-# feedbackというリポジトリをforkした
+# [feedbackというリポジトリをforkした](/2014/10/08/forked-feedback.html)
 
 https://github.com/e-jigsaw/feedback
 

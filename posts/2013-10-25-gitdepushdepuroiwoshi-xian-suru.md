@@ -1,4 +1,4 @@
-# gitでpushデプロイを実現する
+# [gitでpushデプロイを実現する](/2013/10/25/gitdepushdepuroiwoshi-xian-suru.html)
 
 参考: http://qiita.com/fnobi/items/98bd5d1c83c010842733
 

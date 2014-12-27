@@ -1,4 +1,4 @@
-# #kosenvj を支える技術(フロント編)
+# [#kosenvj を支える技術(フロント編)](/2014/12/01/the-technology-behind-vj.html)
 
 https://twitter.com/asonas/status/538995926514167808
 

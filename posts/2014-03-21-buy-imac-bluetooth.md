@@ -1,4 +1,4 @@
-# iMac買ったらBluetooth使えなかったけどなんとかなった
+# [iMac買ったらBluetooth使えなかったけどなんとかなった](/2014/03/21/buy-imac-bluetooth.html)
 
 どうもどうも、うっかりiMacを買ってしまいましたこんばんは。
 

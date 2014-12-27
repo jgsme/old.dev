@@ -1,4 +1,4 @@
-# github の org はデフォルトで private になっている
+# [github の org はデフォルトで private になっている](/2014/08/22/github-org-is-private-in-default.html)
 
 ![](https://cloud.githubusercontent.com/assets/557961/4008809/eb51b9f0-29db-11e4-8009-adbe8434f493.png)
 

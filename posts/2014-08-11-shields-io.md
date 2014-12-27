@@ -1,4 +1,4 @@
-# shields.io でバッジのガタガタが直せるっぽい
+# [shields.io でバッジのガタガタが直せるっぽい](/2014/08/11/shields-io.html)
 
 https://github.com/badges/shields
 

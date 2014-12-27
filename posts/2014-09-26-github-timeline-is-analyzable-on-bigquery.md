@@ -1,4 +1,4 @@
-# githubのtimelineがbigqueryで解析できる
+# [githubのtimelineがbigqueryで解析できる](/2014/09/26/github-timeline-is-analyzable-on-bigquery.html)
 
 http://www.githubarchive.org/
 

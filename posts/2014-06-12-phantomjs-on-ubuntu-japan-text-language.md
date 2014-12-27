@@ -1,4 +1,4 @@
-# phantomjs on ubuntu で日本語が文字化けする件
+# [phantomjs on ubuntu で日本語が文字化けする件](/2014/06/12/phantomjs-on-ubuntu-japan-text-language.html)
 
 # TL;DR
 

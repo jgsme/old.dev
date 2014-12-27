@@ -1,4 +1,4 @@
-# 激ヤバ鬼便利日報ツールを Go でリプレースした
+# [激ヤバ鬼便利日報ツールを Go でリプレースした](/2014/06/29/journal-by-go.html)
 
 https://github.com/e-jigsaw/journal
 

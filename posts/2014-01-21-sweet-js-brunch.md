@@ -1,4 +1,4 @@
-# sweet-js-brunch をつくった
+# [sweet-js-brunch をつくった](/2014/01/21/sweet-js-brunch.html)
 
 https://github.com/e-jigsaw/sweet-js-brunch
 

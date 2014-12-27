@@ -1,4 +1,4 @@
-# md2wp をつくった
+# [md2wp をつくった](/2014/12/24/created-md2wp.html)
 
 http://md2wp.jgs.me
 

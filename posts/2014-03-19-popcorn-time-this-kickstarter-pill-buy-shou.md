@@ -1,4 +1,4 @@
-# Popcorn Timeは今すぐKickstarterあたりに丸ごと買収されてほしい
+# [Popcorn Timeは今すぐKickstarterあたりに丸ごと買収されてほしい](/2014/03/19/popcorn-time-this-kickstarter-pill-buy-shou.html)
 
 ![](http://user-image.logdown.io/user/5835/blog/5854/post/189632/FhMvHmZYQT29o4YVH2bA_%202014-03-19%200.13.16.png)
 

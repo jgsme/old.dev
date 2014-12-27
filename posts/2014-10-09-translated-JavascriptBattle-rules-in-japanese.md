@@ -1,4 +1,4 @@
-# JavascriptBattleのルールを日本語訳してみた
+# [JavascriptBattleのルールを日本語訳してみた](/2014/10/09/translated-JavascriptBattle-rules-in-japanese.html)
 
 https://github.com/JavascriptBattle/hero-starter
 

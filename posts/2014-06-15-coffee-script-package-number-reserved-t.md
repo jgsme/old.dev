@@ -1,4 +1,4 @@
-# coffee-script では package が reserved になってるので変数として使えない
+# [coffee-script では package が reserved になってるので変数として使えない](/2014/06/15/coffee-script-package-number-reserved-t.html)
 
 http://coffeescript.org/documentation/docs/lexer.html#section-66
 

@@ -1,4 +1,4 @@
-# nodectl めっちゃ便利
+# [nodectl めっちゃ便利](/2013/10/16/nodectl-metutiyabian-li.html)
 
 https://github.com/geta6/nodectl
 

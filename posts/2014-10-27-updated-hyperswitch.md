@@ -1,4 +1,4 @@
-# hyperswitchのアップデート
+# [hyperswitchのアップデート](/2014/10/27/updated-hyperswitch.html)
 
 http://www.macupdate.com/app/mac/41769/hyperswitch
 

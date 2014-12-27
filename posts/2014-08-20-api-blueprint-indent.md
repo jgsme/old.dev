@@ -1,4 +1,4 @@
-# api blueprint のインデントでつまずいた
+# [api blueprint のインデントでつまずいた](/2014/08/20/api-blueprint-indent.html)
 
 # TL;DR
 

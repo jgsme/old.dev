@@ -1,4 +1,4 @@
-# workshopper でハンズオンを体系化できるっぽい
+# [workshopper でハンズオンを体系化できるっぽい](/2014/08/20/workshopper.html)
 
 https://github.com/rvagg/workshopper
 

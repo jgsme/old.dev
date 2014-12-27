@@ -1,4 +1,4 @@
-# texでpngを貼る
+# [texでpngを貼る](/2013/10/23/texdepngwotie-ru.html)
 
 TeXで `.png` ファイルを貼るのがダルかったのでメモ。
 

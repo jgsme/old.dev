@@ -1,4 +1,4 @@
-# VPSにgitのリモートリポジトリをつくる
+# [VPSにgitのリモートリポジトリをつくる](/2013/10/06/vpsnigitfalserimotoripozitoriwotukuru.html)
 
 初回のみ
 

@@ -1,4 +1,4 @@
-# universal-url-modifier をつくった
+# [universal-url-modifier をつくった](/2014/10/14/created-universal-url-modifier.html)
 
 https://github.com/e-jigsaw/universal-url-modifier
 

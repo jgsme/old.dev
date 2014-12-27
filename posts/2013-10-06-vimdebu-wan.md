@@ -1,4 +1,4 @@
-# vimで補完
+# [vimで補完](/2013/10/06/vimdebu-wan.html)
 
 vim で補完をしたい。
 

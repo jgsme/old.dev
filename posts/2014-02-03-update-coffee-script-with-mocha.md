@@ -1,4 +1,4 @@
-# coffee-script を 1.7 にしたら mocha が死ぬときの対応
+# [coffee-script を 1.7 にしたら mocha が死ぬときの対応](/2014/02/03/update-coffee-script-with-mocha.html)
 
 coffee-script のバージョン1.7がリリースされたので、アップデートしたら mocha が
 

@@ -1,4 +1,4 @@
-# rss に対応しました
+# [rss に対応しました](/2014/10/10/coped-with-rss.html)
 
 http://dev.jgs.me/feed.xml
 

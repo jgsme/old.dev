@@ -1,4 +1,4 @@
-# iTerm2 のカラースキームを dotfiles に追加した
+# [iTerm2 のカラースキームを dotfiles に追加した](/2014/01/25/iterm2-append-dotfiles-i.html)
 
 iTerm2 のオシャカラースキームリポジトリを見つけたのでさっそく clone して使ってみた。
 

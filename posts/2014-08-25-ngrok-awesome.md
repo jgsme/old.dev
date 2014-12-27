@@ -1,4 +1,4 @@
-# ngrok 便利
+# [ngrok 便利](/2014/08/25/ngrok-awesome.html)
 
 https://ngrok.com/
 

@@ -1,4 +1,4 @@
-# 第3回Rails寺子屋に参加してきた
+# [第3回Rails寺子屋に参加してきた](/2014/01/18/went-rails-terakoya-3.html)
 
 Rails寺子屋 http://rails.terakoya.io/
 

@@ -1,4 +1,4 @@
-# rptをアップデートした
+# [rptをアップデートした](/2014/10/04/rpt-updated.html)
 
 http://rpt.jgs.me
 
