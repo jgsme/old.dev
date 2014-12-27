@@ -14,5 +14,10 @@
   "bugs": {
     "url": "https://github.com/jgsme/log/issues"
   },
-  "homepage": "https://github.com/jgsme/log"
+  "homepage": "https://github.com/jgsme/log",
+  "dependencies": {
+    "coffee-script": "^1.8.0",
+    "gulp": "^3.8.10",
+    "gulp-markdown": "^1.0.0"
+  }
 }
