@@ -1,4 +1,5 @@
 # phantomjs on ubuntu で日本語が文字化けする件
+
 # TL;DR
 
 * 日本語フォントいれろ

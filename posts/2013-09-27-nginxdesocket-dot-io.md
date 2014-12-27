@@ -1,4 +1,5 @@
 # nginxでsocket.io
+
 追い詰められて構築したさくらVPSにsocket.io on nginxを構築した。
 
 http://d.hatena.ne.jp/yoshi-ken/20120205

@@ -1,4 +1,5 @@
 # coffee-script では package が reserved になってるので変数として使えない
+
 http://coffeescript.org/documentation/docs/lexer.html#section-66
 
 * package は coffee-script での予約語らしい

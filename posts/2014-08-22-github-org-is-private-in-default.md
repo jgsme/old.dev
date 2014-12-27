@@ -1,4 +1,5 @@
 # github の org はデフォルトで private になっている
+
 ![](https://cloud.githubusercontent.com/assets/557961/4008809/eb51b9f0-29db-11e4-8009-adbe8434f493.png)
 
 今日他のひとに自分の github のユーザページを見られる機会があって、その際に private repo の commit とかが見えないのは知ってたのだけれど org に全然入っていないことになっていて驚いて調べてみるとデフォルトでは private になっているようだ。

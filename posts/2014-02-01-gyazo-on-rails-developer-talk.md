@@ -1,4 +1,5 @@
 # Gyazo on Rails Developer Talk に行ってきた
+
 ![](http://farm4.staticflickr.com/3668/12236808555_9c0741ec96_z.jpg)
 
 Gyazo さんがバックエンドを Ruby on Rails に概ね(一部まだPHPだそう)移行されたとのことで、記念イベントが開催されていたので参加してきた。Gyazo は名前は知っていたけど実態は全然知らなくて、京都で開発されてるって知ったのも最近だったようにおもう。

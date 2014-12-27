@@ -1,4 +1,5 @@
 # ghq と gopath の兼ね合い
+
 # TL;DR
 
 * `$GOPATH` を `~/.ghq` にした

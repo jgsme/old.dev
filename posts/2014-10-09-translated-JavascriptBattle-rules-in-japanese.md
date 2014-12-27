@@ -1,4 +1,5 @@
 # JavascriptBattleのルールを日本語訳してみた
+
 https://github.com/JavascriptBattle/hero-starter
 
 JavascriptBattle という AI を作って戦わせる系のゲームを発見して、結構面白そうだったので遊んでみている。

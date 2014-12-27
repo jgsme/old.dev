@@ -1,4 +1,5 @@
 # rptをアップデートした
+
 http://rpt.jgs.me
 
 [昨日](http://dev.jgs.me/posts/created-rpt/)つくった RPT をアップデートした。リダイレクトすると複数回ランダムしたいときとかに不便なので、結局 Web のインターフェースをつくることにした。

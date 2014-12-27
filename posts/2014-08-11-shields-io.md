@@ -1,4 +1,5 @@
 # shields.io でバッジのガタガタが直せるっぽい
+
 https://github.com/badges/shields
 
 Github の README にバッジを貼るサービスが増えているけれど、それぞれの画像がまちまちなのでガタガタになってしまう問題がある。それを解決してくれるのがこれらしい。

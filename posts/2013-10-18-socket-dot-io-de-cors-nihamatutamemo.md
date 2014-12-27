@@ -1,4 +1,5 @@
 # socket.io で CORS にハマったメモ
+
 `api.hoge.jp` で `socket.io` を走らせてるときに `hoge.jp` から Websocketで通信しようとしたら案の定 `CORS` エラーが出てハマった。`node.js` の `Express` では適当にミドルウェア書いておけば抜けられるのは知っていたのだけれど、`socket.io` でどうすればいいのかわからなかった。
 
 https://groups.google.com/forum/#!topic/socket_io/Fkq9Pyc8s6E

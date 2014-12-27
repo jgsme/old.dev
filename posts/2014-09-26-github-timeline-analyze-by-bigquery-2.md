@@ -1,4 +1,5 @@
 # githubのtimelineをBigQueryで解析する(その2)
+
 http://dev.jgs.me/posts/github-timeline-is-analyzable-on-bigquery/ のつづき。
 
 試しに自分のアカウントでフィルタしたクエリを投げてみる。

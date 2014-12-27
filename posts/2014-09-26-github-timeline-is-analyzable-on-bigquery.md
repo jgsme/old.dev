@@ -1,4 +1,5 @@
 # githubのtimelineがbigqueryで解析できる
+
 http://www.githubarchive.org/
 
 [Githut](http://githut.info/)という Github の解析サイトがあって、仕掛けを調べていたらGithubはpublicなtimelineをオープンデータとして公開しているらしい。

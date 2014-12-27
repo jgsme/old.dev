@@ -1,4 +1,5 @@
 # iTerm2 のカラースキームを dotfiles に追加した
+
 iTerm2 のオシャカラースキームリポジトリを見つけたのでさっそく clone して使ってみた。
 
 https://github.com/baskerville/iTerm-2-Color-Themes
