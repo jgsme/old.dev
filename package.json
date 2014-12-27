@@ -1,0 +1,18 @@
+{
+  "name": "log",
+  "version": "0.0.0",
+  "description": "development log",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgsme/log.git"
+  },
+  "author": "jigsaw (http://jgs.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jgsme/log/issues"
+  },
+  "homepage": "https://github.com/jgsme/log"
+}
