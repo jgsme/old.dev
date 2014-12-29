@@ -13,6 +13,7 @@ async = require 'async'
 run = require 'run-sequence'
 archive = require 'gulp-article-archive'
 rss = require 'gulp-article-rss'
+deploy = require 'gulp-gh-pages'
 
 paths =
   posts: 'posts/*.md'
@@ -79,9 +80,14 @@ gulp.task 'rss', ->
         link: 'http://jgs.me'
     .pipe gulp.dest("#{paths.dest}/feed.xml")
 
-gulp.task 'default', ['article', 'index', 'archive', 'CNAME', 'gfm', 'stylus']
+gulp.task 'default', ['article', 'index', 'archive', 'rss', 'CNAME', 'gfm', 'stylus']
 gulp.task 'watch', ['default'], ->
   gulp.watch paths.posts, ['article', 'index']
   gulp.watch paths.styl, ['stylus']
   connect.server
     root: paths.dest
+
+gulp.task 'deploy', ['default'], ->
+  gulp.src './build/**/*'
+    .pipe deploy
+      cacheDir: 'tmp'
