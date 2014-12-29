@@ -1,9 +1,4 @@
-{
-  title: "JavascriptBattleのルールを日本語訳してみた",
-  date: "2014-10-09",
-  description: "JavascriptBattleのルールを日本語訳してみた",
-  url: "translated-JavascriptBattle-rules-in-japanese"
-}
+# [JavascriptBattleのルールを日本語訳してみた](/2014/10/09/translated-JavascriptBattle-rules-in-japanese.html)
 
 https://github.com/JavascriptBattle/hero-starter
 

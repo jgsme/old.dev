@@ -1,9 +1,4 @@
-{
-  title: "psql -> tsv",
-  date: "2014-08-04",
-  description: "psql -> tsv",
-  url: "output-tsv-from-psql"
-}
+# [psql -> tsv](/2014/08/04/output-tsv-from-psql.html)
 
 http://d.hatena.ne.jp/choplin/20101222/1292995497
 

@@ -1,9 +1,4 @@
-{
-  title: "universal-url-modifier をつくった",
-  date: "2014-10-14",
-  description: "universal-url-modifier をつくった",
-  url: "created-universal-url-modifier"
-}
+# [universal-url-modifier をつくった](/2014/10/14/created-universal-url-modifier.html)
 
 https://github.com/e-jigsaw/universal-url-modifier
 

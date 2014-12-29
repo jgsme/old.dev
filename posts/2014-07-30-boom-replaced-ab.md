@@ -1,9 +1,4 @@
-{
-  title: "boom で ab",
-  date: "2014-07-30",
-  description: "boom で ab",
-  url: "boom-replaced-ab"
-}
+# [boom で ab](/2014/07/30/boom-replaced-ab.html)
 
 
 https://github.com/rakyll/boom

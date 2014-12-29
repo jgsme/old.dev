@@ -1,9 +1,4 @@
-{
-  title: "#kosenvj を支える技術(フロント編)",
-  date: "2014-12-01",
-  description: "#kosenvj を支える技術(フロント編)",
-  url: "the-technology-behind-vj"
-}
+# [#kosenvj を支える技術(フロント編)](/2014/12/01/the-technology-behind-vj.html)
 
 https://twitter.com/asonas/status/538995926514167808
 

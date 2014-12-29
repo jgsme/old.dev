@@ -1,9 +1,4 @@
-{
-  title: "今日のシェルコマンド",
-  date: "2014-08-04",
-  description: "今日のシェルコマンド",
-  url: "shell-command-tr-split"
-}
+# [今日のシェルコマンド](/2014/08/04/shell-command-tr-split.html)
 
 今日は必要に迫られてシェルのコマンドを調べて使った
 

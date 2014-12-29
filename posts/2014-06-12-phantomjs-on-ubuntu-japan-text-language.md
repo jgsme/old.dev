@@ -1,9 +1,4 @@
-{
-  title: "phantomjs on ubuntu で日本語が文字化けする件",
-  date: "2014-06-12",
-  description: "phantomjs on ubuntu で日本語が文字化けする件",
-  url: "phantomjs-with-ja"
-}
+# [phantomjs on ubuntu で日本語が文字化けする件](/2014/06/12/phantomjs-on-ubuntu-japan-text-language.html)
 
 # TL;DR
 

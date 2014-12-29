@@ -1,9 +1,4 @@
-{
-  title: "さくらvpsの初期設定",
-  date: "2013-09-27",
-  description: "さくらvpsの初期設定",
-  url: "sakura-vps-init"
-}
+# [さくらvpsの初期設定](/2013/09/27/sakuravpsfalsechu-qi-she-ding.html)
 
 超絶追い詰められて勢いでさくらVPSを構築した。
 

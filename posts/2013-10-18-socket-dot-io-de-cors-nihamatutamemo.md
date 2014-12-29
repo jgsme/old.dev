@@ -1,9 +1,4 @@
-{
-  title: "socket.io で CORS にハマったメモ",
-  date: "2013-10-18",
-  description: "socket.io で CORS にハマったメモ",
-  url: "socket-io-cors"
-}
+# [socket.io で CORS にハマったメモ](/2013/10/18/socket-dot-io-de-cors-nihamatutamemo.html)
 
 `api.hoge.jp` で `socket.io` を走らせてるときに `hoge.jp` から Websocketで通信しようとしたら案の定 `CORS` エラーが出てハマった。`node.js` の `Express` では適当にミドルウェア書いておけば抜けられるのは知っていたのだけれど、`socket.io` でどうすればいいのかわからなかった。
 

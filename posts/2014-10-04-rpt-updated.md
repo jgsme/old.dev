@@ -1,9 +1,4 @@
-{
-  title: "rptをアップデートした",
-  date: "2014-10-04",
-  description: "rptをアップデートした",
-  url: "rpt-updated"
-}
+# [rptをアップデートした](/2014/10/04/rpt-updated.html)
 
 http://rpt.jgs.me
 

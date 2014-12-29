@@ -1,9 +1,4 @@
-{
-  title: "nginxでsocket.io",
-  date: "2013-09-27",
-  description: "nginxでsocket.io",
-  url: "nginx-with-socket-io"
-}
+# [nginxでsocket.io](/2013/09/27/nginxdesocket-dot-io.html)
 
 追い詰められて構築したさくらVPSにsocket.io on nginxを構築した。
 

@@ -1,9 +1,4 @@
-{
-  title: "githubのtimelineをBigQueryで解析する(その2)",
-  date: "2014-09-26",
-  description: "githubのtimelineをBigQueryで解析する(その2)",
-  url: "github-timeline-analyze-by-bigquery-2"
-}
+# [githubのtimelineをBigQueryで解析する(その2)](/2014/09/26/github-timeline-analyze-by-bigquery-2.html)
 
 http://dev.jgs.me/posts/github-timeline-is-analyzable-on-bigquery/ のつづき。
 

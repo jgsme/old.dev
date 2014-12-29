@@ -1,9 +1,4 @@
-{
-  title: "Yosemite マシンゲットしたので環境を整えた",
-  date: "2014-12-15",
-  description: "Yosemite マシンゲットしたので環境を整えた",
-  url: "setup-yosemite-machines"
-}
+# [Yosemite マシンゲットしたので環境を整えた](/2014/12/15/setup-yosemite-machines.html)
 
 https://github.com/e-jigsaw/dotfiles
 

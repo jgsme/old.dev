@@ -1,9 +1,4 @@
-{
-  title: "workshopper でハンズオンを体系化できるっぽい",
-  date: "2014-08-20",
-  description: "workshopper でハンズオンを体系化できるっぽい",
-  url: "workshopper"
-}
+# [workshopper でハンズオンを体系化できるっぽい](/2014/08/20/workshopper.html)
 
 https://github.com/rvagg/workshopper
 

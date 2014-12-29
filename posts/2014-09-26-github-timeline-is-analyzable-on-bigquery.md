@@ -1,9 +1,4 @@
-{
-  title: "githubのtimelineがbigqueryで解析できる",
-  date: "2014-09-26",
-  description: "githubのtimelineがbigqueryで解析できる",
-  url: "github-timeline-is-analyzable-on-bigquery"
-}
+# [githubのtimelineがbigqueryで解析できる](/2014/09/26/github-timeline-is-analyzable-on-bigquery.html)
 
 http://www.githubarchive.org/
 

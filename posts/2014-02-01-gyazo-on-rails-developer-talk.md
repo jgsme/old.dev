@@ -1,9 +1,4 @@
-{
-  title: "Gyazo on Rails Developer Talk に行ってきた",
-  date: "2014-02-01",
-  description: "Gyazo on Rails Developer Talk に行ってきた",
-  url: "gyazo-on-rails-developer-talk"
-}
+# [Gyazo on Rails Developer Talk に行ってきた](/2014/02/01/gyazo-on-rails-developer-talk.html)
 
 ![](http://farm4.staticflickr.com/3668/12236808555_9c0741ec96_z.jpg)
 

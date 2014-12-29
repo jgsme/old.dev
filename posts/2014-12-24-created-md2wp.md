@@ -1,9 +1,4 @@
-{
-  title: "md2wp をつくった",
-  date: "2014-12-24",
-  description: "md2wp をつくった",
-  url: "created-md2wp"
-}
+# [md2wp をつくった](/2014/12/24/created-md2wp.html)
 
 http://md2wp.jgs.me
 

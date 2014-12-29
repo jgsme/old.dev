@@ -1,9 +1,4 @@
-{
-  title: "卒業を支える技術",
-  date: "2014-02-15",
-  description: "卒業を支える技術",
-  url: "technology-for-graduation"
-}
+# [卒業を支える技術](/2014/02/15/graduate-technology.html)
 
 無事卒論を提出できまして、ゆったりとした週末を送っております、いかがお過ごしでしょうか。
 

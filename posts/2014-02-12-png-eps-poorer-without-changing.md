@@ -1,9 +1,4 @@
-{
-  title: "png を eps に変換",
-  date: "2014-02-12",
-  description: "png を eps に変換",
-  url: "convert-png-to-eps"
-}
+# [png を eps に変換](/2014/02/12/png-eps-poorer-without-changing.html)
 
 TeXしてると、pngで画像を貼れなくてイライラしますね。面倒ですが eps に変換します。`ImageMagick` がインストールしてあれば
 

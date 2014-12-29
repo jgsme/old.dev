@@ -1,9 +1,4 @@
-{
-  title: "api blueprint のインデントでつまずいた",
-  date: "2014-08-20",
-  description: "api blueprint のインデントでつまずいた",
-  url: "api-blueprint-indent"
-}
+# [api blueprint のインデントでつまずいた](/2014/08/20/api-blueprint-indent.html)
 
 # TL;DR
 

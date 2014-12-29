@@ -1,9 +1,4 @@
-{
-  title: "github の org はデフォルトで private になっている",
-  date: "2014-08-22",
-  description: "github の org はデフォルトで private になっている",
-  url: "github-org-is-private-in-default"
-}
+# [github の org はデフォルトで private になっている](/2014/08/22/github-org-is-private-in-default.html)
 
 ![](https://cloud.githubusercontent.com/assets/557961/4008809/eb51b9f0-29db-11e4-8009-adbe8434f493.png)
 

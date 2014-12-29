@@ -1,9 +1,4 @@
-{
-  title: "rss に対応しました",
-  date: "2014-10-10",
-  description: "rss に対応しました",
-  url: "coped-with-rss"
-}
+# [rss に対応しました](/2014/10/10/coped-with-rss.html)
 
 http://dev.jgs.me/feed.xml
 

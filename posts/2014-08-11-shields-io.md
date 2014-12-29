@@ -1,9 +1,4 @@
-{
-  title: "shields.io でバッジのガタガタが直せるっぽい",
-  date: "2014-08-11",
-  description: "shields.io でバッジのガタガタが直せるっぽい",
-  url: "shields-io"
-}
+# [shields.io でバッジのガタガタが直せるっぽい](/2014/08/11/shields-io.html)
 
 https://github.com/badges/shields
 

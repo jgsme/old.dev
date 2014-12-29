@@ -1,9 +1,4 @@
-{
-  title: "vimで補完",
-  date: "2013-10-06",
-  description: "vimで補完",
-  url: "vim-comp"
-}
+# [vimで補完](/2013/10/06/vimdebu-wan.html)
 
 vim で補完をしたい。
 

@@ -1,9 +1,4 @@
-{
-  title: "node.jsのmongooseでnestしたobjectをpopulateする",
-  date: "2013-09-25",
-  description: "node.jsのmongooseでnestしたobjectをpopulateする",
-  url: "mongoose-nest-populate"
-}
+# [node.jsのmongooseでnestしたobjectをpopulateする](/2013/09/25/nested-mongoose.html)
 
 
 `node.js` の `mongoose` でネストしたドキュメントを `populate` したいときの話。

@@ -1,9 +1,4 @@
-{
-  title: "iMac買ったらBluetooth使えなかったけどなんとかなった",
-  date: "2014-03-21",
-  description: "iMac買ったらBluetooth使えなかったけどなんとかなった",
-  url: "imac-bluetooth-is-crash"
-}
+# [iMac買ったらBluetooth使えなかったけどなんとかなった](/2014/03/21/buy-imac-bluetooth.html)
 
 どうもどうも、うっかりiMacを買ってしまいましたこんばんは。
 

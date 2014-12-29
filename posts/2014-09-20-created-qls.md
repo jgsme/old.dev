@@ -1,9 +1,4 @@
-{
-  title: "qls というコマンドをつくった",
-  date: "2014-09-20",
-  description: "qls というコマンドをつくった",
-  url: "created-qls"
-}
+# [qls というコマンドをつくった](/2014/09/20/created-qls.html)
 
 https://github.com/e-jigsaw/qls
 

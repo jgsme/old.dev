@@ -1,9 +1,4 @@
-{
-  title: "feedbackというリポジトリをforkした",
-  date: "2014-10-08",
-  description: "feedbackというリポジトリをforkした",
-  url: "forked-feedback"
-}
+# [feedbackというリポジトリをforkした](/2014/10/08/forked-feedback.html)
 
 https://github.com/e-jigsaw/feedback
 

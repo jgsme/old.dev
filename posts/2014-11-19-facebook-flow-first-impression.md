@@ -1,9 +1,4 @@
-{
-  title: "facebook-flow first impression",
-  date: "2014-11-19",
-  description: "facebook-flow first impression",
-  url: "facebook-flow-first-impression"
-}
+# [facebook-flow first impression](/2014/11/19/facebook-flow-first-impression.html)
 
 http://flowtype.org/
 

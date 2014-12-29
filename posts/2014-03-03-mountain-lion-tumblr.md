@@ -1,9 +1,4 @@
-{
-  title: "Mountain Lion で tumblr のスライドショーをスクリーンセーバーにする",
-  date: "2014-03-03",
-  description: "Mountain Lion で tumblr のスライドショーをスクリーンセーバーにする",
-  url: "tumblr-slide-show-on-osx-10-8"
-}
+# [Mountain Lion で tumblr のスライドショーをスクリーンセーバーにする](/2014/03/03/mountain-lion-tumblr.html)
 
 普段はホットコーナーでディスプレイのスリープをしているのだけれど、大きいサブディスプレイを使うとホットコーナーが死ぬので対策が必要になった。
 

@@ -1,9 +1,4 @@
-{
-  title: "ngrok 便利",
-  date: "2014-08-25",
-  description: "ngrok 便利",
-  url: "ngrok-awesome"
-}
+# [ngrok 便利](/2014/08/25/ngrok-awesome.html)
 
 https://ngrok.com/
 

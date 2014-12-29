@@ -1,9 +1,4 @@
-{
-  title: "Yasuharu Visualize つくった",
-  date: "2014-08-22",
-  description: "Yasuharu Visualize つくった",
-  url: "create-yasuharu-visualize"
-}
+# [Yasuharu Visualize つくった](/2014/08/22/create-yasuharu-visualize.html)
 
 http://e-jigsaw.github.io/Weight/
 

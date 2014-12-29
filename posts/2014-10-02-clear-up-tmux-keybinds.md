@@ -1,9 +1,4 @@
-{
-  title: "tmuxのkeybindを整理した",
-  date: "2014-10-02",
-  description: "tmuxのkeybindを整理した",
-  url: "clear-up-tmux-keybinds"
-}
+# [tmuxのkeybindを整理した](/2014/10/02/clear-up-tmux-keybinds.html)
 
 https://github.com/e-jigsaw/dotfiles/blob/4f93e51a19897ad9019fbb65eea9a184c00f5c45/README.md
 

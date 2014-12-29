@@ -1,0 +1,19 @@
+extends layout
+
+block links
+  link(href='/github-markdown.css', rel='stylesheet', type='text/css')
+  link(href='/page.css', rel='stylesheet', type='text/css')
+
+block body
+  article
+    .publish-date
+      time(datetime='#{date.year}-#{date.month}-#{date.day}', pubdate)
+        span.date-year
+          a(href='/archives/#{date.year}.html') #{date.year}
+        span.date-month
+          a(href='/archives/#{date.year}-#{date.month}.html') #{date.month}
+        span.date-day #{date.day}
+    .markdown-body!= body
+    #comments
+      #disqus_thread
+    script(type="text/javascript") var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();

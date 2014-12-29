@@ -1,9 +1,4 @@
-{
-  title: "texでpngを貼る",
-  date: "2013-10-23",
-  description: "texでpngを貼る",
-  url: "tex-on-png"
-}
+# [texでpngを貼る](/2013/10/23/texdepngwotie-ru.html)
 
 TeXで `.png` ファイルを貼るのがダルかったのでメモ。
 
