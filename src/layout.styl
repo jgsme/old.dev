@@ -31,3 +31,54 @@ body
       max-width 790px
       margin 0 auto
       padding 30px
+
+.publish-date
+  color #f0f0f0
+
+  a
+    text-decoration none
+    color #f0f0f0
+
+    &:hover
+      text-decoration underline
+
+  .date-year, .date-month, .date-day
+    position relative
+    font-size 24px
+    padding-top 3px
+    padding-bottom 3px
+
+    &:after
+      left 100%
+      top 50%
+      border solid transparent
+      content " "
+      height 0
+      width 0
+      position absolute
+      border-color rgba(0, 0, 0, 0)
+      border-width 15px
+      margin-top -15px
+
+  .date-year
+    background-color #4f99d3
+    z-index 3
+
+    &:after
+      border-left-color #4f99d3
+
+  .date-month
+    background-color #50d477
+    z-index 2
+    padding-left 15px
+
+    &:after
+      border-left-color #50d477
+
+  .date-day
+    background-color #d69d50
+    z-index 1
+    padding-left 17px
+
+    &:after
+      border-left-color #d69d50

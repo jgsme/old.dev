@@ -11,6 +11,7 @@ connect = require 'gulp-connect'
 mkdir = require 'mkdirp'
 async = require 'async'
 run = require 'run-sequence'
+archive = require 'gulp-article-archive'
 
 paths =
   posts: 'posts/*.md'
@@ -42,47 +43,14 @@ gulp.task 'stylus', ->
     .pipe gulp.dest(paths.dest)
 
 gulp.task 'archive', (callback)->
-  run 'archive-json', 'archive-all', 'archive-head', callback
+  run 'archive-json', 'archive-page', 'archive-head', callback
 
-gulp.task 'archive-json', (done)-> fs.readdir 'posts', (err, posts)->
-  posts = posts.reverse()
-  allArchive = for i in [0..(posts.length / 20)] then posts.slice (i*20), (((i+1)*20)-1)
-  yearlyArchive = _.groupBy posts, (post)-> /^(\d{4})/.exec(post)[1]
-  monthlyArchive = _.groupBy posts, (post)-> /^(\d{4}-\d{2})/.exec(post)[1]
-  allArchive = allArchive.map (data, index)-> {index: index, data: data, isHead: false, isLast: false, type: 'all'}
-  allArchive[0].isLast = allArchive[allArchive.length-1].isHead = true
+gulp.task 'archive-json', ->
+  gulp.src 'posts',
+    read: false
+  .pipe archive("#{paths.dest}/archives")
 
-  mkdir.sync "#{paths.dest}/archives"
-  mkdir.sync "#{paths.dest}/archives-yearly"
-  mkdir.sync "#{paths.dest}/archives-monthly"
-
-  async.parallel [
-    (callback)->
-      async.each allArchive,
-        (archive, cb)->
-          async.map archive.data, (filename, c)->
-            fs.readFile "posts/#{filename}", (err, file)->
-              url = /^(\d{4})-(\d{2})-(\d{2})-(.*)\.md/.exec filename
-              res =
-                filename: filename
-                url: "/#{url[1]}/#{url[2]}/#{url[3]}/#{url[4]}.html"
-                title: /^# \[(.*)\]/.exec(file.toString().split('\n')[0])[1]
-              c err, res
-          , (err, data)->
-            archive.data = data
-            fs.writeFile "#{paths.dest}/archives/page-#{archive.index}.json", JSON.stringify(archive), (err)-> if err? then cb err else cb null
-      , (err)-> callback err
-    (callback)->
-      async.each _.keys(yearlyArchive),
-        (key, cb)-> fs.writeFile "#{paths.dest}/archives-yearly/#{key}.json", JSON.stringify(yearlyArchive[key]), (err)-> if err? then cb err else cb null
-      , (err)-> callback err
-    (callback)->
-      async.each _.keys(monthlyArchive),
-        (key, cb)-> fs.writeFile "#{paths.dest}/archives-monthly/#{key}.json", JSON.stringify(monthlyArchive[key]), (err)-> if err? then cb err else cb null
-      , (err)-> callback err
-  ], (err)-> done err
-
-gulp.task 'archive-all', ->
+gulp.task 'archive-page', ->
   gulp.src "#{paths.dest}/archives/*.json"
     .pipe jade('src/archive.jade')
     .pipe rename
