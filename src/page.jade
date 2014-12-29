@@ -5,4 +5,12 @@ block links
   link(href='/page.css', rel='stylesheet', type='text/css')
 
 block body
-  article.markdown-body!= body
+  article
+    .publish-date
+      time(datetime='#{date.year}-#{date.month}-#{date.day}', pubdate)
+        span.date-year
+          a(href='/archives/#{date.year}.html') #{date.year}
+        span.date-month
+          a(href='/archives/#{date.year}-#{date.month}.html') #{date.month}
+        span.date-day #{date.day}
+    .markdown-body!= body

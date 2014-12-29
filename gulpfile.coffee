@@ -70,7 +70,7 @@ gulp.task 'archive-json', (done)-> fs.readdir 'posts', (err, posts)->
               c err, res
           , (err, data)->
             archive.data = data
-            fs.writeFile "#{paths.dest}/archives/#{archive.index}.json", JSON.stringify(archive), (err)-> if err? then cb err else cb null
+            fs.writeFile "#{paths.dest}/archives/page-#{archive.index}.json", JSON.stringify(archive), (err)-> if err? then cb err else cb null
       , (err)-> callback err
     (callback)->
       async.each _.keys(yearlyArchive),
@@ -91,7 +91,7 @@ gulp.task 'archive-all', ->
 
 gulp.task 'archive-head', ->
   fs.readdir "#{paths.dest}/archives", (err, files)->
-    files = _.filter files, (file)-> /^\d*\.html$/.test file
+    files = _.filter files, (file)-> /^page-\d*\.html$/.test file
     gulp.src "#{paths.dest}/archives/#{_.head(files)}"
       .pipe rename('index.html')
       .pipe gulp.dest("#{paths.dest}/archives")
