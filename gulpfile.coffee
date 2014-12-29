@@ -12,6 +12,7 @@ mkdir = require 'mkdirp'
 async = require 'async'
 run = require 'run-sequence'
 archive = require 'gulp-article-archive'
+rss = require 'gulp-article-rss'
 
 paths =
   posts: 'posts/*.md'
@@ -63,6 +64,20 @@ gulp.task 'archive-head', ->
     gulp.src "#{paths.dest}/archives/#{_.head(files)}"
       .pipe rename('index.html')
       .pipe gulp.dest("#{paths.dest}/archives")
+
+gulp.task 'rss', ->
+  gulp.src 'posts/*.md'
+    .pipe rss
+      title: 'kaihatsu'
+      description: 'development log'
+      link: 'http://dev.jgs.me'
+      image: 'http://dev.jgs.me/icon.png'
+      copyright: 'MIT'
+      updated: new Date()
+      author:
+        name: 'jigsaw'
+        link: 'http://jgs.me'
+    .pipe gulp.dest("#{paths.dest}/feed.xml")
 
 gulp.task 'default', ['article', 'index', 'archive', 'CNAME', 'gfm', 'stylus']
 gulp.task 'watch', ['default'], ->
