@@ -1,4 +1,4 @@
-# [Haskell で Web サーバをつくってみる](making-web-server-with-haskell)
+# [Haskell で Web サーバをつくってみる](/2014/12/31/making-web-server-with-haskell.html)
 
 http://adit.io/posts/2013-04-15-making-a-website-with-haskell.html
 
