@@ -1,6 +1,7 @@
 gulp = require 'gulp'
 mark = require 'gulp-markdown'
-jade = require 'gulp-jade-template'
+jade = require 'gulp-jade'
+jadeTemplate = require 'gulp-jade-template'
 article = require 'gulp-article'
 publish = require 'gulp-article-publish'
 fs = require 'fs'
@@ -14,17 +15,20 @@ run = require 'run-sequence'
 archive = require 'gulp-article-archive'
 rss = require 'gulp-article-rss'
 deploy = require 'gulp-gh-pages'
+coffee = require 'gulp-coffee'
 
 paths =
   posts: 'posts/*.md'
   styl: 'src/*.styl'
   dest: 'build'
+  coffee: 'src/*.coffee'
+  jadeComponents: 'src/x-*.jade'
 
 gulp.task 'article', ->
   gulp.src paths.posts
     .pipe mark()
     .pipe article()
-    .pipe jade('src/page.jade')
+    .pipe jadeTemplate('src/page.jade')
     .pipe article()
     .pipe publish(paths.dest)
 
@@ -32,16 +36,27 @@ gulp.task 'index', -> fs.readdir 'posts', (err, files)->
   gulp.src "posts/#{_.last(files)}"
     .pipe mark()
     .pipe article()
-    .pipe jade('src/page.jade')
+    .pipe jadeTemplate('src/page.jade')
     .pipe rename('index.html')
     .pipe gulp.dest(paths.dest)
 
 gulp.task 'CNAME', -> gulp.src('src/CNAME').pipe gulp.dest(paths.dest)
 gulp.task 'gfm', -> gulp.src('github-markdown-css/github-markdown.css').pipe gulp.dest(paths.dest)
+
 gulp.task 'stylus', ->
   gulp.src paths.styl
     .pipe styl
       compress: true
+    .pipe gulp.dest(paths.dest)
+
+gulp.task 'jade-components', ->
+  gulp.src paths.jadeComponents
+    .pipe jade()
+    .pipe gulp.dest(paths.dest)
+
+gulp.task 'coffee', ->
+  gulp.src paths.coffee
+    .pipe coffee()
     .pipe gulp.dest(paths.dest)
 
 gulp.task 'archive', (callback)->
@@ -54,7 +69,7 @@ gulp.task 'archive-json', ->
 
 gulp.task 'archive-page', ->
   gulp.src "#{paths.dest}/archives/*.json"
-    .pipe jade('src/archive.jade')
+    .pipe jadeTemplate('src/archive.jade')
     .pipe rename
       extname: '.html'
     .pipe gulp.dest("#{paths.dest}/archives")
@@ -80,10 +95,12 @@ gulp.task 'rss', ->
         link: 'http://jgs.me'
     .pipe gulp.dest("#{paths.dest}/feed.xml")
 
-gulp.task 'default', ['article', 'index', 'archive', 'rss', 'CNAME', 'gfm', 'stylus']
+gulp.task 'default', ['article', 'index', 'archive', 'rss', 'CNAME', 'gfm', 'stylus', 'coffee', 'jade-components']
 gulp.task 'watch', ['default'], ->
   gulp.watch paths.posts, ['article', 'index']
   gulp.watch paths.styl, ['stylus']
+  gulp.watch paths.coffee, ['coffee']
+  gulp.watch paths.jadeComponents, ['jade-components']
   connect.server
     root: paths.dest
 
