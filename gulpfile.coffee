@@ -73,18 +73,18 @@ gulp.task 'archive-head', -> fs.readdir "#{paths.dest}/archives", (err, files)->
     .pipe rename('index.html')
     .pipe gulp.dest("#{paths.dest}/archives")
 
-gulp.task 'rss', ->
-  gulp.src 'posts/*.md'
+gulp.task 'rss', -> fs.readdir 'posts', (err, files)->
+  files = _.map files.slice(-20), (file)-> "posts/#{file}"
+  gulp.src files.reverse()
     .pipe rss
       title: 'kaihatsu'
       description: 'development log'
-      link: 'http://dev.jgs.me'
-      image: 'http://dev.jgs.me/icon.png'
-      copyright: 'MIT'
+      feed_url: 'http://dev.jgs.me/feed.xml'
+      site_url: 'http://dev.jgs.me'
+      image_url: 'http://dev.jgs.me/icon.png'
+      author: 'jigsaw'
+      copyright: '(c) 2015 jigsaw'
       updated: new Date()
-      author:
-        name: 'jigsaw'
-        link: 'http://jgs.me'
     .pipe gulp.dest("#{paths.dest}/feed.xml")
 
 gulp.task 'default', ['article', 'index', 'archive', 'rss', 'CNAME', 'gfm', 'stylus', 'coffee']
