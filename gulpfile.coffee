@@ -67,12 +67,11 @@ gulp.task 'archive-page', ->
       extname: '.html'
     .pipe gulp.dest("#{paths.dest}/archives")
 
-gulp.task 'archive-head', ->
-  fs.readdir "#{paths.dest}/archives", (err, files)->
-    files = _.filter files, (file)-> /^page-\d*\.html$/.test file
-    gulp.src "#{paths.dest}/archives/#{_.head(files)}"
-      .pipe rename('index.html')
-      .pipe gulp.dest("#{paths.dest}/archives")
+gulp.task 'archive-head', -> fs.readdir "#{paths.dest}/archives", (err, files)->
+  files = _.filter files, (file)-> /^page-\d*\.html$/.test file
+  gulp.src "#{paths.dest}/archives/#{_.head(files)}"
+    .pipe rename('index.html')
+    .pipe gulp.dest("#{paths.dest}/archives")
 
 gulp.task 'rss', ->
   gulp.src 'posts/*.md'
