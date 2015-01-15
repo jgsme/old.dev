@@ -20,10 +20,11 @@ exports.paths = paths =
   'archive-page'
   'archive-head'
   'rss'
+  'favicon'
 ].forEach (name)-> gulp.task name, require "./gulp/#{name}"
 
 gulp.task 'archive', (callback)-> run 'archive-json', 'archive-page', 'archive-head', callback
-gulp.task 'default', ['article', 'indexpage', 'archive', 'rss', 'CNAME', 'gfm', 'stylus', 'coffee']
+gulp.task 'default', ['article', 'indexpage', 'archive', 'rss', 'CNAME', 'gfm', 'favicon', 'stylus', 'coffee']
 gulp.task 'watch', ['default'], ->
   gulp.watch paths.posts, ['article', 'index']
   gulp.watch paths.styl, ['stylus']
