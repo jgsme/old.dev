@@ -21,6 +21,7 @@ exports.paths = paths =
   'archive-head'
   'rss'
   'favicon'
+  'write'
 ].forEach (name)-> gulp.task name, require "./gulp/#{name}"
 
 gulp.task 'archive', (callback)-> run 'archive-json', 'archive-page', 'archive-head', callback
