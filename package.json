@@ -6,7 +6,8 @@
     "clean": "rm -rf build/ tmp/",
     "build": "node_modules/.bin/gulp",
     "watch": "node_modules/.bin/gulp watch",
-    "deploy": "node_modules/.bin/gulp deploy"
+    "deploy": "node_modules/.bin/gulp deploy",
+    "write": "node_modules/.bin/gulp write"
   },
   "repository": {
     "type": "git",
