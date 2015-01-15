@@ -2,7 +2,6 @@ gulp = require 'gulp'
 inquirer = require 'inquirer'
 data = require 'gulp-data'
 through = require 'through2'
-gutil = require 'gulp-util'
 
 transform = (file, encoding, callback)-> inquirer.prompt [
   type: 'input'
