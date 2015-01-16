@@ -31,7 +31,7 @@ gulp.task 'watch', ['default'], ->
   gulp.watch paths.styl, ['stylus']
   connect.server
     root: paths.dest
-gulp.task 'deploy', ['default'], ->
+gulp.task 'deploy', ->
   gulp.src './build/**/*'
     .pipe deploy
       cacheDir: 'tmp'
