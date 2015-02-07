@@ -1,6 +1,6 @@
 gulp = require 'gulp'
 mark = require 'gulp-markdown'
-article = require 'gulp-article'
+article = require './helper/article'
 jade = require 'gulp-jade-template'
 publish = require 'gulp-article-publish'
 {paths} = require '../gulpfile'
