@@ -2,13 +2,14 @@ fs = require 'fs'
 gulp = require 'gulp'
 _ = require 'lodash'
 mark = require 'gulp-markdown'
-article = require 'gulp-article'
+article = require './helper/article'
+articles = require './helper/articles'
 jade = require 'gulp-jade-template'
 rename = require 'gulp-rename'
 {paths} = require '../gulpfile'
 
-module.exports = -> fs.readdir 'posts', (err, files)->
-  gulp.src "posts/#{_.last(files)}"
+module.exports = ->
+  gulp.src _.last articles()
     .pipe mark()
     .pipe article()
     .pipe jade('src/page.jade')

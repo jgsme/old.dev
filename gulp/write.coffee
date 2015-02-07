@@ -2,6 +2,7 @@ gulp = require 'gulp'
 inquirer = require 'inquirer'
 data = require 'gulp-data'
 through = require 'through2'
+mkdir = require 'mkdirp'
 
 transform = (file, encoding, callback)-> inquirer.prompt [
   type: 'input'
@@ -21,7 +22,9 @@ transform = (file, encoding, callback)-> inquirer.prompt [
   if month.toString().length is 1 then month = "0#{month}"
   if day.toString().length is 1 then day = "0#{day}"
 
-  file.path = "#{file.base}#{year}-#{month}-#{day}-#{url}.md"
+  mkdir.sync "#{file.base}#{year}/#{month}/#{day}"
+
+  file.path = "#{file.base}#{year}/#{month}/#{day}/#{url}.md"
   file.contents = new Buffer "# [#{title}](/#{year}/#{month}/#{day}/#{url}.html)"
 
   callback null, file

@@ -1,12 +1,11 @@
 gulp = require 'gulp'
 fs = require 'fs'
-_ = require 'lodash'
-rss = require 'gulp-article-rss'
+rss = require './helper/rss'
+articles = require './helper/articles'
 {paths} = require '../gulpfile'
 
-module.exports = -> fs.readdir 'posts', (err, files)->
-  files = _.map files.slice(-20), (file)-> "posts/#{file}"
-  gulp.src files.reverse()
+module.exports = ->
+  gulp.src articles().slice(-20).reverse()
     .pipe rss
       title: 'kaihatsu'
       description: 'development log'
@@ -16,4 +15,4 @@ module.exports = -> fs.readdir 'posts', (err, files)->
       author: 'jigsaw'
       copyright: '(c) 2015 jigsaw'
       updated: new Date()
-    .pipe gulp.dest("#{paths.dest}/feed.xml")
+    .pipe gulp.dest paths.dest

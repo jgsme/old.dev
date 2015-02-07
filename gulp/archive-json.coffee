@@ -1,8 +1,8 @@
 gulp = require 'gulp'
-archive = require 'gulp-article-archive'
+archive = require './helper/archive.coffee'
 {paths} = require '../gulpfile'
 
 module.exports = ->
-  gulp.src 'posts',
+  gulp.src paths.posts,
     read: false
   .pipe archive("#{paths.dest}/archives")

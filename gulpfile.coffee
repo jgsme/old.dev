@@ -4,7 +4,7 @@ run = require 'run-sequence'
 deploy = require 'gulp-gh-pages'
 
 exports.paths = paths =
-  posts: 'posts/*.md'
+  posts: 'posts/**/*.md'
   styl: 'src/*.styl'
   dest: 'build'
   coffee: 'src/*.coffee'
