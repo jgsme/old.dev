@@ -1,5 +1,6 @@
 DEST = ./build
 LSC = ./node_modules/.bin/lsc
+PORT = 3000
 
 before:
 	@mkdir -p $(DEST)
@@ -30,7 +31,13 @@ article: before
 indexpage: before
 	@$(LSC) ./scripts/indexpage.ls
 
+archive: before
+	@$(LSC) ./scripts/archive.ls
+
 write:
 	@$(LSC) ./scripts/write.ls
 
-.PHONY: before clean assets gfm cname favicon stylus live article indexpage write
+serve:
+	@./node_modules/.bin/static -p $(PORT) $(DEST)
+
+.PHONY: before clean assets gfm cname favicon stylus live article archive indexpage write

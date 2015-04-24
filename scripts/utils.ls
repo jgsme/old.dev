@@ -16,6 +16,7 @@ exports.meta = (file)->
     day: r[3]
   filename: r[4]
   url: file.replace /^\.\/posts/, ' ' .replace /md$/, \html
+  title: /^# \[(.*)\]/.exec(fs.readFileSync file .toString!.split(\\n)[0])[1]
 
 exports.md = (article)->
   article.body = fs.readFileSync article.filepath .toString! |> marked
