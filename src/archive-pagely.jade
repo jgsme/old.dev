@@ -1,0 +1,20 @@
+extends layout
+
+block links
+  link(href='/archive.css', rel='stylesheet', type='text/css')
+
+block body
+  article
+    ul
+      each article in articles
+        li
+          a(href="#{article.url}") #{article.title}
+
+    .paging
+      if isHead
+        a(href='/archives/page-#{index+1}.html').paging-prev prev
+      else if isLast
+        a(href='/archives/page-#{index-1}.html').paging-next next
+      else
+        a(href='/archives/page-#{index+1}.html').paging-prev prev
+        a(href='/archives/page-#{index-1}.html').paging-next next

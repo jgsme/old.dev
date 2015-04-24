@@ -1,0 +1,17 @@
+extends layout
+
+block links
+  link(href='/archive.css', rel='stylesheet', type='text/css')
+
+block body
+  article
+    .publish-date
+      span.date-year
+        a(href='/archives/#{year}.html') #{year}
+      span.date-month
+        a(href='/archives/#{year}-#{month}.html') #{month}
+
+    ul
+      each article in articles
+        li
+          a(href="#{article.url}") #{article.title}
