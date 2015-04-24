@@ -24,4 +24,7 @@ stylus: before
 live: before
 	@$(LSC) -cbo $(DEST) ./src/*.ls
 
-.PHONY: before clean assets gfm cname favicon stylus live
+article: before
+	@$(LSC) ./scripts/article.ls
+
+.PHONY: before clean assets gfm cname favicon stylus live article
