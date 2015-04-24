@@ -34,10 +34,13 @@ indexpage: before
 archive: before
 	@$(LSC) ./scripts/archive.ls
 
+rss: before
+	@$(LSC) ./scripts/rss.ls
+
 write:
 	@$(LSC) ./scripts/write.ls
 
 serve:
 	@./node_modules/.bin/static -p $(PORT) $(DEST)
 
-.PHONY: before clean assets gfm cname favicon stylus live article archive indexpage write
+.PHONY: before clean assets gfm cname favicon stylus live article indexpage archive rss write serve

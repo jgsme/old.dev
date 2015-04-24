@@ -7,6 +7,7 @@ require! {
 
 exports.meta = (file)->
   r = /(\d{4})\/(\d{2})\/(\d{2})\/(.*)\.md$/.exec file
+  body = fs.readFileSync file .toString!.split \\n
   filepath: file
   body: null
   html: null
@@ -16,7 +17,8 @@ exports.meta = (file)->
     day: r[3]
   filename: r[4]
   url: file.replace /^\.\/posts/, ' ' .replace /md$/, \html
-  title: /^# \[(.*)\]/.exec(fs.readFileSync file .toString!.split(\\n)[0])[1]
+  title: /^# \[(.*)\]/.exec(body[0])[1]
+  description: body.slice 2, 5 .join \\n
 
 exports.md = (article)->
   article.body = fs.readFileSync article.filepath .toString! |> marked
