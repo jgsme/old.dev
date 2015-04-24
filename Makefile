@@ -30,4 +30,7 @@ article: before
 indexpage: before
 	@$(LSC) ./scripts/indexpage.ls
 
-.PHONY: before clean assets gfm cname favicon stylus live article indexpage
+write:
+	@$(LSC) ./scripts/write.ls
+
+.PHONY: before clean assets gfm cname favicon stylus live article indexpage write
