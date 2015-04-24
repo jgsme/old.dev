@@ -2,6 +2,8 @@ DEST = ./build
 LSC = ./node_modules/.bin/lsc
 PORT = 3000
 
+all: assets article indexpage archive rss
+
 before:
 	@mkdir -p $(DEST)
 
