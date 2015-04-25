@@ -1,10 +1,21 @@
 extends layout
 
+block title
+  title #{title} - Kaihatsu
+
+block metas
+  meta(property='og:title', content='#{title}')
+  meta(property='og:type', content='article')
+  meta(property='og:url', content='http://dev.jgs.me/#{url}')
+  meta(property='og:image', content='http://dev.jgs.me/icon.png')
+  meta(property='og:description', content='#{description}')
+  meta(property='og:locale', content='ja_JP')
+
 block links
   link(href='/github-markdown.css', rel='stylesheet', type='text/css')
   link(href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css', rel='stylesheet', type='text/css')
   link(href='/page.css', rel='stylesheet', type='text/css')
-  link(href='/#{date.year}/#{date.month}/#{date.day}/#{url}.html', rel='canonical')
+  link(href='#{url}', rel='canonical')
 
 block scripts
   script(src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js', type='text/javascript')
