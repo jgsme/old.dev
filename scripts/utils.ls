@@ -1,9 +1,13 @@
 require! {
   fs
-  marked
+  \markdown-it : MarkdownIt
   jade
   mkdirp
 }
+
+md = new MarkdownIt do
+  html: true
+  linkify: true
 
 exports.meta = (file)->
   r = /(\d{4})\/(\d{2})\/(\d{2})\/(.*)\.md$/.exec file
@@ -21,7 +25,7 @@ exports.meta = (file)->
   description: body.slice 2, 5 .join \\n
 
 exports.md = (article)->
-  article.body = fs.readFileSync article.filepath .toString! |> marked
+  article.body = fs.readFileSync article.filepath .toString! |> md.render
   article
 
 exports.gen = (article)->
