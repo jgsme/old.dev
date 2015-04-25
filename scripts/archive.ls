@@ -38,10 +38,12 @@ generate = (files)->
   out do
     \./src/archive-pagely.jade
     Object.keys pagely .map (key)->
+      nkey = parseInt key
+      index: nkey
       articles: pagely[key]
       filename: if key is '0' then \index else "page-#{key}"
-      isHead: key is '0'
-      isLast: pagely[parseInt(key) + 1]?
+      prevlink: if pagely[(nkey + 1).toString!]? then "/archives/page-#{nkey + 1}.html" else null
+      nextlink: if nkey is 0 then null else if nkey is 1 then \/archives/index.html else "/archives/page-#{nkey - 1}.html"
 
 glob \./posts/**/*.md, (err, files)->
   if err? then console.log err else generate files

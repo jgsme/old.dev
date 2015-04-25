@@ -1,5 +1,8 @@
 extends layout
 
+block title
+  title Kaihastu Archives
+
 block links
   link(href='/archive.css', rel='stylesheet', type='text/css')
 
@@ -11,10 +14,8 @@ block body
           a(href="#{article.url}") #{article.title}
 
     .paging
-      if isHead
-        a(href='/archives/page-#{index+1}.html').paging-prev prev
-      else if isLast
-        a(href='/archives/page-#{index-1}.html').paging-next next
-      else
-        a(href='/archives/page-#{index+1}.html').paging-prev prev
-        a(href='/archives/page-#{index-1}.html').paging-next next
+      if prevlink != null
+        a(href='#{prevlink}').paging-prev prev
+
+      if nextlink != null
+        a(href='#{nextlink}').paging-next next
