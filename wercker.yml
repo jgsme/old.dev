@@ -1,4 +1,4 @@
-box: jgs/tablelist-io@2.1.0
+box: jgs/nodebrew@0.1.0
 build:
   steps:
     - npm-install
