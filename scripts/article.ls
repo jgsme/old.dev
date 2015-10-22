@@ -5,17 +5,17 @@ require! {
   \./utils.ls : {meta, md, gen}
 }
 
-out = (article)->
-  dir = "./build/#{article.date.year}/#{article.date.month}/#{article.date.day}"
-  mkdirp.sync dir
-  fs.writeFileSync "#{dir}/#{article.filename}.html", article.html
+err, files <- glob \./posts/**/*.md
 
-generate = (files)->
-  files
-    .map meta
-    .map md
-    .map gen
-    .forEach out
+if err?
+  console.log err
+  process.exit 1
 
-glob \./posts/**/*.md, (err, files)->
-  if err? then console.log err else generate files
+files
+  .map meta
+  .map md
+  .map gen
+  |> (article)->
+    dir = "./build/#{article.date.year}/#{article.date.month}/#{article.date.day}"
+    mkdirp.sync dir
+    fs.writeFileSync "#{dir}/#{article.filename}.html", article.html
