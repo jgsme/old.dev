@@ -4,8 +4,17 @@ require! {
   \./utils.ls : {meta, md, gen}
 }
 
-out = (article)->
-  fs.writeFileSync "./build/index.html", article.html.replace /<title>(.*)<\/title>/, '<title>Kaihatsu</title>'
+err, files <- glob \./posts/**/*.md, (err, files)->
 
-glob \./posts/**/*.md, (err, files)->
-  if err? then console.log err else files[files.length - 1] |> meta |> md |> gen |> out
+if err?
+  console.log err
+  process.exit 1
+
+files[*-1]
+  |> meta
+  |> md
+  |> gen
+  |> (article)->
+    fs.writeFileSync do
+      "./build/index.html"
+      article.html.replace /<title>(.*)<\/title>/, '<title>Kaihatsu</title>'
