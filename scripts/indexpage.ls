@@ -4,7 +4,7 @@ require! {
   \./utils.ls : {meta, md, gen}
 }
 
-err, files <- glob \./posts/**/*.md, (err, files)->
+err, files <- glob \./posts/**/*.md
 
 if err?
   console.log err
