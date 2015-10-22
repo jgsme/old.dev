@@ -20,15 +20,15 @@
   "homepage": "https://github.com/jgsme/log",
   "dependencies": {
     "livescript": "^1.4.0",
-    "github-markdown-css": "^2.0.11",
+    "github-markdown-css": "^2.1.0",
     "glob": "^5.0.15",
-    "inquirer": "^0.10.1",
+    "inquirer": "^0.11.0",
     "jade": "^1.11.0",
     "lodash": "^3.10.1",
     "markdown-it": "^5.0.0",
     "mkdirp": "^0.5.1",
-    "node-static": "^0.7.6",
-    "rss": "^1.1.1",
+    "node-static": "^0.7.7",
+    "rss": "^1.2.0",
     "stylus": "^0.52.4"
   }
 }
