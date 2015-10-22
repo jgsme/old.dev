@@ -1,4 +1,4 @@
-box: jgs/nodebrew@0.1.1
+box: node:latest
 build:
   steps:
     - npm-install
