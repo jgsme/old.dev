@@ -1,4 +1,4 @@
-box: node:latest
+box: mhart/alpine-node
 build:
   steps:
     - npm-install
