@@ -1,12 +1,28 @@
 {
-  "name": "log",
+  "name": "dev",
   "version": "0.0.0",
   "description": "development log",
+  "config": {
+    "DEST": "build",
+    "PORT": "3000"
+  },
   "scripts": {
-    "clean": "make clean",
-    "build": "make",
-    "watch": "make serve",
-    "write": "make write"
+    "build": "npm-run-all build:before -p build:assets build:generate",
+    "build:before": "mkdir -p $npm_package_config_DEST",
+    "build:assets": "npm-run-all build:before -p build:assets:*",
+    "build:assets:gfm": "cp node_modules/github-markdown-css/github-markdown.css $npm_package_config_DEST",
+    "build:assets:cname": "cp src/CNAME $npm_package_config_DEST",
+    "build:assets:favicon": "cp -r src/favicons/* $npm_package_config_DEST",
+    "build:assets:live": "lsc -cbo $npm_package_config_DEST src/*.ls",
+    "build:assets:stylus": "stylus src/*.styl --out $npm_package_config_DEST -c",
+    "build:generate": " npm-run-all build:before -p build:generate:*",
+    "build:generate:article": "lsc scripts/article.ls",
+    "build:generate:indexpage": "lsc scripts/indexpage.ls",
+    "build:generate:archive": "lsc scripts/archive.ls",
+    "build:generate:rss": "lsc scripts/rss.ls",
+    "clean": "rm -rf $npm_package_config_DEST",
+    "serve": "static -p $npm_package_config_PORT $npm_package_config_DEST",
+    "write": "lsc scripts/write.ls"
   },
   "repository": {
     "type": "git",
@@ -28,6 +44,7 @@
     "markdown-it": "^5.0.0",
     "mkdirp": "^0.5.1",
     "node-static": "^0.7.7",
+    "npm-run-all": "^1.2.12",
     "rss": "^1.2.0",
     "stylus": "^0.52.4"
   }
