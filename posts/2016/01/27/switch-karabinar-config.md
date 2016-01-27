@@ -29,3 +29,5 @@
 こんな感じで `devicevendordef` と `deviceproductdef` にそれぞれ Karabinar の Event Viewer で確認した値を設定してやると `item` の `device_only` ディレクティブで参照できるようになる。あとはこの調子で元々オリジナルで使っていたものを `device_only` 付きの `item` として移植してやればオッケーだった。
 
 逆に外付けのキーボードだけで使いたい設定でも使えるとおもう。
+
+今まで Dropbox に `private.xml` を入れてたけど gist にあげちゃうことにした。 https://gist.github.com/e-jigsaw/4ffd2a81623f9deab392
