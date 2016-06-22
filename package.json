@@ -41,7 +41,7 @@
     "inquirer": "^1.0.2",
     "jade": "^1.11.0",
     "lodash": "^4.5.1",
-    "markdown-it": "^6.0.0",
+    "markdown-it": "^7.0.0",
     "mkdirp": "^0.5.1",
     "node-static": "^0.7.7",
     "npm-run-all": "^2.0.0",
