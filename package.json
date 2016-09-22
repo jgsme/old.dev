@@ -36,7 +36,7 @@
   "homepage": "https://github.com/jgsme/log",
   "dependencies": {
     "livescript": "^1.4.0",
-    "github-markdown-css": "^2.2.1",
+    "github-markdown-css": "^2.4.1",
     "glob": "^7.0.0",
     "inquirer": "^1.0.2",
     "jade": "^1.11.0",
