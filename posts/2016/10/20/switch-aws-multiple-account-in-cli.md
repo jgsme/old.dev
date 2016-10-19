@@ -6,7 +6,7 @@
 
 今日は cli で仕事の AWS アカウントと個人アカウントを切り替えるにはどうすれば...?となって調べてみたら `aws` コマンドにちゃんと備わっていた。
 
-![AWS CLI のprofileを簡単に切り替える - tail my trail](http://uorat.hatenablog.com/entry/2015/10/16/023008)
+[AWS CLI のprofileを簡単に切り替える - tail my trail](http://uorat.hatenablog.com/entry/2015/10/16/023008)
 
 ```sh
 ✈ aws configure --profile jgs
