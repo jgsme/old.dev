@@ -41,7 +41,7 @@
     "jade": "^1.11.0",
     "livescript": "^1.4.0",
     "lodash": "^4.17.3",
-    "markdown-it": "^8.2.1",
+    "markdown-it": "^8.3.0",
     "mkdirp": "^0.5.1",
     "node-static": "^0.7.7",
     "npm-run-all": "^4.0.1",
