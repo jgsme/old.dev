@@ -1,0 +1,99 @@
+<!DOCTYPE html><html><head><title>このブログのアップデートをした - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="このブログのアップデートをした"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/01/16/updated-blog.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="年末年始の休みの期間中に、突然このブログを gulp ベースに移行してより使い勝手良く書けるようにしたくなってざくざくコードを書いた。
+
+https://github.com/jgsme/dev/pull/10"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/01/16/updated-blog.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-01-16" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-01.html">01</a></span><span class="date-day">16</span></time></div><div class="markdown-body"><h1><a href="/2015/01/16/updated-blog.html">このブログのアップデートをした</a></h1>
+<p>年末年始の休みの期間中に、突然このブログを gulp ベースに移行してより使い勝手良く書けるようにしたくなってざくざくコードを書いた。</p>
+<p><a href="https://github.com/jgsme/dev/pull/10">https://github.com/jgsme/dev/pull/10</a></p>
+<p>もともと <code>CabinJS</code> という grunt ベースのスタティックブログジェネレータを使ってやっていたのだけど、そもそも grunt に愛想を尽かして gulp をよく使ってるのに、一番使ってるのが grunt みたいな感じになるのが我慢ならなかった。</p>
+<p>ブログとして必要な機能として</p>
+<ul>
+<li>md で書ける</li>
+<li>url の構造は <code>/yyyy/mm/dd/title.html</code> というような感じにしたい</li>
+<li>アーカイブページがほしい</li>
+</ul>
+<p>あたりが最低ラインということで、これらのものを生成できる <code>gulpfile</code> を書けばよい。最初は <code>gulpfile</code> にガツガツコードを書いていたのだけれど、見通しが大変に悪くなるので <code>gulp</code> というディレクトリをつくってそこに <code>task.coffee</code> というタスクのファイルをつくって</p>
+<pre><code class="language-coffee">[
+  'task'
+].forEach (name)-&gt; gulp.task name, require &quot;./gulp/#{name}&quot;
+</code></pre>
+<p>というコードを <code>gulpfile</code> に書いておくだけで必要なタスクをロードして使えるし、各タスクのコードで必要なモジュールを <code>require</code> するようになって <code>gulpfile</code> の <code>require</code> 節が大幅に短くできて良い。</p>
+<p>こうすると、変数とかで困るようになるわけだけど、これも <code>exports.hoge = hoge = 'value'</code> というような感じにして、各タスクからは <code>{hoge} = require '../gulpfile'</code> などと書いてやればよいだけになる。</p>
+<h2>記事ページの生成</h2>
+<pre><code class="language-coffee">gulp.src paths.posts
+  .pipe mark()
+  .pipe article()
+  .pipe jade('src/page.jade')
+  .pipe article()
+  .pipe publish(paths.dest)
+</code></pre>
+<p>元の記事を markdown のプラグインで html に変換して、そのあと <code>article</code> フォーマットっていう勝手なフォーマットに変換して、それをレイアウトのテンプレートの記事部分に埋め込み、再度 <code>article</code> フォーマットに変換してファイル名の日付を基に html のファイルを生成する、というのがおおまかな流れ。</p>
+<p><code>article</code> は</p>
+<pre><code class="language-coffee">article =
+  body: '&lt;h1&gt;article title&lt;/h1&gt;&lt;p&gt;article contents&lt;/p&gt;'
+  date:
+    year: '2014'
+    month: '12'
+    day: '27'
+  url: 'awesome-title'
+# https://github.com/e-jigsaw/gulp-article/blob/master/README.md#example
+</code></pre>
+<p>というようなフォーマット。これをインターフェースにして埋め込みやったり、記事を出力したりするような仕組みにした。npm のモジュールにしてみたんだけどあんまり汎用なものではないので、もしかしたらヘルパーモジュールみたいな感じで本体に取り込むかもしれない。</p>
+<h2>アーカイブページ</h2>
+<p>アーカイブページをつくるのは、複数ステップにまたがるのでタスクを分けて、それらをシーケンス実行することで落ち着いた。そこへ至るまでが結構大変だったけど</p>
+<h3>Step1 JSON データをつくる</h3>
+<pre><code class="language-coffee">gulp.src 'posts',
+    read: false
+  .pipe archive(&quot;#{paths.dest}/archives&quot;)
+</code></pre>
+<p><code>posts</code> 下に markdown の記事が格納されているので、これらをアーカイブストリームに流す。<code>read: false</code> をつけるとファイルがロードされず、パスだけ渡せる。アーカイブストリームでは、すべての記事を20コずつに分割した json のファイル、年次の json、月次の json を作ってそれらを出力する。</p>
+<h3>Step2 JSON データを基に HTML をつくる</h3>
+<pre><code class="language-coffee">gulp.src &quot;#{paths.dest}/archives/*.json&quot;
+    .pipe jade('src/archive.jade')
+    .pipe rename
+      extname: '.html'
+    .pipe gulp.dest(&quot;#{paths.dest}/archives&quot;)
+</code></pre>
+<p>Step1 で出力した json を読んできて記事の出力でも使っていた jade のローカル変数の埋め込みができるプラグインで html を出力する。その際の全体アーカイブ、年次アーカイブなどのページの変化は jade の中で吸収することにした。</p>
+<h3>Step3 <code>/archive/index.html</code> をつくる</h3>
+<pre><code class="language-coffee">fs.readdir &quot;#{paths.dest}/archives&quot;, (err, files)-&gt;
+files = _.filter files, (file)-&gt; /^page-\d*\.html$/.test file
+gulp.src &quot;#{paths.dest}/archives/#{_.head(files)}&quot;
+  .pipe rename('index.html')
+  .pipe gulp.dest(&quot;#{paths.dest}/archives&quot;)
+</code></pre>
+<p>やっぱり <code>/archive</code> で見たいよなあ、とおもって別でつくった。</p>
+<p>というような流れを経てアーカイブページを生成した。</p>
+<h2>RSS</h2>
+<pre><code class="language-coffee">fs.readdir 'posts', (err, files)-&gt;
+files = _.map files.slice(-20), (file)-&gt; &quot;posts/#{file}&quot;
+gulp.src files.reverse()
+  .pipe rss
+    title: 'kaihatsu'
+    description: 'development log'
+    feed_url: 'http://dev.jgs.me/feed.xml'
+    site_url: 'http://dev.jgs.me'
+    image_url: 'http://dev.jgs.me/icon.png'
+    author: 'jigsaw'
+    copyright: '(c) 2015 jigsaw'
+    updated: new Date()
+  .pipe gulp.dest(&quot;#{paths.dest}/feed.xml&quot;)
+</code></pre>
+<p>アーカイブついでに、RSS の話も。最初は RSS のプラグインを使っていたけど、生成する RSS がバグっててパースに失敗するので(ソースコードまで追ったんだけど、github に上がってるコードと npm に上がってるコードが同じバージョンなのに違くて、コミットも活発じゃなかった)自作した。</p>
+<h2>ファビコン</h2>
+<p>昨今はファビコンに求められるハードルが高くて、とてもたくさん用意しないといけないらしい。が、 <a href="http://realfavicongenerator.net/">http://realfavicongenerator.net/</a> を使うと画像を投げるだけでファビコンのセットを用意してくれるのでとても便利だった。Github 上で情報を管理しているっぽいところもいいところ。</p>
+<h2>CSS</h2>
+<p><a href="https://github.com/sindresorhus/github-markdown-css">https://github.com/sindresorhus/github-markdown-css</a> で GFM 準拠のデザインをはめて、追加でヘッダとかフッタのデザインをいれる感じにしている。FW では一応 Yahoo の Pure を使っている。</p>
+<h2>Scaffold</h2>
+<p>最初は自前ライブラリの <code>tmpl</code> から生成できるようにしていたけど、やっぱり分離してるのは気持ち悪いよなとおもって gulp のタスクにして、それを <code>npm run write</code> で生成できるようにした。<code>tmpl</code> でも使っているけど、inquirer がレボリューショナリー便利。</p>
+<h2>Wercker からデプロイ</h2>
+<p>最初は、書いたら <code>npm run deploy</code> すればいいやとおもっていたのだけれど、書いてデプロイしたけど記事データの方を push するのを忘れて別のマシンで記事がデプロイできない、という問題に直面した。(最近は4台ぐらいマシンを常用していてやばい)</p>
+<p>なので、書くフローを</p>
+<ol>
+<li>書く</li>
+<li>push</li>
+<li>PR</li>
+<li>master に merge</li>
+<li>deploy</li>
+</ol>
+<p>という風にした。Wercker の設定で特定の branch のビルドを自動でデプロイすることができるので、master のビルドが通ったら自動的に gh-pages に push されるようにした。</p>
+<p>こうして快適な環境を完成させることができた...!ひと通りやってみて、gulp にもだいぶ明るくなったし、RSS とか wercker あたりもより知れて良かった。快適になったので、今後もモリモリと記事を書いていきたい。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

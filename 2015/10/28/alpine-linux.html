@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><title>Alpine Linux - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="Alpine Linux"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/10/28/alpine-linux.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="https://github.com/mhart/alpine-node
+
+↑で知ったのだけれど、Alpine Linux というイメージがあるらしい。"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/10/28/alpine-linux.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-10-28" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-10.html">10</a></span><span class="date-day">28</span></time></div><div class="markdown-body"><h1><a href="/2015/10/28/alpine-linux.html">Alpine Linux</a></h1>
+<p><a href="https://github.com/mhart/alpine-node">https://github.com/mhart/alpine-node</a></p>
+<p>↑で知ったのだけれど、Alpine Linux というイメージがあるらしい。</p>
+<pre><code>✈ docker rmi `docker images -qa`
+</code></pre>
+<p>するとディスクがメチャ空くでおなじみの Docker のイメージサイズをコンパクトにできるそうだ。最新版である(もうすぐ v5 が出るらしいが...) <code>v4.2.1</code> を pull してみると</p>
+<pre><code>✈ docker images
+REPOSITORY                         TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+node                               latest              db4c9d65b7e4        4 days ago          641.7 MB
+mhart/alpine-node                  latest              42e56d1e80c4        2 weeks ago         35.02 MB
+</code></pre>
+<p><code>641.7MB</code> -&gt; <code>35.02MB</code> と大変スッキリサイズになっているのが分かる。単純な Node のみでよいコンテナ(依存モジュールがネイティブバインディングあったりすると面倒そうだ...)であればこれで十分な気がする。</p>
+<p>...とおもって、このブログも <code>Makefile</code> でタスクを書いてたのを <code>npm-run-all</code> を使って <code>npm run-scripts</code> に書けば <code>alpine-node</code> でビルドできるかも〜と書きなおしてみた。</p>
+<p><a href="https://github.com/jgsme/dev/pull/77">https://github.com/jgsme/dev/pull/77</a></p>
+<pre><code class="language-js">&quot;scripts&quot;: {
+  &quot;build&quot;: &quot;npm-run-all build:before -p build:assets build:generate&quot;,
+  &quot;build:before&quot;: &quot;mkdir -p $npm_package_config_DEST&quot;,
+  &quot;build:assets&quot;: &quot;npm-run-all build:before -p build:assets:*&quot;,
+  &quot;build:assets:gfm&quot;: &quot;cp node_modules/github-markdown-css/github-markdown.css $npm_package_config_DEST&quot;,
+  &quot;build:assets:cname&quot;: &quot;cp src/CNAME $npm_package_config_DEST&quot;,
+  &quot;build:assets:favicon&quot;: &quot;cp -r src/favicons/* $npm_package_config_DEST&quot;,
+  &quot;build:assets:live&quot;: &quot;lsc -cbo $npm_package_config_DEST src/*.ls&quot;,
+  &quot;build:assets:stylus&quot;: &quot;stylus src/*.styl --out $npm_package_config_DEST -c&quot;,
+  &quot;build:generate&quot;: &quot; npm-run-all build:before -p build:generate:*&quot;,
+  &quot;build:generate:article&quot;: &quot;lsc scripts/article.ls&quot;,
+  &quot;build:generate:indexpage&quot;: &quot;lsc scripts/indexpage.ls&quot;,
+  &quot;build:generate:archive&quot;: &quot;lsc scripts/archive.ls&quot;,
+  &quot;build:generate:rss&quot;: &quot;lsc scripts/rss.ls&quot;,
+  &quot;clean&quot;: &quot;rm -rf $npm_package_config_DEST&quot;,
+  &quot;serve&quot;: &quot;static -p $npm_package_config_PORT $npm_package_config_DEST&quot;,
+  &quot;write&quot;: &quot;lsc scripts/write.ls&quot;
+}
+</code></pre>
+<p><code>make</code> でやっていたときは <code>make</code> でがんばる気がしなくて直列で実行してたのを並列化させてより高速にビルドできるようになった。ハマったのは変数のところで、前から <code>npm config</code> があるのは知っていたのだけれど、それをうまいこと扱う方法がよく分からなかった。config は</p>
+<pre><code class="language-js">&quot;config&quot;: {
+  &quot;DEST&quot;: &quot;build&quot;,
+  &quot;PORT&quot;: &quot;3000&quot;
+}
+</code></pre>
+<p>こういう感じに書いておくと環境変数に <code>npm_package_config_DEST</code> というような感じで参照できる。環境変数なので、<code>script</code> フィールドでは <code>$npm_package_config_DEST</code> としてやればうまく動くようだった。これを上書きするときは</p>
+<pre><code>✈ npm run serve --dev:PORT=3001
+</code></pre>
+<p>というような感じで <code>--&lt;package 名&gt;:&lt;変数名&gt;=&lt;変数&gt;</code> というような形式で読んでやると上書きすることができた。</p>
+<p>さてあとは Wercker でビルドするだけだぞ〜とおもったら、Wercker だと Alpine Linux ベースのイメージはバグで pull したあとに終了してしまうらしい。。。。</p>
+<p>当初の目的が全く果たせなくなったが、諦めてオフィシャルの <code>node</code> でビルドするように戻して今日のところはフィニッシュした。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

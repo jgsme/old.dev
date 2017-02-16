@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><title>sweet-js-brunch をつくった - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="sweet-js-brunch をつくった"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2014/01/21/sweet-js-brunch.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="https://github.com/e-jigsaw/sweet-js-brunch
+
+Chaplin.js (http://chaplinjs.org/) がよさげで、Chaplin のプロダクトのビルドツールとして brunch (http://brunch.io/) というツールが使われていて、便利そうだったのでぼちぼち触っていた。"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2014/01/21/sweet-js-brunch.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2014-01-21" pubdate><span class="date-year"><a href="/archives/2014.html">2014</a></span><span class="date-month"><a href="/archives/2014-01.html">01</a></span><span class="date-day">21</span></time></div><div class="markdown-body"><h1><a href="/2014/01/21/sweet-js-brunch.html">sweet-js-brunch をつくった</a></h1>
+<p><a href="https://github.com/e-jigsaw/sweet-js-brunch">https://github.com/e-jigsaw/sweet-js-brunch</a></p>
+<p>Chaplin.js (<a href="http://chaplinjs.org/">http://chaplinjs.org/</a>) がよさげで、Chaplin のプロダクトのビルドツールとして brunch (<a href="http://brunch.io/">http://brunch.io/</a>) というツールが使われていて、便利そうだったのでぼちぼち触っていた。</p>
+<p>Grunt (<a href="http://gruntjs.com/">http://gruntjs.com/</a>) にはじまる node.js まわりのビルドツール戦争は gulp (<a href="http://gulpjs.com/">http://gulpjs.com/</a>), brunch のナウい勢から「やっぱり Makefile で十分だよ」派、「は？いまどき make ？CMake でしょ」派、「Javascript 書いてるやつは死ね Rake がいいよ」派、などなどレジェンド勢まで百花繚乱の様相を呈してまいりました。こっちは選択肢が豊富で参るけど。</p>
+<p>brunch のいいところは <a href="http://qiita.com/hadashiA/items/9f5fb4134bf87a560b82">Grunt止めて、mincer止めて、Brunchに乗り換えた - Qiita [キータ]</a> あたりが参考になるかも。</p>
+<p>ところで、Javascript にマクロを提供する sweet.js (<a href="http://sweetjs.org/">http://sweetjs.org/</a>) がなかなか野心的なプロダクトで</p>
+<blockquote>
+<p>Do you want to use class syntax but don’t want to wait for ES6? Add them yourself with just a couple lines of code!</p>
+</blockquote>
+<p>とのこと。実際のプロダクトでどう使っていくのがいいのかとかは全く見えないでいるけど、とりあえず準備のために brunch の plugin をつくっておくことにした。</p>
+<h1>使ってるアーキテクチャ</h1>
+<h2>コード</h2>
+<ul>
+<li>Coffeescript (<a href="http://coffeescript.org/">http://coffeescript.org/</a>)</li>
+</ul>
+<p>もうこれなしではJavascript書く気力が起きないというか。</p>
+<h2>テスト</h2>
+<ul>
+<li>Mocha (<a href="http://visionmedia.github.io/mocha/">http://visionmedia.github.io/mocha/</a>)</li>
+<li>Chai (<a href="http://chaijs.com/">http://chaijs.com/</a>)</li>
+<li>travis (<a href="https://travis-ci.org/">https://travis-ci.org/</a>)</li>
+</ul>
+<p>Mocha はテストスイートを提供してくれるライブラリ。Chai はアサーションの構文を提供してくれるライブラリ。travis はクラウドでテストを実行してくれる便利なやつ。</p>
+<h2>ビルドツール</h2>
+<ul>
+<li>Cake (<a href="http://coffeescript.org/#cake">http://coffeescript.org/#cake</a>)</li>
+</ul>
+<p>上で散々ビルドツールの名前を上げたけど、単純に Coffeescript のビルドだけなら Coffee に付属している Cake で十分という感じ。Mocha からテストするときもオプションをつけてやればいちいち Javascript にビルドしなくてもいいので便利。</p>
+<h2>その他</h2>
+<ul>
+<li>David (<a href="https://david-dm.org/">https://david-dm.org/</a>)</li>
+<li>Version Badge (<a href="http://badge.fury.io/">http://badge.fury.io/</a>)</li>
+</ul>
+<p>Readme をにぎやかにしてくれるやつら。David は <code>package.json</code> の依存のアップデート情報を表示してくれるし、Version badge は npm の現在バージョンを表示してくれる。</p>
+<h1>あとがき</h1>
+<p>だいたい完成したあとに、Coveralls でカバレッジのログをとろうとしたのだけれど、Coffeescript でカバレッジを計測するのが未だにうまくいかない。とはいえ、「カバレッジ100%だから何」という話もあるし自分にとってもそこまで重要なものではなかったのであまり固執せずに見送った。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

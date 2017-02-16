@@ -1,0 +1,360 @@
+<!DOCTYPE html><html><head><title>JSConf.asia 2日目 メモと感想 - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="JSConf.asia 2日目 メモと感想"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/11/21/jsconf-asia-day-2.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="昨日に引き続いて2日目。
+
+* Making realtime Audio-Visuals"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/11/21/jsconf-asia-day-2.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-11-21" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-11.html">11</a></span><span class="date-day">21</span></time></div><div class="markdown-body"><h1><a href="/2015/11/21/jsconf-asia-day-2.html">JSConf.asia 2日目 メモと感想</a></h1>
+<p>昨日に引き続いて2日目。</p>
+<ul>
+<li>Making realtime Audio-Visuals
+<ul>
+<li>Canvas と Web Audio を使ってオーディオビジュアル作品をライブコーディングするといった内容</li>
+<li>普段からゴルフやってて、作品のデモもあった</li>
+<li>JS ではちょいちょいトラップがあるのでその避け方の話など</li>
+<li><a href="http://www.p01.org/jsconf_asia_2015/live.htm">http://www.p01.org/jsconf_asia_2015/live.htm</a> というのが最終的に完成した</li>
+<li>他のセッションでもあったが、ゴルファー気質な人たちは HTML に <code>style</code> と <code>canvas</code> と <code>script</code> だけを書いてページを作っているのが印象的だった</li>
+</ul>
+</li>
+<li>Node.js Authentication and Data security
+<ul>
+<li>Node.js でのセキュリティと認証の話</li>
+<li>2014年の流行パスワードランキングは相変わらず「12345や、qwerty、password、baseball、dragon」など</li>
+<li>アシュレイ・マディソンから流出したパスワードの中には「thebestpasswordever」というクソパスワードもあったそうだ</li>
+<li>また、2014年の OWASP (セキュリティ系の団体っぽい？)発表の脆弱性ランキングも相変わらずインジェクションやら XSS、CSRF などなど</li>
+<li>Node.js 絡みであるのは、正規表現で死んだり、<code>X-POWERED-BY</code> に <code>express</code> が入っているなど</li>
+<li><code>helmet</code> や <code>lusca</code> などで事前に防ぎましょうね、という話</li>
+<li>それから、そもそもパスワードで認証するのをやめようという話もあった</li>
+</ul>
+</li>
+<li>Electroknit!
+<ul>
+<li>Node.js で編み物をしようとおもったらなぜか画像処理までいってしまった話</li>
+<li>東京 Node 学園祭でも発表があったので割愛</li>
+</ul>
+</li>
+<li>Javascript Security
+<ul>
+<li>前の前の発表に続いて JS 絡みのセキュリティの話</li>
+<li>実際に簡単なブログでいろいろ盗みとるのをデモしたりしていた</li>
+</ul>
+</li>
+<li>I Play the JavaScript
+<ul>
+<li>Abelton Live に JS から仮想 MIDI ポートを接続して演奏するデモ</li>
+<li>Abelton Live を操作してるのはどちらかというとペイントに近くて、演奏しているわけではないので外部デバイスを使って演奏したい</li>
+<li>だが外部デバイスを操作するのは難しいのでプログラムで補正したり、補助したりしたい</li>
+<li>npm の midi-stream という midi を stream で受け取れるライブラリで情報をとってきて、バーチャル MIDI ポートから出力できるライブラリを使う</li>
+<li>observ で値を監視&amp;加工して MIDI に戻す</li>
+<li>この辺をパッケージングして Electron に載っけたのが <a href="http://loopjs.com/">http://loopjs.com/</a></li>
+</ul>
+</li>
+<li>Unbox Development in Production
+<ul>
+<li>開発に Docker や Vagrant を使おうねという話</li>
+<li>Docker と Vagrant の比較、デモなど</li>
+</ul>
+</li>
+<li>The route to HTTP/2
+<ul>
+<li>HTTP の歴史から、HTTP/2 の概要</li>
+<li>面白かったのは99年と15年の間で Apple と Yahoo は結構デザインが変わった(といっても大まかなレイアウトはどちらも変わってなかったりする)が、Google はロゴしか変わってなかったという話</li>
+<li>concatnate は微妙だし早く HTTP/2 にしようや(といっても HTTP/2 は2で大変そうとは思うが...)</li>
+</ul>
+</li>
+<li>Reactive JavaScript at Netflix, Microsoft and the World
+<ul>
+<li>RxJS 界からの刺客</li>
+<li>主に Netflix でどう Reactive 化していったかという話</li>
+<li>ちなみに、Netflix はアメリカのトラフィックのうち 1/3 を占めているんだそうだ。すごい。</li>
+<li>Netflix はそのサービスの性質上サバクラ問わずいたるところに非同期処理がある</li>
+<li>非同期処理の悪夢
+<ul>
+<li>メモリリーク</li>
+<li>レースコンディション</li>
+<li>コールバックヘル</li>
+<li>状態遷移の複雑化</li>
+<li>エラーハンドリング</li>
+</ul>
+</li>
+<li>2011年からこの問題に取り組んでいた</li>
+<li>Event も Steam 1,2,3(Node.js) もクソ</li>
+<li>デザインパターンの Observer, Iterator に着目した</li>
+<li>Events や Arrays をコレクションとして扱う</li>
+<li>ここでいう Observer は <code>Object.observe</code> (RIP) でもないし <code>EventEmitter</code> でもない</li>
+<li>リアクティブプログラミングとは: <a href="http://bit.ly/reactive-paper">http://bit.ly/reactive-paper</a></li>
+<li>Observer にはその性質上バックプレッシャーがあるが、RxJS には Hot/Cold の仕組みであったり、<code>debounce</code>, <code>pauseable</code> などの仕組みがある</li>
+<li>ES2016 には <code>async/await</code> (Edge の実装がある)だったり、<code>subscribe/unsubscribe</code> (ES-Observable として Proposal がある)があるのでゆくゆくはもう少し使いやすくなるんじゃなかろうか</li>
+<li>CSP との比較もあったが、Observe パターンの方が簡潔とのこと</li>
+</ul>
+</li>
+<li>Meet the Node.js Foundation
+<ul>
+<li>Node Foundation から @DivaDanese</li>
+<li>PayPal が Node.js にスイッチした話と、Java をオープン化しようとした動きの話、そして Node.js Foundation について</li>
+<li>Node.js が Fork して現体制まで移行した話は有名</li>
+<li>これを拡げる取り組みを Node.js の核とも言える libUV でやっているとのこと</li>
+<li>オープンソースは人が大事なので、みんなも協力して、時には議論してやっていこうな！</li>
+</ul>
+</li>
+</ul>
+<p>以下メモ直貼り。</p>
+<hr>
+<h1>Making realtime Audio-Visuals</h1>
+<p>@p01
+Opera の人</p>
+<ol>
+<li>what and where</li>
+</ol>
+<p>code golfing and creative coding</p>
+<p>demoscene</p>
+<ol start="2">
+<li>general tips</li>
+</ol>
+<p>focus</p>
+<p>no library, no framework</p>
+<p>one primitive
+one formula</p>
+<ol start="3">
+<li>wild tricks</li>
+</ol>
+<p>dirty trigonometry</p>
+<p>1 ≒ π / 3</p>
+<p>IEEE 754</p>
+<p>.2 + .1 = 0.30000000000004</p>
+<p><code>for(i = 0; i&lt; 10; 1 += 1/8)</code></p>
+<p>music</p>
+<p>Web Audio API or Audio element</p>
+<p>regular 1k and 4k demos pre-generate the music</p>
+<p>colors</p>
+<p><code>hsl(31, 33%, 73%)</code></p>
+<p>RGB だと <code>Math.cos</code> で計算せんといかんので</p>
+<p>shadowblur</p>
+<p>png bootstraping</p>
+<ol start="4">
+<li>coding time</li>
+</ol>
+<p>デモ〜</p>
+<p><code>radial-gradient(circle, #345, #200)</code></p>
+<h1>Node.js Authentication and Data security</h1>
+<p>Braintree の人
+@SeraAndroid</p>
+<p>PayPal + Braintree since 2013</p>
+<p>古代ギリシャのヘラクレス
+セキュリティは Hydra に似ている</p>
+<p>The human element</p>
+<p>TOP 10 passwords 2014
+12345
+password
+12345678
+qwerty
+baseball, dragon, football</p>
+<p>honorary mention
+superman, batman</p>
+<p>authentication and authorization</p>
+<p>OWASP top 10</p>
+<ol>
+<li>Injection</li>
+<li>Broken authentication</li>
+<li>XSS</li>
+<li>Direct object references</li>
+<li>Application misconfigured</li>
+<li>Sensitive data exposed</li>
+<li>ACL</li>
+<li>CSRF</li>
+<li>Vulnerable code</li>
+<li>Redirects / Forwards</li>
+</ol>
+<p>Hashing
+md5, sha1, sha2, sha3</p>
+<p>アシュレイ・マディソンの流出クソパスワード集
+thebestpasswordever</p>
+<p>efficient hashing
+crypt, scrypt, bcrypt, PBKDF2</p>
+<p>Stalted hashing
+algorithm(data + salt) = hash</p>
+<p>use strict</p>
+<p>regex
+正規表現は結構な穴らしい</p>
+<p>character encoding</p>
+<p>X-POWERED-BY
+余計な情報を開示している</p>
+<p>node-uuid</p>
+<p>http parameter pollution</p>
+<p>bcrypt</p>
+<p>a bcrypt generated hash</p>
+<p>CSURF
+form に CSRF token を仕込むやつ</p>
+<p>helment
+いろいろ攻撃を防げるやつ</p>
+<p>lusca
+同じくいろいろ攻撃を防げるやつ</p>
+<p>passport</p>
+<p>passwordless auth</p>
+<p>owasp node goat</p>
+<p><a href="https://nodesecurity.io/">https://nodesecurity.io/</a></p>
+<p>fast identity online</p>
+<p>OpenID is DEAD</p>
+<p>Something you have
+Something you know
+Something you are</p>
+<p>Favor security too much over the experience and you'll make the website a pain to use
+<a href="https://fidoalliance.org/">https://fidoalliance.org/</a></p>
+<h1>Electroknit!</h1>
+<p>Node.js で編み物をしようとおもったらなぜか画像処理までいってしまった話</p>
+<h1>Javascript Security</h1>
+<p><code>window.name</code></p>
+<h1>I Play the JavaScript</h1>
+<p>NZ</p>
+<p>Abelton Live っぽい</p>
+<p>Painted, not played</p>
+<p>A little bit internet famous
+<a href="http://lunarmusic.net/album/hybrid-awaken">http://lunarmusic.net/album/hybrid-awaken</a></p>
+<p>演奏してるわけではないので、どうやって演奏するか？</p>
+<p>DJ it!</p>
+<p>ハードのコントローラで制御</p>
+<p>I want to feel like I'm playing an instrument</p>
+<p>JavaScript to the rescure!</p>
+<p>What is MIDI?
+Musical Instrument Digital Interface</p>
+<p>midi-stream</p>
+<p>virtual midi port</p>
+<p>midi で受けることもできるが、仮想 MIDI として出力もできる</p>
+<p>observ</p>
+<p>オブザーバで値を加工する</p>
+<p>加工したやつを midi に戻す</p>
+<p>observ-transform</p>
+<p>テンポ</p>
+<p>テンポに合わせてリピーターを作る</p>
+<p>Recorder, loop</p>
+<p>What about Web Audio?</p>
+<p>audio-slot</p>
+<p>budo</p>
+<p>loopdrop</p>
+<p><a href="http://loopjs.com/">http://loopjs.com/</a></p>
+<p>Rewrite constantly</p>
+<h1>Unbox Development in Production</h1>
+<p>Have you encountered this</p>
+<p>A new developer joins your team...
+Then you spend your next couple of days setting up their tools, development...
+バグが手元のマシンで再現しない</p>
+<p>Docker
+Vagrant</p>
+<p>Docker と Vagrant の比較</p>
+<h1>The route to HTTP/2</h1>
+<p>@chleozam
+<a href="http://WHub.io">WHub.io</a></p>
+<p>Hyper Text Transfer Protocol</p>
+<p>91: v0.9
+96: v1.0
+99: v1.1
+12: SPDY
+15: HTTP/2</p>
+<p>is not the web in 2015
+apple と yahoo は99年の変わったけど google は変わってない</p>
+<p>request up
+latency adds up</p>
+<p>http requests are expensive</p>
+<p>http1.1 work-arounds</p>
+<p>spriting
+中の要素をひとつ変えただけでキャッシュが死ぬ</p>
+<p>embed binary</p>
+<p>concatenation
+結合してると1行変えるだけで全体が変更される</p>
+<p>sharding</p>
+<p>duplicated data packets due to over shard</p>
+<p>double facepalm</p>
+<p>let's fix http instead</p>
+<p>make a protocol that is less RTT sensitive
+fix head of line blocking
+stop the need for and desire to increase number of connections
+keep existing interfaces, URI, format and schemes</p>
+<p>IETF - Internet Engineering Task Force
+SPDY
+RFC May 2015</p>
+<p>binary protocol</p>
+<p>compact, efficient, much less error prones</p>
+<p>header compression</p>
+<p>HPACK, reduce oberhead, Gain 66%</p>
+<p>Priorities
+using weight/dependencies</p>
+<p>server push
+HTMLのリクエストを送ったら一緒にCSSも返してくれる</p>
+<p>Multiplex
+1つのTCPコネクションで複数のデータを送る</p>
+<p>Recap</p>
+<p>for normal humans: faster faster faster
+for devs: separate tweaks to optimize, no more workarounds</p>
+<p>you did not notice but, it's already there</p>
+<h1>Reactive JavaScript at Netflix, Microsoft and the World</h1>
+<p>Reactive なプログラムのデモ</p>
+<p>非同期処理を怖がらずに observe する</p>
+<p>Microsoft</p>
+<p>Thailproject</p>
+<p>Reactive Extensions(Rx)</p>
+<p>Netflix
+Stream Movies From Any Device
+1/3 of US Broadband Traffic</p>
+<p>BIG async problems</p>
+<p>Netflix App is async
+App startup, player, data access, animations, view/model bind</p>
+<p>async nightmares
+memory leaks, race conditions, callback hell, complex state machines, disjointed error handling</p>
+<p>2011-2014
+いろんな言語でバックエンドもフロントエンドもエンジニアがいた</p>
+<p>Real-Time is Everywhere</p>
+<p>async programming is awful</p>
+<p>events and the enemy of the state</p>
+<p>First class async with promises</p>
+<p>Promiseキャンセルできない問題</p>
+<p>Stream processing</p>
+<p>Streams1 were terrible
+Streams2 Electric Boogaloo
+Streams 33 1/11</p>
+<p>Design pattern
+observer, iterator</p>
+<p>Events and arrays are both collections</p>
+<p>map, filter, flatmap</p>
+<p>everything is a stream</p>
+<p>Observable not eq OO, EE</p>
+<p>Reactive programming</p>
+<p>React</p>
+<p>What is Reactive Programming anyhow?</p>
+<p><a href="http://bit.ly/reactive-paper">bit.ly/reactive-paper</a></p>
+<p>FRP is...</p>
+<p>Rx Grammer Police</p>
+<p>Type ashead search</p>
+<p>Rx concepts</p>
+<p>Observables can have backpreshure</p>
+<p>schedulers matter</p>
+<p>async/await</p>
+<p>Observables in ES2016
+subscribe/unsbscribe</p>
+<p>Future of RxJS</p>
+<p>CSP vs Observables</p>
+<p>CSP: 1978</p>
+<p>Observable の方が簡潔に書ける</p>
+<p><a href="http://reactivex.io/">http://reactivex.io/</a></p>
+<h1>Meet the Node.js Foundation</h1>
+<p>@DivaDanese</p>
+<p>June 2014 foo camp</p>
+<p>PayPal switched to Node 2013
+Bill Scott</p>
+<p>2014: Released Kraken</p>
+<p>Gaining adoption</p>
+<p>Passionate Ecosystem</p>
+<p>Open Source canbe hard to understand</p>
+<p>Java is not Open source</p>
+<p>Java community process</p>
+<p>Renegotiating the JSPA</p>
+<p>Apache got Angry</p>
+<p>Java の OSS 化にいろいろあった</p>
+<p>Advisory Board - Oct 2014</p>
+<p>プロセスに不満が溜まっていた</p>
+<p>community fork - Dec 2014</p>
+<p>Possibility of a Foundation?</p>
+<p>NodeSummit Panel - June 2015</p>
+<p>Organization Charted</p>
+<p>オープンソースは人</p>
+<p>Technical Steering Committee</p>
+<p>Mission: Open development</p>
+<p>Adjacent projects</p>
+<p>Proposed first project: LibUV</p>
+<p>Get involved</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

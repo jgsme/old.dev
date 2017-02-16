@@ -1,0 +1,92 @@
+<!DOCTYPE html><html><head><title>bottlejsでDIを試す - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="bottlejsでDIを試す"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2014/10/08/dependency-injection-in-node-js.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="https://github.com/young-steveo/bottlejs
+
+# tl;dr"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2014/10/08/dependency-injection-in-node-js.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2014-10-08" pubdate><span class="date-year"><a href="/archives/2014.html">2014</a></span><span class="date-month"><a href="/archives/2014-10.html">10</a></span><span class="date-day">08</span></time></div><div class="markdown-body"><h1><a href="/2014/10/08/dependency-injection-in-node-js.html">bottlejsでDIを試す</a></h1>
+<p><a href="https://github.com/young-steveo/bottlejs">https://github.com/young-steveo/bottlejs</a></p>
+<h1>tl;dr</h1>
+<ul>
+<li><code>bottlejs</code> を使うと最小構成ぐらいの DI ができる</li>
+<li>依存しているモジュールやライブラリをきれいにまとめて扱えるようになるので便利</li>
+<li>記述量が増えたり、呼び出し元で呼び出すモジュールの依存関係を把握してないといけなくなったりするデメリットもある</li>
+</ul>
+<h1>BottleJS について</h1>
+<p>BottleJS は Javascript/Node.js の DI の micro container だ。</p>
+<pre><code class="language-js">var Barley = function() {};
+var Hops = function() {};
+var Water = function() {};
+var Beer = function(barley, hops, water) { /* A beer service, :yum: */ };
+</code></pre>
+<p>これで</p>
+<pre><code class="language-js">var bottle = new Bottle();
+bottle.service('Barley', Barley);
+bottle.service('Hops', Hops);
+bottle.service('Water', Water);
+bottle.service('Beer', Beer, 'Barley', 'Hops', 'Water');
+</code></pre>
+<p>こういうことができるようになるらしい。サンプルコードがモジュールの名前ともマッチしていてすげーよかったので試してみることにした。</p>
+<p>試してみると、Node.js で抱えるいくつかの問題を解決できることに気付いたので試しにこれに乗っかってコードを書いてみている。</p>
+<h1>いいところ</h1>
+<h2>テストでモックを作るのが楽になる</h2>
+<p>例えば、<code>request</code> とかを使って外部と通信するようなモジュールをテストする場合、<code>sinon</code> とかで <code>fakeserver</code> を作ったりして試すことになるとおもうんだけど、そもそも <code>request</code> 自体を差し替え可能にしておくことでこれをしなくてよくなる。</p>
+<pre><code class="language-coffee">module.exports = class Some
+  constructor: (@request)-&gt;
+
+  get: (url)-&gt;
+    @request url, (err, res, body)-&gt; # ...
+</code></pre>
+<p>というような <code>lib/some.coffee</code> を用意して</p>
+<pre><code class="language-coffee">bottle = new Bottle()
+bottle.service 'request', -&gt; require 'request'
+bottle.service 'Some', require('./lib/some'), 'request'
+
+bottle.container.Some.get url
+</code></pre>
+<p>とすることで <code>request</code> を注入することができる。テストでは</p>
+<pre><code class="language-coffee">
+describe 'Some', -&gt;
+  it 'blah blah', -&gt;
+    bottle = new Bottle()
+    bottle.service 'request', -&gt; (str, callback)-&gt; callback null, null, 'fake response'
+    bottle.service 'Some', require('./lib/some'), 'request'
+    bottle.container.Some.get # ...
+</code></pre>
+<p>みたいな感じでテストを書けるようになる。<code>request</code> がエラったときを試したいときは</p>
+<pre><code class="language-coffee">bottle.service 'request', -&gt; (str, callback)-&gt; callback new Error('blah')
+</code></pre>
+<p>というようにしてやれば強制的にエラーを発生させて挙動を確認することができる。</p>
+<h2><code>require</code> が相対パスで解決されるのが困る問題をちょっと緩和できる</h2>
+<p>node.js の <code>require</code> はモジュール名でない場合相対パスで解決されるので「あれ？あのモジュールってこのファイルからだとどうなるんだっけ...」みたいなのが発生する。これが <code>bottlejs</code> だと依存モジュールをその場で呼び出すことになるのでちょっと緩和できる(とおもう)。</p>
+<pre><code>|--- index.coffee
+|--- client
+     |--- model
+          |--- some.coffee
+     |--- controller
+          |--- some.coffee
+|--- util
+     |--- some.coffee
+</code></pre>
+<p>というような構成だったときに</p>
+<pre><code class="language-coffee">module.exports = class SomeController
+  constructor: -&gt;
+    @model = require '../model/some'
+    @someutil  = require '../../util/some'
+</code></pre>
+<p>みたいな感じだったやつが、<code>SomeController</code> 側では</p>
+<pre><code class="language-coffee">module.exports = class SomeController
+  constructor: (@model, @someutil)-&gt;
+</code></pre>
+<p>でよくなって、これを使うコード中で</p>
+<pre><code class="language-coffee">bottle = new Bottle()
+bottle.service 'SomeUtil', require './util/some'
+bottle.service 'SomeModel', require './client/model/some'
+bottle.service 'SomeController', require './client/controller/some', 'SomeModel', 'SomeUtil'
+</code></pre>
+<p>としてやればよくなる。</p>
+<h2>CoffeeScript の class 構文と相性がよさそう</h2>
+<p>上にも書いてきた通り、<code>constructor</code> に依存の解決系を書いて各メソッドでそれらを使ったコードを書くみたいな感じで書けるのでスッキリしていい。</p>
+<h1>よくないところ</h1>
+<h2>記述することは増える</h2>
+<p><code>bottle =...</code> みたいな依存管理系のコードが増えるので記述量自体は増えるとおもう。</p>
+<h2>いちいちモジュールの依存まわりを呼び出し元が知ってないといけなくなる</h2>
+<p>モジュールで <code>require</code> していれば、呼び出し元がそのモジュールがどんなモジュールに依存してるかを知らなくても呼び出すことができるが、上のようなコードスタイルにすると呼び出す前に依存を解決しないといけなくなるので呼び出すモジュールがなにに依存してるか確認してそれを注入してやらないといけなくなる手間が発生する。</p>
+<p>もうしばらく使ってみたいとおもいます。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

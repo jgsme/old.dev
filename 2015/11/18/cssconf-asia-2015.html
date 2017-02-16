@@ -1,0 +1,509 @@
+<!DOCTYPE html><html><head><title>CSSConf.asia 2015 メモと感想 - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="CSSConf.asia 2015 メモと感想"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/11/18/cssconf-asia-2015.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="会社に支援いただいて Devfest.asia に参加できたのでメモと感想をば。
+
+* 3.14 things I didn't know about CSS"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/11/18/cssconf-asia-2015.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-11-18" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-11.html">11</a></span><span class="date-day">18</span></time></div><div class="markdown-body"><h1><a href="/2015/11/18/cssconf-asia-2015.html">CSSConf.asia 2015 メモと感想</a></h1>
+<p>会社に支援いただいて <a href="http://Devfest.asia">Devfest.asia</a> に参加できたのでメモと感想をば。</p>
+<ul>
+<li>3.14 things I didn't know about CSS
+<ul>
+<li>CSS の tips を中心に CSS での XSS など</li>
+<li>Attribute value を使って csrf token を盗んだり、Web font を使って個人情報を盗んだりできるというのが新鮮だった</li>
+<li>あと CSS Expression も初めて知った(知らない方が幸せだった)がまさに evil という感じで最悪</li>
+<li>最後に CSS セレクタでバンド名を表現する芸をやってたのが面白かった</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-css">p, i {
+  color: black;
+}
+
+/* Black &lt;i&gt;'d &lt;p&gt;s */
+</code></pre>
+<ul>
+<li>In the Year 2000 - Designing responsive emails
+<ul>
+<li>HTML と CSS でデザインされたページを作り上げるのがいかに困難かという話</li>
+<li>メールクライアントはまさに地獄という感じで、Outlook の特定のバージョンは Word でレンダリングされたりするそうで恐怖でしかなかった, Gmail(webkit)も信用ならないとのこと</li>
+<li>また、画像が読み込まれないことも多々あるので、<code>alt</code> をちゃんと付ける話とか涙なくては語れぬという感じ</li>
+<li>そして、そういう環境下ではテーブルレイアウトが現役という話もまた厳しかった</li>
+<li>ちょくちょく綺麗なメールがくるけど(Vimeoとか)あの陰には犠牲者がいるのだな...と気付かされた</li>
+</ul>
+</li>
+<li>Moneyball for performance Metrics
+<ul>
+<li>ブラッド・ピット主演で映画化された Moneyball で描かれていたように Metrics をとるのが大事という話と、いかに必要となる Metrics をとるかという話</li>
+<li>ちょいちょい聞いたことのある速度改善で KPI 改善したよみたいな話</li>
+<li>通信を HAR で計測したりとか、<code>performance</code> でレンダリングを計測したりとか</li>
+<li>http/2 の話はさらっとという感じ</li>
+</ul>
+</li>
+<li>Animating SVGs
+<ul>
+<li>みんな大好き SVG のアニメーションの話。自分もここ半年ぐらいだいぶ SVG に取り組んでいるので謎の親近感があった</li>
+<li>なぜ SVG かというと、大概のブラウザでサポートされているし、CSS でスタイル当てられるし、スケーラブル(解像度的な意味で)だから。ひたすら頷くオレ</li>
+<li>その SVG をアニメーションさせるためには 3 通りあって、CSS、SMIL、JS</li>
+<li>SMIL というのが初見だったが、XML の要素として <code>&lt;animation from=&quot;0 0&quot; to=&quot;100 100&quot;&gt;</code> みたいな感じで書くとアニメーションできるらしい</li>
+<li>ただ、IE や Opera (今では Webkit に変わったから実装されてるのかなあ？)ではサポートされてないし微妙っぽい</li>
+<li>やっぱり JS で制御するのがややこしいアニメーションも制御できるしよさそうだった</li>
+<li>Shape morphing をやるときや、適当なインターフェイスがほしいときはライブラリを使うといいぽい</li>
+</ul>
+</li>
+<li>PostCSS - aka how to sneak JS into a CSSConf
+<ul>
+<li>今回のセッションの本丸ぐらいの気でいたが、PostCSS の紹介で終わった</li>
+<li>とはいえ、このあとズラズラと Module CSS ボーイズが語ってくれてたのでちょうどよかったかも？</li>
+<li>PostCSS はパーサで、200を超える plugin 群がそれらを加工する</li>
+<li>PreCSS を使えば mixin や制御構文や変数を使えるので Sass とオサラバできる</li>
+<li>パフォーマンスも上々</li>
+</ul>
+</li>
+<li>The End of Global CSS
+<ul>
+<li>タイトルの示す通り、Global な CSS を捨ててコンポーネント単位で CSS 書こう屋</li>
+<li>Component って実は新しい概念ではなくて、我々が今まで使ってきていた <code>&lt;select&gt;</code> やら <code>&lt;button&gt;</code> もコンポーネントと見立てることができる</li>
+<li>これまでもサードパーティ製のコンポーネント(例えば jQuery UI Date picker)を使ってきたが、画像リソースやら js やらなんやらてんこ盛りだった</li>
+<li>それらのために gulp とかを使ってたけどさ...</li>
+<li>Component 時代のツールは Webpack で落ち着いたみたい, JS 屋の自分からしてみると browserify と適材適所という感覚だが、CSS マン達的には Webpack で FA という雰囲気を感じた</li>
+<li>Components みたいな名前のディレクトリにコンポーネント毎にディレクトリを切って必要なリソースを格納していくスタイル</li>
+<li>その時に名前空間をどうするか、ということで local scope を使うらしい</li>
+<li><code>:local(.class)</code> みたいな感じでセレクタを書くと、ユニークなハッシュを生成して、そのハッシュを JS で参照するというスタイルのようだ</li>
+<li>local scope は Webpack の css-loader で使えるが、PostCSS にも plugin がある模様</li>
+<li>また、<code>composes</code> というプロパティを使うことで他の css ファイルからプロパティを呼んできて結合したりもできるそう</li>
+<li>恐らく React をメインターゲットに据えてるとはおもうが、Mercury や Angular でも使えるし、Vanilla でも使えるとのこと</li>
+<li>JS のランタイムはなし(Webpack の分はあるんじゃないかとおもうが)</li>
+<li>これらが CSS Modules として切り出されていろいろ実装が作られているようだ</li>
+</ul>
+</li>
+<li>The Rise of Modular Style
+<ul>
+<li>前のセッションに続いて、CSS Module 勢</li>
+<li>JS の歴史の話があって、CommonJS で module を export/import できるようになったのが最高で、これを CSS に持ってきたいという話(何周遅れの話なんだ...)</li>
+<li>それが Interoperable CSS <a href="https://github.com/css-modules/icss">https://github.com/css-modules/icss</a></li>
+<li>CommonJS よろしく export と import の構文を持っててこれらでモジュール化された CSS を参照するような構造に</li>
+<li>HTML の class に <code>class=&quot;button button-success&quot;</code> って書くのアホらしくない？って話がなるほど、とおもった</li>
+<li>Sass の mixin 使ってもいいけど生成される CSS セレクタが鬼のようにデカくなるので Webpack の composes 使おうねという話</li>
+<li>Future work として CSS on npm という話があって、これはブラウザ界もパッケージとして管理する意向の npm inc. と似た方向の話なんだろうとおもった</li>
+</ul>
+</li>
+<li>Performance beyond Page load
+<ul>
+<li>ページのレンダリングを改善する話</li>
+<li>パフォーマンス向上のインパクトとしては
+<ul>
+<li>Layout &gt; Paint &gt; Composite らしい</li>
+</ul>
+</li>
+<li>これらは <a href="http://csstriggers.com/">http://csstriggers.com/</a> を見ると CSS のプロパティがそれぞれ上の 3 つのうちどれが発火するかひと目で確認できる。これを使って不要なプロパティを消したりして改善していくぞ</li>
+<li>それに当たって Chrome dev tools の FPS meter や paint flashing は便利</li>
+<li>その他 <code>nth-last-child(-n+1)</code> みたいなセレクタはやめて class や id で参照するだとか、不要な CSS を削るとか、再計算コストを計測するとか</li>
+<li>これまで GPU を使うために <code>transform: translate3d(0, 0, 0);</code> みたいなことをしてきたが、これからは <code>will-change</code> プロパティを使って再計算(主にアニメーションかなあ)コストを最適化できるらしい。<a href="https://dev.opera.com/articles/ja/css-will-change-property/">https://dev.opera.com/articles/ja/css-will-change-property/</a> が詳しかった</li>
+<li><a href="http://perfaudit.com/">http://perfaudit.com/</a> にいろんなサイトの最適化例が載ってる</li>
+</ul>
+</li>
+<li>Responsive Web Bloopers
+<ul>
+<li>Viki <a href="https://www.viki.jp/">https://www.viki.jp/</a> という動画サービスの中の人
+<ul>
+<li>余談だが、i11n もしっかりしてるし国内の TV ドラマもあるし結構いいサービスなのでは</li>
+</ul>
+</li>
+<li>Viki を改善していくに当たってぶつかったこととその解決</li>
+<li>その1: デザイナとデベロッパの交流が乏しい</li>
+<li>デザイナが張り切って Web で全く作れる気がしないアニメーションを作っちゃったり、巨大な画像をいれちゃってたり、複雑なレイアウトで作業を終える</li>
+<li>デベロッパが作業を開始すると問題だらけでデザイナに突き返したりとかを繰り返してクソの山を積み上げていく</li>
+<li>そしてベータテスト後に巨大なリファクタをしてようやくリリースに漕ぎ着ける、的な</li>
+<li>これを次のように改善した。デザイナはラフの時点ぐらいからデベロッパに渡してしまって、デベロッパはそれを元に(醜くてもいい)プロトタイプを作成する。このプロトタイプを元にデザイナがデザインを詰めて、デベロッパがそれを実装して...というのを繰り返す
+<ul>
+<li>小さいイテレーションを回すのは僕も経験的に全く同意で、今の仕事ではデザイナではビズの方とやり取りすることが多いのでビズの方のふわっとした話を最初は細かく詰めてから作業に取り掛かっていたが、さっさとプロトタイプを作ってしまってそれのフィードバックをもらって修正した方が手っ取り早いということに気付いてからはそうするようにしている</li>
+</ul>
+</li>
+<li>その2: 開発計画が乏しい</li>
+<li>コーディングスタイルや、フレームワークが全然決まっていなかった, この辺は整備したらしい</li>
+<li>その3: 実機でデバッグするのが遅かった</li>
+<li>実機でデバッグするのが開発の最終段階で、それまではシミュレータでしかサイトを確認していないと痛い目に遭う</li>
+<li>これも UI component を作成したら実機で早めに確認するサイクルを回した方がいい</li>
+<li>ghostlab の話をしていたが、オレたちには browser-sync があるやん、と思って聞いてた</li>
+</ul>
+</li>
+<li>Webfonts: Levelup
+<ul>
+<li>最後のセッションは W3C の人</li>
+<li>PNG の co-author だったり、CSS の仕様周りに携わっている人のようだ</li>
+<li>Character と Glyph の違いから、フォントの未来まで</li>
+<li>CSS3 の Font Module から紹介をしていた</li>
+<li>Font あまり詳しくないのでアレだが、カーニングなど CSS で指定できるみたい</li>
+<li>Javascript で <code>new FontFace(...)</code> とすることで Font を読み込むことができるらしい</li>
+<li>TransType というフォントのデモをしていたんだけど、よく分からず...文字毎にパーツを組み合わせてパーツ毎に色を変えたりとかもできるみたい</li>
+</ul>
+</li>
+</ul>
+<h2>全体的な感想</h2>
+<p>JS マンとしては全てを JS の支配下に置きたい主義なのだが、CSS マンたちは CSS 独力でなんとかしようとしている(といっても Webpack などが JS を隠蔽しているだけだとおもうが)印象があって少し相容れなそうだった。</p>
+<p>面白かったのは Viki の人のセッションで「デザイナがレスポンシブデザインのモックを作ってきたら、小型のデバイスでカラムの順番が互い違いで作ってくる」みたいな話をしてたりして思わず「あるある〜〜〜〜」ってなってしまった。</p>
+<p>その他、パフォーマンスや XSS の話もあり、興味深かった。</p>
+<p>明日と明後日は JSConf!</p>
+<p>以下メモ直貼り。</p>
+<hr>
+<h1>3.14 things I didn't know about CSS</h1>
+<p>@mathias
+Operaの人</p>
+<p><code>!important</code>よくないよね</p>
+<p>-&gt;</p>
+<pre><code>.foo .bar {
+  color: red;
+}
+
+.bar .bar {
+  color: green;
+}
+</code></pre>
+<p>が <code>!important</code> と同じ効果がある</p>
+<p>Font famiy names in CSS
+Whitespace in the font family name, it must be quoted &lt;- NO</p>
+<p><code>\34 56bereastreet</code></p>
+<p>Attribute values</p>
+<pre><code>a[href=foo] {
+  background...
+}
+</code></pre>
+<p>unquoted attribute values</p>
+<pre><code>a[href=&quot;foo|bar&quot;] {
+  background...
+}
+</code></pre>
+<p>CSS comments</p>
+<pre><code>.some {
+  /* comment */
+}
+</code></pre>
+<p>single line comment もいけるらしい</p>
+<pre><code>.some {
+  // comment
+}
+</code></pre>
+<p>HTML tags</p>
+<ul>
+<li>head, bodyは閉じタグなくてもいい</li>
+<li>head, bodyはそもそもなくてもいい</li>
+</ul>
+<p>Using CSS without HTML</p>
+<p>HTMLなくてもゲームみたいなやつがつくれる</p>
+<p>Unicode in CSS</p>
+<p>Unicodeの文字ならclassやidに使える...が、CSSではエスケープが必要</p>
+<p><code>#\#id { }</code>, <code>#\34 04-error</code>, <code>.\[attr\=\'value\'\]</code></p>
+<p>Escaping CSS selectors</p>
+<p><code>CSS.escape</code></p>
+<p>XSS</p>
+<p>CSS Zen garden</p>
+<p>evil.css</p>
+<p>attribute valueを使ってcsrf tokenを盗める</p>
+<p>Webfontを使ってDOMの情報を盗める</p>
+<p>CSS Expressions in IE 7-
+CSSにJSのコードを書けるやつ
+IE7までだけど、legacy modeでIE7 modeにするとIE10でも使える</p>
+<ul>
+<li>CSSにinjectするときもちゃんとサニタイズする</li>
+<li><code>X-Frame-Options: DENY</code></li>
+<li>use <code>&lt;!DOCTYPE html&gt;</code></li>
+</ul>
+<p>Firefoxは <code>background: url(javascript:while(1){})</code> で殺せる</p>
+<h1>In the Year 2000 - Designing responsive emails</h1>
+<p><a href="http://jennz0r.github.io/2000">http://jennz0r.github.io/2000</a></p>
+<p>Emails are evil</p>
+<p>design
+code
+resources</p>
+<p><a href="http://hotpads.com">hotpads.com</a></p>
+<p>minimum touchable areaの44x44はiPhoneのガイドラインなので</p>
+<p>Emailではtable layoutが最高</p>
+<p><code>&lt;style&gt;</code>や<code>&lt;head&gt;</code>をサポートしてないのでinline styleでがんばる</p>
+<p>max-widthは500-600程度</p>
+<p>画像は表示されないことを考慮してaltやfallbackのstyleをつけるなどする</p>
+<p>media query</p>
+<p>device pixel ratio</p>
+<p><code>!important</code> をmedia queryで使う</p>
+<p>OutlookはWordでレンダリングしてたりしてつらい
+webkitといえどもいろいろサポートされてなくてつらい</p>
+<h1>Moneyball for performance Metrics</h1>
+<p>npmの人</p>
+<p>Moneyball の話を参考にチューニングする</p>
+<p>slow websites lose</p>
+<p>The state of Javascript on Android is very poor</p>
+<p>結構な人がMobile deviceがprimary device</p>
+<p>people exepts mobile fast</p>
+<p>2G than 4G</p>
+<p>パフォーマンスを上げることでconversion, revenueを改善できる(walmart, obama for america)</p>
+<p>改善するにはまず計測から</p>
+<p>DOM complete, Load</p>
+<p>page weight</p>
+<p>request/response: new relic, calibre, skylight</p>
+<p>focus first usable time</p>
+<p>webpagetest</p>
+<p>render blocking</p>
+<p>find the files that block</p>
+<p>PhantomJS</p>
+<p>HAR file</p>
+<p>round trips</p>
+<p>TCP slow start</p>
+<p>timing differences</p>
+<p><code>performance.timing</code></p>
+<p>different websites need different measurements</p>
+<p>UserTiming API</p>
+<p><code>performance.{mark|measure}</code></p>
+<p>latency</p>
+<p>server-side rendering</p>
+<p>best practice</p>
+<p>concatenate, minification</p>
+<p>The Future is now</p>
+<p>performance budget</p>
+<p>http/2</p>
+<h1>Animating SVGs</h1>
+<p><a href="https://github.com/zellwk/CSSConf.Asia-animating-svg">https://github.com/zellwk/CSSConf.Asia-animating-svg</a></p>
+<p>Zellさん</p>
+<p>Good browser support, styleable, scalable</p>
+<p>animation methods</p>
+<ul>
+<li>CSS</li>
+<li>SMIL</li>
+<li>JS</li>
+</ul>
+<p>targeting SVGs(query selector)</p>
+<p>transition...</p>
+<p>SMIL</p>
+<ul>
+<li>IE, Operaのサポートがいらないとき</li>
+<li>シンプルなアニメーション</li>
+</ul>
+<p><code>&lt;animate&gt;</code> の属性にアニメーションの設定を書いていく</p>
+<p>javascript</p>
+<p>complex animations
+support all browsers</p>
+<p>vivusJS
+snap.svg
+morphSVG</p>
+<p>shape morphing</p>
+<h1>PostCSS - aka how to sneak JS into a CSSConf</h1>
+<p>@lcpriest</p>
+<p>Ruby and EmberJS</p>
+<p>TradeGecko</p>
+<p>PostCSS is not preprocessor</p>
+<p>PostCSS is just a Parser</p>
+<p>Modify Declarations, Modify Rules, Modify Comments</p>
+<p>Plugins</p>
+<p>200+</p>
+<p>PreCSS</p>
+<p>Goodbye Sass</p>
+<p>RTLCSS <a href="https://github.com/MohammadYounes/rtlcss">https://github.com/MohammadYounes/rtlcss</a></p>
+<p>Discourse: Rails + EmberJS</p>
+<p>アラビック向けに左右を反転させる</p>
+<p>postcss-imperial
+postcss-singlish</p>
+<h1>The End of Global CSS</h1>
+<p>Documents vs Web apps</p>
+<p>Global Scope vs Maintenance</p>
+<p>OOCSS, SMACSS, BEM, SUIT...</p>
+<p>CSS at scale feels
+Completely Different</p>
+<p>How do we scale interfaces better?</p>
+<p>The Age of Components</p>
+<p>Web components, Polymer, Angular's directives</p>
+<p>REACT!!</p>
+<p>Components are nothing new</p>
+<p>CSS and images are private to a component</p>
+<p>Unless you use third-party components</p>
+<p>jQuery UI date picker(sucks)</p>
+<p>gulp, sass</p>
+<p>tooling for the component age?</p>
+<p>webpack</p>
+<p>single dependency tree
+components 下に component 毎に dir を切る</p>
+<p>BEM</p>
+<p>a block is a component</p>
+<p>Block, Element, Modifying Your Javascript components</p>
+<p>(webpack) local scope</p>
+<p>what does styles eval to?</p>
+<p><code>:local</code> scope</p>
+<p><code>styles.header</code> みたいな感じで component からアクセスできる</p>
+<p><code>:local</code>は hash の unique に変換されて hashmap で参照</p>
+<p>no more naming collisions</p>
+<p>loader の設定で参照の名前を変えられる</p>
+<p><code>:local(.header)</code> みたいな感じでもアクセスできるみたい</p>
+<p>PostCSS</p>
+<p>postcss-local-scope</p>
+<p>webpack composition</p>
+<p>css を結合できる</p>
+<pre><code>.some {
+  compose: className from &quot;./style.css&quot;;
+}
+</code></pre>
+<p>React, Mercury, Angular, Backbone, VanillaJS</p>
+<p>Javascript dependency =&gt; No</p>
+<p>The future</p>
+<p>CSS modules</p>
+<h1>The Rise of Modular Style</h1>
+<p>Human interfaces vs Machine interfaces</p>
+<p>September 2008, Attack from IE
+JavaScript in 2008, windowにnamespaceを生やしてなんとかする
+V8: Sept 2, 2008</p>
+<p>ServerJS</p>
+<p>NodeJS: Feb 2009</p>
+<p>CommonJS: July 2009</p>
+<p>namespace vs commonjs</p>
+<p>Browserify: Sep 5, 2011</p>
+<p>CSS - Sass, Less, PostCSS</p>
+<p>Interoperable CSS: June 21, 2015</p>
+<p>ICSS</p>
+<pre><code>:import(&quot;./some.scc&quot;) {
+  import-alias: some-depend;
+}
+
+:export {
+  normal: ...
+}
+</code></pre>
+<p>同名クラスだとしても hash が変わるので名前が衝突しない</p>
+<p>CSS Modules</p>
+<p>EmojiのクラスでhtmlとCSSを書く
+もろもろツールを使ってヒューマン、マシン共にリーダブルにしようという話</p>
+<p>Modular Style</p>
+<p><code>.button .button-success</code> みたいなのはダサい</p>
+<p>sassで継承させるのはいいけど...生成されるCSSがクソデカくなる
+なんで webpack compose 使おう</p>
+<p>Atomic design
+Atoms, Molecules, Organisms, Templates, Pages =&gt; all component</p>
+<p>Future work</p>
+<ul>
+<li>Reusable components w/ CSS on npm</li>
+<li>Non-JS ecosystems</li>
+</ul>
+<h1>Performance beyond Page load</h1>
+<p>Javascript style layout paint composite</p>
+<p>performance impact of operations:
+layout &gt; paint &gt; composite</p>
+<p>Chrome Dev Tools: FPS meter, paint flashing</p>
+<p>CPU vs GPU</p>
+<p><a href="http://csstriggers.com/">http://csstriggers.com/</a></p>
+<p>must follow
+understand what impacts rendering performance (Profile)
+choose your css rules wisely
+avoid triggering layout / paint operation repeatedly or when animating
+prefer using transform add opacity changers (trigger only composite operation) for animations</p>
+<p><code>nth-last-child(-n+1)</code> less performant</p>
+<p>remove unused css rules</p>
+<p>reduce number of elements being styled</p>
+<p>measure your style recalculation cost</p>
+<p>debounce input handlers</p>
+<p>fixed elements and scrollable elements are repainted by the browsers</p>
+<pre><code>transform: translateZ(0);
+</code></pre>
+<p>GIFs and performance</p>
+<p>disable animation when not inside the viewport</p>
+<pre><code>will-change: transform;
+</code></pre>
+<p>will-change: <a href="https://dev.opera.com/articles/ja/css-will-change-property/">https://dev.opera.com/articles/ja/css-will-change-property/</a></p>
+<p><a href="http://perfaudit.com/">http://perfaudit.com/</a></p>
+<h1>Responsive Web Bloopers</h1>
+<p>@renettarenula</p>
+<p>viki の人 <a href="https://www.viki.jp/">https://www.viki.jp/</a></p>
+<p>Working together, writing code, testing site</p>
+<p>Lack of collaboration between designers and developers
+(デザイナとデベロッパの交流が乏しい)</p>
+<p>designer limitations:
+Fancy animations
+Big images
+Beautiful, intricate layouts</p>
+<p>Mockups
+Performance, Interaction type(small =&gt; touch, large =&gt; mouse)?</p>
+<p>developer shortcomings
+Discovered problems late, hasks, shortcuts, library...</p>
+<p>previous workflow
+design mocks -&gt; test validate -&gt; develop and test -&gt; beta test -&gt; big fixes -&gt; rollout</p>
+<p>collaborative workflow
+low fidelity mockups/sketches -&gt; prototype -&gt; feedback -&gt; high fidelity design mockups</p>
+<p>prototype
+not necessary to prototype everything
+build fast, build ugly</p>
+<p>writing code
+lack of planning on development
+(開発計画が乏しい)</p>
+<p>coding style guides
+naming conventions, file organizations, nesting levels, media queries
+BEM, OOCSS, SMACSS</p>
+<p>beware of frameworks
+CSS bloats, Rigid styling, unsuitable frameworks</p>
+<p>browser and device issues
+target browsers and devices, design within constraints, device specific issues</p>
+<p>Testing site
+testing late on devices and relying too mush on emulators</p>
+<p>device testing
+testing interactions, bugs and quirks on mobile</p>
+<p>experia のバグ</p>
+<p>better workflow
+build a UI component -&gt; connect local env to device -&gt; repeat -&gt;</p>
+<p>localtunnel, proxylocal
+ghostlab</p>
+<h1>Webfonts: Levelup</h1>
+<p><a href="https://github.com/svgeesus/font-level-up">https://github.com/svgeesus/font-level-up</a></p>
+<p>Co-authored PNG
+CSS WG: Chair, CSS2 co-editor, CSS3 Color co-editor</p>
+<ul>
+<li>Basics</li>
+<li>OpenType features and CSS</li>
+<li>Performance</li>
+<li>The future</li>
+</ul>
+<p>Character
+a codepoint, with properties</p>
+<p>Glyph
+visual representation of characters</p>
+<p>Myriad Pro &lt;- Font family
+Light Roman Bold Italic &lt;- faces</p>
+<p><code>@font-face</code> はデスクリプタ、セレクタはプロパティ</p>
+<p>descriptors
+descripbe individual font faces</p>
+<p>properties
+requests for styling</p>
+<p>Font stacks
+First font with glyphs for a given character is used
+Problem: avoiding bad Latin glyphs in Japanese fonts</p>
+<p>unicode-range
+descriptor afor allowed range of unicode characters</p>
+<p>unicode-range is really shit</p>
+<p>OpenType features
+optional stylistic controls</p>
+<p>Control with CSS
+fonts vary in features</p>
+<p>font-variant
+preferrerd, but poor support</p>
+<p>font-feature-settings
+cryptic, low-leve, widespread support</p>
+<pre><code>font-variant-numeric: proportinal-nums;
+</code></pre>
+<p>分数とかも出せるぞ！</p>
+<pre><code>font-synthesis: weight style;
+</code></pre>
+<pre><code>font-kerning: none;
+</code></pre>
+<p>Performance</p>
+<p><a href="http://www.fontsquirrel.com/">http://www.fontsquirrel.com/</a>
+<a href="https://typekit.com/">https://typekit.com/</a>
+<a href="https://github.com/behdad/fonttools/">https://github.com/behdad/fonttools/</a></p>
+<p>WOFF compression
+adds header, metadata
+gzips each table</p>
+<p>WOFF2 compression
+excellent font-specific compression
+WOFF1よりベターらしい</p>
+<p>CSS font loading API
+FF, Chrome, Opera, Android</p>
+<pre><code>new FontFace()
+</code></pre>
+<p>The future</p>
+<p>From illuminated manuscripts
+...to emoji</p>
+<p>TransType</p>
+<p>svg</p>
+<p>CSS4 font-palette
+CSS4 font-synthesis</p>
+<p>emoji, math, fangsong
+svgeesus</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

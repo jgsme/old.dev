@@ -1,0 +1,152 @@
+<!DOCTYPE html><html><head><title>Yosemite マシンゲットしたので環境を整えた - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="Yosemite マシンゲットしたので環境を整えた"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2014/12/15/setup-yosemite-machines.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="https://github.com/e-jigsaw/dotfiles
+
+# まえがき"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2014/12/15/setup-yosemite-machines.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2014-12-15" pubdate><span class="date-year"><a href="/archives/2014.html">2014</a></span><span class="date-month"><a href="/archives/2014-12.html">12</a></span><span class="date-day">15</span></time></div><div class="markdown-body"><h1><a href="/2014/12/15/setup-yosemite-machines.html">Yosemite マシンゲットしたので環境を整えた</a></h1>
+<p><a href="https://github.com/e-jigsaw/dotfiles">https://github.com/e-jigsaw/dotfiles</a></p>
+<h1>まえがき</h1>
+<p>会社でマシンが買い替えられるチャンスみたいなのが舞い込んできたので Mac mini と Macbook Air に換えたいとダメもとで頼んでみたら本当にやってきた。mini を 10.9, Air を 10.10(人柱的な)で運用しようと企んでいたところ、mini のプリインが 10.10 だったので諦めて両方とも 10.10 で運用することにした。</p>
+<p>そのため、2台を別々にセットアップするのが確実にだるそうだったのと、同期に「cask 使ってないとか情弱かよ(意訳)」と煽られたので Package manage as Code 的なことをやろうと思い立ってモリモリやったのでその辺が本旨。</p>
+<p>ついでにイチからセットアップしたのでいろいろ備忘録っぽく残しておこうかと。</p>
+<h1>homebrew のインストール</h1>
+<p><a href="http://brew.sh/">http://brew.sh/</a></p>
+<pre><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+<h1><code>brew file</code></h1>
+<p>以前は <code>brew bundle</code> が使えたので <code>Brewfile</code> で管理していたところ、<code>brew bundle</code> が nerf されたので管理を断念していた。今回調べてみて知ったのが <code>brew file</code> である。</p>
+<ul>
+<li><a href="https://github.com/rcmdnk/homebrew-file">https://github.com/rcmdnk/homebrew-file</a>
+<ul>
+<li>本家リポジトリ</li>
+</ul>
+</li>
+<li><a href="https://github.com/e-jigsaw/dotfiles/blob/0b0322c01b2b0ece3832c89fb626a90e1ac9961e/Brewfile">https://github.com/e-jigsaw/dotfiles/blob/0b0322c01b2b0ece3832c89fb626a90e1ac9961e/Brewfile</a>
+<ul>
+<li>オレの最高の <code>Brewfile</code> (執筆時点)</li>
+</ul>
+</li>
+</ul>
+<p>(めっちゃ便利)</p>
+<p>もろもろのインストラクションに従って</p>
+<pre><code>$ brew install rcmdnk/file/brew-file
+</code></pre>
+<p>する。スラッシュ区切りのやつでもろもろインストールできるっぽいのでもしかしたら <code>brew tap</code> のところは冗長かもしれない。とりあえずそのまま置いてある。</p>
+<p>インストールしたら <code>Brewfile</code> のあるリポジトリを設定する。</p>
+<pre><code>$ brew file set_repo -R https://github.com/e-jigsaw/dotfiles.git
+</code></pre>
+<p>ここなんだけど、<code>README.md</code> には user/repo でいけるという記載があるのだけれど、その記法だと ssh で git clone がかかってまっさらなマシンだと ssh の設定まわりがアレでコケたので https のフルパス指定にしたらうまくいった。</p>
+<p>ここにかつて <code>brew bundle</code> で運用していた頃の残骸が残っていたので</p>
+<pre><code>$ brew file edit
+</code></pre>
+<p>でエディタが立ち上がって編集できるのでよしなに書き換える。書き換えたら</p>
+<pre><code>$ brew file install
+</code></pre>
+<p>で書いたパッケージがずんずん入る。いちいち <code>brew file</code> って打つのがダルかったので適当なタイミングで <code>alias bf='brew file'</code> とか <code>alias bfi='brew file install'</code> とかして楽をした。</p>
+<p>ひとしきりできたら</p>
+<pre><code>$ brew file push
+</code></pre>
+<p>で変更が github に push される。ちなみに、最初なにも考えずに <code>brew file edit</code> したらデフォルトさんでコミットされちゃう事件が発生したのでそこは気をつけないといけないとおもった。</p>
+<p><code>Brewfile</code> の更新を反映させるときは</p>
+<pre><code>$ brew file pull
+</code></pre>
+<p>でいける。コンフリクトとかしたら <code>/usr/local/Library/user_repo</code> みたいなディレクトリがそれなのでそこへ行って適当に解消してやればよい。</p>
+<p>あとは <a href="http://caskroom.io/">http://caskroom.io/</a> でパッケージを探して、あったら <code>bfe</code> して <code>bfi</code> する、を繰り返すだけで Package manage as Code みたいなことが実現できる。</p>
+<h1>dotfiles を蒔く</h1>
+<pre><code>$ git clone https://github.com/e-jigsaw/dotfiles.git .ghq/src/github.com/e-jigsaw/dotfiles
+$ cd .ghq/src/github.com/e-jigsaw/dotfiles
+$ git submodule init
+$ git submodule update
+$ sh install.sh
+</code></pre>
+<p>順番としては、dotfiles を蒔いて gitconfig を設定して <code>brew file</code> をセットアップするという流れだったので、<code>ghq</code> のことを見越して <code>ghq</code> フレンドリーなところに dotfiles を置いてからインストール(シンボリックリンクをホームに張りまくる)スクリプトを叩くという感じ。</p>
+<h1>Finder まわりの設定</h1>
+<p><img src="https://cloud.githubusercontent.com/assets/557961/5437871/eb223848-84b6-11e4-9fa1-76f4560e208f.png" alt=""></p>
+<p>最終形態はこんな感じ。Xtrafinder を cask でインストールして、黒背景にしたり上タブにしたりしている。地味に便利なのがフォルダをまとめて上に表示する機能。サイドバーに <code>$HOME/.ghq/src</code> をいれておくと Finder からも自由にリポジトリ群にアクセスできて便利だったりとか。</p>
+<h1>iTerm2</h1>
+<p><img src="https://cloud.githubusercontent.com/assets/557961/5437997/2191f98a-84b8-11e4-9971-e9c9a4fa4951.png" alt=""></p>
+<p>オレの最高のカラースキームを github 上にあげているので使いたいひとがいればどうぞ -&gt; <a href="https://github.com/e-jigsaw/iTerm-2-Color-Themes/blob/master/thayer.itermcolors">https://github.com/e-jigsaw/iTerm-2-Color-Themes/blob/master/thayer.itermcolors</a></p>
+<p>フォントは ASCII コードは Adobe の Sourcecode Pro を、日本語は Osaka。それぞれ 18pt。ログインシェルを brew 産 zsh に変えるのをちょっと躊躇ってしまうので iTerm2 のデフォルトシェルを <code>/usr/local/bin/zsh</code> にして糊口を凌いでいる。タブ開いたときは素の zsh が立ち上がるようになってて、がっつりシェル触るときに tmux を立ち上げるというような運用。なんかに困ったら Terminal.app で素の bash を立ち上げてなんとかする。</p>
+<h1>Dock</h1>
+<p>手短に</p>
+<ul>
+<li>下</li>
+<li>アイコンサイズ最大</li>
+<li>自動的に隠す</li>
+<li>元から入ってるアプリケーションは全部削除</li>
+<li>起動インジケータをオフ</li>
+</ul>
+<p>10.9 までは下左寄せで使っていたのだけれど、その機能がどうやら Yosemite で削除されてしまっているらしく、forum 見ても解決法がわからなかったので諦めて下中央でとりあえず運用している。</p>
+<h1>Trackpad</h1>
+<ul>
+<li>スクロール方向反転は気持ち悪いのでオフ</li>
+<li>Launchpad も使わないのでオフ</li>
+<li>通知センターも使わないのでオフ</li>
+</ul>
+<h2>BetterTouchTool</h2>
+<ul>
+<li>3本指上で <code>Home</code> が押される</li>
+<li>3本指下で <code>End</code> が押される</li>
+</ul>
+<p>確か SnowLeopard まではこれデフォルトでできたとおもうんだけどできなくなってかなしみ。。</p>
+<h1>Alfred</h1>
+<ul>
+<li>起動は <code>Cmd+Space</code></li>
+<li>cask でいれたアプリケーションを叩くために <code>/opt/homebrew-cask/Caskroom</code> を Scope に含める</li>
+<li><code>o Dropbox</code> でフォルダを開く、<code>f hoge</code> でファイル開く、<code>d word</code> で辞書検索</li>
+</ul>
+<p>以前は <code>g hoge</code> で Google を検索したりしていたんだけどそんなに使わないことに気付いたので今は使っていない。</p>
+<h1>Karabiner</h1>
+<p>cask の Karabiner が古かったので PR 送ったらすげー早さで merge された。</p>
+<p><a href="https://github.com/caskroom/homebrew-cask/pull/8124">https://github.com/caskroom/homebrew-cask/pull/8124</a></p>
+<p><code>private.xml</code>:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;root&gt;
+  &lt;item&gt;
+    &lt;name&gt;Shift IME on/off&lt;/name&gt;
+    &lt;identifier&gt;remap.jis_shift2eisuukana_prefer_command&lt;/identifier&gt;
+    &lt;autogen&gt;__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::JIS_EISUU&lt;/autogen&gt;
+    &lt;autogen&gt;__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::JIS_KANA&lt;/autogen&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;name&gt;fn+backslash to backslash&lt;/name&gt;
+    &lt;identifier&gt;remap.fn_backslash_to_backslash&lt;/identifier&gt;
+    &lt;autogen&gt;
+      __KeyToKey__
+      KeyCode::BACKSLASH, ModifierFlag::FN | ModifierFlag::SHIFT_L,
+      KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
+    &lt;/autogen&gt;
+    &lt;autogen&gt;
+      __KeyToKey__
+      KeyCode::BACKSLASH, ModifierFlag::FN,
+      KeyCode::BACKSLASH, ModifierFlag::OPTION_L
+    &lt;/autogen&gt;
+  &lt;/item&gt;
+&lt;/root&gt;
+</code></pre>
+<p>という設定を書いて、左右の Shift 空押しで切り替わるようにしている。cmd にしてるひとが多いとおもうけど、cmd だと後続のキーでコマンドが実行されてめんどくさい事態が起きやすかったので Shift にした。Shift だと後続のキーと合わせて認識されても大文字が入力されるだけなのでリカバーがききやすい。</p>
+<p>それから、Macbook Air 用に HHK っぽい Remap を書いた。</p>
+<ul>
+<li>Backquote -&gt; Esc</li>
+<li>delete -&gt; Backquote</li>
+<li>Backslash -&gt; delete</li>
+<li>fn+Backslash -&gt; Backslash</li>
+</ul>
+<p>普段 HHK に慣れすぎて無意識でバックスラッシュを連打してしまうのでまずはこれを変えたかった。そうすると元々の delete が空くので delete にはバッククオートを当てた。あと Esc のつもりでバッククオートも連打してしまうのでここを Esc にした。するとバックスラッシュの行き場がなくなるので、しぶしぶ fn+Backslash でもともとの Backslash が出るようにした。これを XML に書いたんだけど、Modflag に option を設定しないと円マークが出てきてウザかった。順番の方も先に shift との組み合わせを先に書かないと縦棒が出なかった。</p>
+<p>あと key repeat を体感に合わせて調整して最高の key repeat を設定した。とても入力がはかどる。</p>
+<h1>アクセシビリティ</h1>
+<p>Yosemite になってさらにアクセシビリティのアクセシビリティ感が強まったような気がするけど気のせいかなあ。</p>
+<ul>
+<li>透明度を下げる</li>
+<li>カーソルのサイズを大きく</li>
+<li>通知音が鳴るときに画面を点滅させる</li>
+<li>慣性スクロールなし</li>
+<li>ドラッグロックあり</li>
+</ul>
+<p>この辺設定しとくと結構アクセシビリティ高まる。</p>
+<h1>メニューバーあたり</h1>
+<ul>
+<li>Bartender で不要だけどちょっと要ぐらいのやつをまとめる</li>
+<li>Menumeter で CPU, メモリ, ネットワークのグラフとかを出す</li>
+<li>ファストユーザスイッチャーを消す</li>
+</ul>
+<h1>まとめ</h1>
+<p>Yosemite なマシンが2台きたので Package manage as Code 的なことを試した。実際には Mac mini の方でもろもろ試行錯誤をして <code>Brewfile</code> を更新して Macbook Air の方にデプロイしてお手軽に環境を構築できることを確認した。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

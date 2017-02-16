@@ -1,0 +1,560 @@
+<!DOCTYPE html><html><head><title>JSConf.asia 1日目 メモと感想 - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="JSConf.asia 1日目 メモと感想"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/11/19/jsconf-asia-day-1.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="昨日の CSSConf.asia に引き続き、JSConf.asia に参加してきた。感想とメモ。
+
+* #perfmatters - Tools for Apache Cordova"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/11/19/jsconf-asia-day-1.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-11-19" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-11.html">11</a></span><span class="date-day">19</span></time></div><div class="markdown-body"><h1><a href="/2015/11/19/jsconf-asia-day-1.html">JSConf.asia 1日目 メモと感想</a></h1>
+<p>昨日の <a href="http://CSSConf.asia">CSSConf.asia</a> に引き続き、<a href="http://JSConf.asia">JSConf.asia</a> に参加してきた。感想とメモ。</p>
+<ul>
+<li>#perfmatters - Tools for Apache Cordova
+<ul>
+<li>Cordova でのパフォーマンスチューニングの話が中心</li>
+<li>しばらく Cordova には触ってなかったが相変わらずという印象だった</li>
+<li>Webview からネイティブの API を XHR 経由で呼び出しているのでその辺はオーバーヘッドがすごい</li>
+<li>一方で WindowsPhone はネイティブで JS が走るのでパフォーマンスはいいらしい</li>
+<li>DOM の anchor でページ遷移するのはコストなので <code>onclick</code> で処理する、とか CSS の gradient は遅いので gradient っぽい画像を用意してがんばろ！みたいなバッドノウハウ感がしんどい</li>
+</ul>
+</li>
+<li>Web based 3D camera simulator for Perceptual Computing
+<ul>
+<li>JS で LeapMotion や Intel Realsense から値をとる話</li>
+<li>Websocket でとれるらしい？</li>
+<li>ラップトップがお亡くなりになったそうでデモなどがなく残念</li>
+</ul>
+</li>
+<li>Gameprogramming in Javascript
+<ul>
+<li>CreateJS を使ってタイ語のタイピングゲームを作る話</li>
+<li>タイ語はキーボードが4段x2あってつらそうだった</li>
+<li>ちなみにタイでは日本語の UI しかないのにねこあつめが大人気らしい。ねこあつめすげえ</li>
+<li>CreateJS はともかく RequireJS ってまだ現役なんだろうか</li>
+<li>Gulp watch と browser-sync でデバッグしたりとか</li>
+<li>ゲームを作るのは学習にも向いている</li>
+<li>JS はクロスプラットフォーム向けにちょうどいい</li>
+</ul>
+</li>
+<li>Modular vs Monolith
+<ul>
+<li>Node.js でアプリケーションを作る上でモジュールに分割して開発するか、モノリスで開発するか、という話</li>
+<li>大抵のときで YAGNI(You ain't gonna need it) とのこと</li>
+<li>シンプルなモジュールを組み合わせるのはいいけど、早まったモジュール化は危険
+<ul>
+<li>statement</li>
+<li>function</li>
+<li>file</li>
+<li>folder</li>
+<li>internal package</li>
+<li>external package</li>
+<li>の順にオーバーヘッドがデカくなっていく</li>
+</ul>
+</li>
+<li>&quot;抽象化はローカルの複雑性を緩和するが、グローバルの複雑性を増す&quot;</li>
+<li>&quot;間違ったものは正しい理由によって作られる&quot;</li>
+<li>&quot;flat is better than nested&quot;</li>
+<li>などなど心に刻んでおきたい金言が多かった</li>
+<li>そして結論としては、最初はモノリス的に作っていってそこからモジュールに適宜分けていくような &quot;modulith&quot; がいいんじゃないかとのことだった</li>
+<li>また、Google や Facebook も社内で揉んでから OSS として公開してるわけだし早まった Open 化はせずに揉んでからオープンにしてもいいんじゃない？とも話していた</li>
+</ul>
+</li>
+<li>Elements of dance music
+<ul>
+<li>Web Audio API を使って古き良き90'sの Acid Techno を作っていく</li>
+<li>前半に Web Audio の簡単な説明と、音がどうやって出てるかみたいな話があって後半は実際に Web Audio を使って Acid Techno をライブコーディング(もはやコンサート？)していくというような内容</li>
+<li>現代の楽譜は JS であり、ペンは Vim なのだ...(!)</li>
+<li>JS のカンファレンスで Roland の TB-303, TR-808 の音を鳴らしてるのヤバかった</li>
+<li>明後日の Web Audio Hack Day にも参加するつもりなので楽しみ</li>
+<li>Electron にも <code>AudioContext</code> あるので GUI のシンセサイザーが作れそうだとおもった</li>
+</ul>
+</li>
+<li>Bio-inspired Frontend Engineering
+<ul>
+<li>学生時代に化学をやってた人による ES6 で生命を語るセッション</li>
+</ul>
+</li>
+<li>PM2
+<ul>
+<li>この辺のライブラリは PM2 で落ち着いたのかな？nodemon とかもあるけど</li>
+<li>デプロイ後のサーバでのなんやかんやを解決するために PM2 を開発したとのこと</li>
+<li>PM2 はあまり触ったことがなかったが、CLI もしっかりしているようだし、plugin のようなものをいれれば Web のインターフェイスができたりもするみたいなので便利そうだった</li>
+<li>また、最近こういうツールの定番の流れであるが、Web でメトリクスを見れる Keymetrics というサービスもやっているとのこと</li>
+</ul>
+</li>
+<li>Simplicity through Functions
+<ul>
+<li>Functional Javascript のイントロダクションみたいなセッション</li>
+<li>モロに Rich Hicky フォロワーという印象</li>
+<li>大半が Functional Javascript の話だったが、終盤に CSP と Transducers の話が出てきて結構面白かった</li>
+<li>即座には理解できなかったので調べてみたが、Function を組み合わせてそれを transducer とするような感じなんだろうか...(まだよくわかっていない)</li>
+</ul>
+</li>
+<li>Towards Universal JavaScript
+<ul>
+<li>少し前に isomorphic をやめて universal と呼ばないか論者が現れて論戦が行われていたが、universal 側の論客と思われる</li>
+<li>結局 isomorphic はサバクラでコードを共有することが主眼だが、universal は環境に依らないコードを書きましょうということらしい。発表でも分からなかったが、JS は実装によって挙動は変わらざるを得ないので真に universal というのは難しいんじゃないかとおもう...</li>
+<li>React で　サーバサイドレンダリングするデモ</li>
+</ul>
+</li>
+<li>Overboard.js - Where are we going with this?
+<ul>
+<li>JavaScript を取り巻く環境は日に日に過酷になっていて一見いいことのように見えるが、無限に情報をキャッチアップしていかなくてはならず、しかもその陳腐化も早いので生き残れるのは一部の人、ということになりかねない</li>
+<li>ブログとかで新しいライブラリ/フレームワークが取り上げられてたりするけど、それプロダクションで使ってる？</li>
+<li>メイの法則「ソフトウェアの効率は18カ月で半減し、ムーアの法則を相殺する」</li>
+<li>我々のオーディエンスは我々ほどウェブサービスやデバイスにお金をかけないことを自覚する</li>
+<li>開発者側の都合をお客に押し付けない(スピナーでロードするぐらいならサーバサイドで HTML 生成して返せや)</li>
+<li>React は DOM の更新が遅いと喧伝しているが、DOM の更新は減って高速化できているかもしれないが、React 自体を読み込む時間や、React が実行する分のオーバーヘッドを考えると結局何も変わっていないんじゃない？</li>
+<li>ブラウザはとても賢いから上述の問題も実はそこまで大きな問題ではないのでは</li>
+<li>フレームワークを採用することによって学習コストもかかるし、デベロッパの開発環境は整えないといけないし、採用も面倒になる</li>
+<li>上述の通り、開発者の都合でお客にコスト(ロード時間、実行時間etc)を押し付けてはいけない</li>
+</ul>
+</li>
+</ul>
+<h2>全体的な感想</h2>
+<p>セッションの面白さでいうと、Web Audio のセッションが一番面白かった。また、もうちょい Fuck yeah React や Fuck yeah Babel みたいな雰囲気かと思っていたが揺り戻しなのかフレームワークから距離を置こう勢が思ったよりいた印象だった。</p>
+<p>また、Web Audio のセッションで html にアローを直書きしていて、トランスパイらなくてもいいのか？とおもったがアローはもうブラウザでも大抵動くみたいだし、無理にバベらずとも使える範囲で ES2015 のシンタックスを使っていけばいいんだなという実感が湧いた。MS Edge ならもう大抵のシンタックスは使えるので Edge いいなーとも思ったり。</p>
+<p>Microsoft は本イベントをスポンサーしていたり、スピーカーがきてたり、昨日は VS code が OSS 化されたし勢いを改めて感じた。</p>
+<p>以下メモ直貼り。</p>
+<hr>
+<h1>#perfmatters - Tools for Apache Cordova</h1>
+<p>@ryanjsalva</p>
+<p>Cordova について</p>
+<p>There is a general perception that apps built using HTML, CSS, and JavaScript are slow</p>
+<p>Interaction classes
+fluid -&gt; instantaneous -&gt; Fast -&gt; Upper bound on what users will consider responsive
+~17ms    ~100ms           ~250ms  ...</p>
+<p>Methodology
+We identified SIX areas where developers commonly encounter performance issues. To identify these problem areas:</p>
+<ul>
+<li>Nexus 7 2013 (Android)</li>
+<li>iPad Mini 3 (iOS)</li>
+<li>Lumia 928 (WP)</li>
+</ul>
+<ol>
+<li>The webview tax</li>
+<li>document object model</li>
+<li>images</li>
+<li>animation</li>
+<li>garbage collection</li>
+<li>UI controls</li>
+</ol>
+<p>(4, 6以外を話す)</p>
+<p>Cordova はネイテイブってわけではないので Tax を払っている</p>
+<p>memory consumption
+native app: iOS &gt; Android &gt; WP &gt; WS
+browser: android &gt; iOS &gt; WP &gt; WS
+cordova: WS &gt; iOS &gt; WP &gt; Andoid(huge)</p>
+<p>startup time
+iOS cold が時間かかる
+warm はどれもぼちぼち(1-3secぐらい)</p>
+<p>device capabilities にアクセスするために XHR 使うのでそれも Tax</p>
+<p>Time of data transfer with plugin
+WP はネイテイブに js が走るので気にしなくて大丈夫
+他はほぼ線形に増える</p>
+<p>DOM</p>
+<p>bad</p>
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;...&quot;&gt;...&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>good</p>
+<pre><code>&lt;li onclick=&quot;...&quot;&gt;,,,&lt;/li&gt;
+</code></pre>
+<p>layout thrashing</p>
+<p>read/change はキャッシュするなどして毎回ループを回したりしないように</p>
+<p>fast list virtualized</p>
+<p>list を仮想化してメモリ効率を良くしてチラつきもなくす</p>
+<p>FW 使うのもよし</p>
+<p>images</p>
+<p>gradients</p>
+<p>bad
+css の gradient を使う</p>
+<p>good
+gradient.png を用意してそれを使う(マジか...)</p>
+<p>gabage collection</p>
+<p>使わなくなった event listener は捨てよう！</p>
+<p>element 毎に event handler 作るよりも 1つの event handler で受ける
+もしくは親で受けて <code>currentTarget</code> をとる</p>
+<p>Memory leaks</p>
+<p><code>var</code> はちゃんと付けような！</p>
+<h1>Web based 3D camera simulator for Perceptual Computing</h1>
+<p>@princi_ya</p>
+<p>Perceptual Computing =&gt; 理解するコンピュータみたいな感じ...?
+コンピュータが周りで何が起きてるかを感知する</p>
+<p>3D カメラで AR する</p>
+<p>AR
+現実世界を拡張する</p>
+<p>Motion sensing input devices</p>
+<ul>
+<li>intel realsense</li>
+<li>leap motion</li>
+<li>kinect</li>
+</ul>
+<p>Motivation behind this idea
+JSのSDKがある</p>
+<p>The SECRET
+WSも使っているぽい...?</p>
+<p>Websocket
+full-duplex communication channels over a single TCP connection</p>
+<p>Websocket も <code>new Websocket</code> するだけでよくなったし便利になったもんだ...</p>
+<p>LeapMotion から ArrayBuffer で受け取ってゴニョる</p>
+<h1>Gameprogramming in Javascript</h1>
+<p>Thai Typing Game</p>
+<p>タイは LINE 使ってる人多いのかな</p>
+<p>Thai Keyboard やばい
+キーが4段x2</p>
+<p>Lives in Bangkok
+Write Go for Digital Ocean
+Server side developer
+Book on Go: Microservices in Go</p>
+<p>Gaming
+WoW
+タイNo.1ゲーム: ねこあつめ(マジか)
+日本語しかUIないのにメチャ流行ってる</p>
+<p>What is serious gaming?
+education for learning</p>
+<p>Gamification
+ゲーミフィケーションはモチベートとしていいよね</p>
+<p>Why Javascript</p>
+<p>CreateJS</p>
+<p>gulp watch + browser-sync</p>
+<p>RequireJS</p>
+<p>spritesheets
+フレーム毎にスプライトを作る</p>
+<p>parallax scrolling</p>
+<p>creating</p>
+<p>scene creation / transition</p>
+<p>cordova</p>
+<p>Fix native keyboard, better background sound</p>
+<p>Electron</p>
+<p>Conclusion
+Make games for learning
+Writing games in Javascript is easy
+Avoid cross platform tools if possible</p>
+<h1>Modular vs Monolith</h1>
+<p>@timoxley</p>
+<p>Nodesourceの人</p>
+<p>Node.js: Culture of extreme modularity</p>
+<p>me in 2012: Avoid frameworks</p>
+<p>Building a library
+reusable, more robust, higher quality code...</p>
+<p>me in 2012: library-first development</p>
+<p>me in 2015: yes but, there are some major caveats</p>
+<p>rabbit holes everywhere</p>
+<p>libraries are a lot of work</p>
+<p>nothing for free</p>
+<p>most of the time: yagni</p>
+<p>what problem am i trying to solve?
+is this the simplest thing that will work?</p>
+<p>avoid premature modularisation
+早まったモジュール化は避ける</p>
+<p>statement
+function
+file
+folder
+internal package
+external package(bad default)</p>
+<p>上から下にかけてオーバーヘッドが大きくなっていく</p>
+<p>assume your first attempt will be bad
+最初の取り組みはクソだと自覚する</p>
+<p>code retreat
+撤退の規定？</p>
+<p>don't get precious about your code
+コードは貴重ではない（？）</p>
+<p>over-engineering: the adding of unnecessary complexity</p>
+<p>complexity kills projects
+セキュリティの問題とか、複雑さが増すと死ぬ</p>
+<p>over-engineering is more common than under-engineering
+over-engineering is more costly than under-engineering</p>
+<p>the wrong structure can be more costly than no structure at all</p>
+<p>defer decisions</p>
+<p>draw in pencil before you draw in ink</p>
+<p>abstractions decrease local complexity while increasing global complexity
+抽象化はローカルの複雑性を緩和するが、グローバルの複雑性を増す</p>
+<p>building the wrong thing for the right reasons
+間違ったものは正しい理由によって作られる</p>
+<p>build the simplest thing that works</p>
+<p>flat is better than nested
+at the statement level: avoid nested if/else
+...</p>
+<p>the sweetspot is middle
+A modulith?</p>
+<p>avoid premature modularisation</p>
+<p>monolith first</p>
+<p>open source later
+Google や FB は社内で揉んでから公開している</p>
+<p>less abandonware
+放置をしない</p>
+<h1>Elements of dance music</h1>
+<p>What is music?
+My simple...</p>
+<p>Music = Rhythm + Melody + Timbre</p>
+<p>This talk focus for timbre</p>
+<p>Acid what?
+Chicago &amp; detroit, 1990</p>
+<p>Roland TB-303
+Bass シンセサイザー</p>
+<p>Roland TR-808
+ドラムマシン</p>
+<p>Why acid techno
+sounds good
+simple to code</p>
+<pre><code>var ac = new AudioContext
+</code></pre>
+<p>Web Audio API 101</p>
+<p>AudioContext
+OscillatorNode
+AudioParam(freq, det)</p>
+<p>Basic waveforms
+sin, パルス...</p>
+<p>Volume enveloppes</p>
+<p>Pitch and gain enveloppes: simple kick</p>
+<p>Detuned sawtooth: bring in the bass</p>
+<p>A brief excursion to the frequency domain</p>
+<p>Filtering the bass
+HPF, LPF</p>
+<p>Noise for maracas</p>
+<p>Cheating for the clap
+ファイルから読み込み</p>
+<p>ライブコーディング</p>
+<h1>Bio-inspired Frontend Engineering</h1>
+<p>@gsklee
+KKBOX</p>
+<p>chemistry &amp; molecular biology(academic years)</p>
+<p>Astronomical vs atomic scale
+filaments of our universe
+end-stage red giant</p>
+<p>We are all starchildren</p>
+<p>Why we are here
+convey ideas and thinking processes</p>
+<p>ES6 で生命を定義するぞい</p>
+<p>バベるぞい</p>
+<p>ES2015 classes are designed to be maximally minimal
+are still prototypical
+constructor
+unburden the function keyword
+better for static analysis and readability
+appear at exactrly where the next level of language abstraction...</p>
+<p>technology be itself has no good or bad
+it's the intent that matters</p>
+<p>Fragile base class problem
+global &quot;CASCADING&quot; style sheets, sass @extend, angularjs $scope</p>
+<p>css modules, cssmodules class composition, react props</p>
+<p>Long and haky inheritance chain bye!</p>
+<p>mixins &amp; traits?</p>
+<p>React の lifecycle は細胞の lifecycle とも...みたいな話っぽい(よく分からない)</p>
+<p><a href="http://slides.com/gsklee/bio-inspired-frontend-engineering/">http://slides.com/gsklee/bio-inspired-frontend-engineering/</a></p>
+<h1>PM2</h1>
+<p>PM2 の Author
+keymetrics の CEO/Founder</p>
+<p>My app is ready now what?</p>
+<p>デプロイ後の問題を解決するために PM2 を開発した</p>
+<p>Structured application &amp; workflow</p>
+<p>resources management and optimization
+extend capabilities</p>
+<p>86th most popular JS project</p>
+<p><a href="http://stats.js.org/">http://stats.js.org/</a></p>
+<p>pm2 のインストールとか</p>
+<p>他の言語のアプリケーション動かしたりとか</p>
+<p>cluster-mode</p>
+<p>reload, graceful reload, scale</p>
+<p>inspecting applications</p>
+<p><code>pm2 list</code> list processes</p>
+<p><code>pm2 show &lt;app-name|id&gt;</code> more infomation</p>
+<p>microservices args are ugly =&gt; json でコンフィグ書けるよ〜</p>
+<p>deployment system
+json で定義したりとか</p>
+<p>modules</p>
+<p>pm2 のプラグイン？みたいなのをインストールできる</p>
+<p>pm2-webshell =&gt; ブラウザデシェルが叩ける(tty.js経由)</p>
+<p>monitoring with keymetrics
+<a href="https://keymetrics.io/">https://keymetrics.io/</a></p>
+<h1>Simplicity through Functions</h1>
+<p>NZ
+SMX</p>
+<p>Limits
+we can only consider a few things at a time</p>
+<p>reliability
+simplicity vs complexity
+easy vs hard
+functional programming style
+javascript code examples</p>
+<ol>
+<li>terminology</li>
+</ol>
+<p>reliability</p>
+<p>adj &quot;able to be trusted&quot;</p>
+<p>on time, controlled costs, able to change, correctness, quality, performance</p>
+<p>simplicity is prerequisite for reliability</p>
+<p>simple =&gt; sim plex
+complex =&gt; com plex</p>
+<p>simple
+one braid or fold
+one role, one task, one concept, one dimension</p>
+<p>complex
+braided or folded together</p>
+<p>ease &lt; aise &lt; adjacens</p>
+<p>lie near
+not difficult, requiring no great labor or effort</p>
+<p>Simple != Easy</p>
+<p>limits
+we can only hope to make reliable those things we understand
+we can only consider a few things at a time
+intertwined/braided things must be considered together
+...</p>
+<p>construct/artefact
+for developer / for users</p>
+<p>complect
+to interleave, intertwine, braid
+don't do it</p>
+<p>Functional programming
+no single definition
+some features readily available in Javascript
+some features require care or libraries or helpers in Javascript
+...</p>
+<p>difference between OOP vs FP</p>
+<ol start="2">
+<li>Functional Javascript</li>
+</ol>
+<p>values <code>42</code>, <code>&quot;hello&quot;</code> =&gt; simple
+<code>40 + 2 //42</code>, <code>&quot;hello&quot; + &quot;world&quot; // hello world</code> =&gt; simple
+identity =&gt; simple
+state =&gt; complex
+const =&gt; simple
+maps =&gt; simple
+mutable maps =&gt; complex
+immutable collection(immutable.js) =&gt; simple</p>
+<p>why immutability?
+most complexity comes from tracking mutation and maintaining state
+...</p>
+<p>loops</p>
+<p>branching =&gt; complex
+recursion
+recursion with TCO</p>
+<p>impuew funcrion</p>
+<p>map =&gt; simple
+reduce =&gt; simple
+filter =&gt; simple
+forEach =&gt; complex</p>
+<p>OOP / methods etc.</p>
+<p>namespaces functions values =&gt; simple
+curry</p>
+<p>event handlers</p>
+<p>communicating sequential processes
+CSP</p>
+<p>transducers</p>
+<pre><code>Immutable.fromJS(
+  seq(
+    Immutable.Vector(1, 2, 3, 4, 5),
+    compose(
+      map((x) =&gt; x + 10)
+      filter((x) =&gt; x % 2)
+    )
+  )
+)
+</code></pre>
+<pre><code>const c = chan(map((x) =&gt; x + 10), filter((x) =&gt; x % 2))
+</code></pre>
+<p>simplicity is not an objective in art
+...</p>
+<h1>Towards Universal JavaScript</h1>
+<p><a href="http://slides.com/sarmadsangi/towards-universal-javascript">http://slides.com/sarmadsangi/towards-universal-javascript</a></p>
+<ol>
+<li>what? why universal javascript?</li>
+<li>how to build a universal javascript</li>
+</ol>
+<p>Sarmad Sangi
+RedMart</p>
+<p>what is universal javascript</p>
+<p>universal
+javascript code which is environment agnostic</p>
+<p>isomorphic
+that any given line of code (with notable exceptions) can execute both on the client and server</p>
+<p>isomorphicと違って環境に依らない</p>
+<p>SEO
+Performance
+Mainttainability</p>
+<p>SEO
+How bots see our javascript applications
+UAでbotだったらPhantomJSで描画したものを返す</p>
+<p>Universal javascript では JS でレンダリングしたものを返す(?)</p>
+<p>Maintainability
+Shared logic between server and clients</p>
+<p>How to build a universal javascript</p>
+<h1>Overboard.js - Where are we going with this?</h1>
+<p>@codepo8</p>
+<p>Unobtrusive Javascript</p>
+<p>MS Edge の人</p>
+<p>Authoring web sites and enhancing them with JS
+Scripting/Extending applications(Illustrator, Homesite, VS code, Sublime...)
+Authoring re-usable widgets for people who don't know JS
+Working on libraries/frameworks
+Working on Browsers and JS engines
+Working on server-side Javascript
+Designing APIs for JS consumption</p>
+<p>Javascript is a versatile, creative...</p>
+<p>we keep treating js like a one size fits all environment we can control</p>
+<p>lately we go overboad with js</p>
+<p>we're going full speed on innovation
+componentised web
+modules/packages
+extensible web manifesto
+web assembly/asm.js
+postcss
+progressive apps</p>
+<p>the vicious innovations cycle</p>
+<p>we force ules onto ourselves that might be overkill</p>
+<p>we live in a hype fuelled environment
+新しいライブラリを記事にしたりするけどプロダクションで使ってなくない？</p>
+<p>Moore's Law</p>
+<p>we work with amazing hardware</p>
+<p>we work with great connectivity</p>
+<p>we get paid well - for a job we like</p>
+<p>we work with amazing browsers</p>
+<p>May's law</p>
+<p>we move fast and run in circles</p>
+<p>the web is in a sorry state
+the median page's time to interact is 5.5 secs, and fully loads in just over 15secs
+the median page is 2MB in size and contains 170 resources</p>
+<p>waiting isn't fun</p>
+<p>オレたちのオーディエンスはオレたちほどウェブサービスに金をかけることや、アップグレードすることに興味がない</p>
+<p>growth happens where moore's law isn't a reality(asia)</p>
+<p>moore's law stopped working when we hard-wired hardware and software</p>
+<p>as developers, we are asked to do the impossible
+make it work the same in every browser
+make it easy to maintain and we want to control everything
+make sure it is also accesible
+don't spent too much time on it, let's release it now and fix it later
+use this analytics code you have no clue about...</p>
+<p>今日のすごいものは明日には死んでるかも</p>
+<p>a simpe way to detect how old a part of our massive site is checking which version of jQuery was used in that part of it</p>
+<p>we break the web for the sake of developer convenience</p>
+<p>The cost of frameworks</p>
+<p>the dom is slow?</p>
+<p>time in framework | dom manipulation</p>
+<p>vanilla vs react</p>
+<p>バニラだと写真が増えても時間が増えない(むしろ減る)がreactは上がり続ける</p>
+<p>browser do an incredible amount of work for us
+display of all kind of media content
+fix minor mistakes in our code
+optimise our code to run smoothly
+provide us with developer tools
+provide us with deep insights what our code does to the computer
+allow us to automate testing in them and debug remotely on devices we don't even own</p>
+<p>big-rig</p>
+<p>framework は bootstrap に時間がかかる</p>
+<p>fixing everything with a lot of javascript help us, not necessarily our audience</p>
+<p>cost for developers
+learning new frameworks
+re-learning frameworks
+debugging frameworks
+setting up developer environments
+cutting down on possible hires/adding to onboading time</p>
+<p>the real important bit is the cost for our users
+...</p>
+<p>the javascript learning process has always been interesting</p>
+<p>JS を学習するのはつらい(Stack overflow見たりとか...最後はIEに殺意を覚える)</p>
+<p>ES6</p>
+<p>controlled environments allow us to use the newest and coolest and find best practices</p>
+<p>let's not make the javascript world overly complex and scary</p>
+<p>ES* caters to different audiences</p>
+<p>babel の Lean ES2015はいい</p>
+<p>let's turn competition into education and fun again</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

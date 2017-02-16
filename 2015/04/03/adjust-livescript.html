@@ -1,0 +1,79 @@
+<!DOCTYPE html><html><head><title>LiveScript がだいぶ馴染んできた - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="LiveScript がだいぶ馴染んできた"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/04/03/adjust-livescript.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="http://livescript.net/
+
+ES6 に押され気味な CoffeeScript をなんとかせねばという想いがあったのだが、CoffeeScript はかなり保守的で最近 generators が入ったりはしたもののゆったりした感じでなんとも気力が湧かなかった。そこで、3回目ぐらいの LiveScript に入信を果たしたところ、今回は毎週 Haskell もくもく会をやっている甲斐もあってかわかりがだいぶあった。"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/04/03/adjust-livescript.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-04-03" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-04.html">04</a></span><span class="date-day">03</span></time></div><div class="markdown-body"><h1><a href="/2015/04/03/adjust-livescript.html">LiveScript がだいぶ馴染んできた</a></h1>
+<p><a href="http://livescript.net/">http://livescript.net/</a></p>
+<p>ES6 に押され気味な CoffeeScript をなんとかせねばという想いがあったのだが、CoffeeScript はかなり保守的で最近 generators が入ったりはしたもののゆったりした感じでなんとも気力が湧かなかった。そこで、3回目ぐらいの LiveScript に入信を果たしたところ、今回は毎週 Haskell もくもく会をやっている甲斐もあってかわかりがだいぶあった。</p>
+<p>Coffee との違いは <a href="http://livescript.net/#coffee-to-ls">http://livescript.net/#coffee-to-ls</a> を見てもらうとして、今日スッときたのが <code>do</code> 構文である。</p>
+<p>Coffee では</p>
+<pre><code class="language-coffeescript">f
+  a: x
+  b: y
+</code></pre>
+<p>と書けば</p>
+<pre><code class="language-js">f({
+  a: x,
+  b: y
+});
+</code></pre>
+<p>みたいな感じで変換されるのが、LiveScript だと</p>
+<pre><code class="language-livescript">f do
+  a: x
+  b: y
+</code></pre>
+<p>と書かなければならず、冗長だと感じていた。<code>do</code> は <code>do</code> 以降の構文を <code>do</code> 以前の関数の引数として食わせる構文。この <code>do</code> 構文がすごいのは、<code>Object</code> のあとに関数や配列など、<code>Object</code> 以外の引数をとるときである。</p>
+<p>Coffee だと</p>
+<pre><code class="language-coffeescript">f
+  a: x
+  b: y
+, (c)-&gt; g c
+</code></pre>
+<p>というふうに書いて</p>
+<pre><code class="language-javascript">f({
+  a: x,
+  b: y
+}, function(c) {
+  g(c);
+});
+</code></pre>
+<p>みたいな出力がされる。これが LiveScript だと</p>
+<pre><code class="language-livescript">f do
+  a: x
+  b: y
+  (c)-&gt; g c
+</code></pre>
+<p>と書くだけで上のような JS が出力できるのである！！これだけだとまだスゴさが感じられないとおもうんだけど、これが真価を発揮するのが React の <code>render</code> で <code>DOM</code> を書くときである。</p>
+<p>Coffee だと</p>
+<pre><code class="language-coffeescript">render: -&gt;
+  DOM.div
+    key: 'key'
+  , [
+    DOM.a
+      key: 'key2'
+      href: '...'
+    , [
+      DOM.div
+        key: 'key3'
+      , 'link'
+    ]
+  ]
+</code></pre>
+<p>という雰囲気で書かなくてはならないのだが、LiveScript だと</p>
+<pre><code class="language-livescript">render: -&gt;
+  DOM.div do
+    key: 'key'
+    [
+      DOM.a do
+        key: 'key2'
+        href: '...'
+        [
+          DOM.div do
+            key: 'key3'
+            'link'
+        ]
+    ]
+</code></pre>
+<p>と、<code>,</code> とか <code>[]</code> のインデントを気にしたりせずに書けるのです...!スッキリ!(と感じるかは個人差があるとはおもいます)</p>
+<p>あとは、<code>require!</code> とか <code>|&gt;</code>, <code>&lt;|</code> のパイプ、<code>\str</code> と書ける backslash-string など Coffee からさらに(関数脳に)気持ちいいシンタックスになってて気持ちが完全に LiveScript に持って行かれました。</p>
+<p>あと、これずっと言いたかったんだけど ES6 勢力が「Coffee はもうオワコン！時代は ES6！！」みたいなことを声高に言ってますけど ES6 のフィーチャはほとんど Coffee にも(もちろん LiveScript にも)あるしずっと Coffee 書いてた身からしてみると、わざわざ <code>{}</code> や <code>;</code> を書くために ES6 を書くだけでしかなくて全然嬉しさがない。ES6 も ES5 に変換可能なわけだからネイティブで動くからといってあまりそっちを選択することにメリットがあることが少ないんじゃないかなーとおもってるんだけどどうだろ。</p>
+<p>ひとまず、僕はしばらく LiveScript という安住の地に住み続けます。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

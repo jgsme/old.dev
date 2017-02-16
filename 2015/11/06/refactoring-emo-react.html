@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><title>emo-react をリファクタした - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="emo-react をリファクタした"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/11/06/refactoring-emo-react.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="https://github.com/e-jigsaw/emo-react/pull/4
+
+しばらく触らぬ間に React がアップデートしてたり、Redux が flux のデファクトっぽくなってたりしたので学習も兼ねてアップグレードした。細々気付いたこととか。"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/11/06/refactoring-emo-react.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-11-06" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-11.html">11</a></span><span class="date-day">06</span></time></div><div class="markdown-body"><h1><a href="/2015/11/06/refactoring-emo-react.html">emo-react をリファクタした</a></h1>
+<p><a href="https://github.com/e-jigsaw/emo-react/pull/4">https://github.com/e-jigsaw/emo-react/pull/4</a></p>
+<p>しばらく触らぬ間に React がアップデートしてたり、Redux が flux のデファクトっぽくなってたりしたので学習も兼ねてアップグレードした。細々気付いたこととか。</p>
+<h2>React <code>0.14</code> 所感</h2>
+<p><code>0.13</code> から細々変わっていて、react に元々いたメソッドが <code>react-dom</code> に移ったりしていて</p>
+<ul>
+<li><code>render</code> は単純に移った</li>
+<li><code>@refs.something.getDOMNode!...</code> としていたところが <code>findDOMNode @refs.something</code> のような感じになっていた</li>
+</ul>
+<p>あたりで躓いたが、react は懇切丁寧にエラーを投げてくれるので対処も容易であった。ちなみに、このリポジトリ自体は <code>0.12</code> の頃に作っていたので <code>React.Component</code> などもない前提で作っていたが、<code>0.13</code> を他で触っていたので特にこのあたりは困らなかった。</p>
+<h2>Redux 所感</h2>
+<p>群雄割拠していた flux ライブラリも雰囲気 redux に落ち着いてきてるような感覚でいるのだけれど、どうなんだろう。redux は root の要素の state を store として、それに対してアクションを発行して更新していく〜というような概要ぐらいしか知らなかったのだが実際にアプリケーションを組んでいくと、各所に散らばっていた state &lt;-&gt; prop のごちゃごちゃを action と reducer に統合してアプリケーションの状態というものをこれによって表現できるというあたりが良さなんだと感じた。</p>
+<p>最初は分からなかったが、reducers の key が root の要素の prop になるので、root の、ひいては root 下のコンポーネントで必要な情報とは何かというのを整理していけば自然と reducers が出来上がっていく。あとはこのオブジェクトを redux の <code>combine-reducers</code> に食わしてやれば OK。</p>
+<p>reducers を作っていくのと平行して、reducers を更新する行動を整理していくのが actions を作っていくことのように感じた。reducers と actions は共にただの関数だったり、オブジェクトだったりするのでそこを意識して素直に書けばよかった。</p>
+<p>ハマったのは、reducer A が更新されたら reducer B も更新されてほしい、というようなとき。最初は単一の reducer にして state のプロパティを更新するだけ、というような方式にしていたのだが、これだとどうしても <code>Object.assign</code> が必要で、Polyfill をいれるにもダルいし、あんまり綺麗じゃないなーとおもって四苦八苦した。最終的に分かったのは、<code>redux-thunk</code> という middleware を使うと action で <code>(dispatch, get-state)</code> を引数にとる関数を定義することができるので、<code>get-state</code> から必要になる情報を引き出して適切なアクションを <code>dispatch</code> してやればいい、ということだった。</p>
+<p>また、非同期処理を含む action に関しても同様で上記のような関数を定義して非同期処理の Promise でも callback でも適当なところでアクションを <code>dispatch</code> すればいいようだった。</p>
+<p>ただ、微妙な解決になってしまったのがこの <code>redux-thunk</code> を <code>apply-middleware</code> するときで、ES2015 だと <code>applyMiddleware(middleware)(reducers)</code> というようなインターフェイスで ls からは少し書きづらかった。(別にそこを求めたいわけではないが...)</p>
+<p>最終的に</p>
+<pre><code class="language-livescript">apply-middleware thunk-middleware |&gt; (.call @, create-store) |&gt; (.call @, reducers)
+</code></pre>
+<p>みたいな、pipe と assign short-hand を使って <code>call</code> することにした。。。冷静に考えると普通に括弧使って書いた方が簡潔な気がする。。。あと <code>connect</code> も 関数をとって関数を返すような実装になっているので</p>
+<pre><code class="language-livescript">  connect do
+    (state)-&gt; state
+  &lt;| App
+</code></pre>
+<p>のような感じで書かないとダメだった。</p>
+<h2>Node.js v5.0.0</h2>
+<p>npm@3 使ってみたさ故に v5.0.0 で開発してみたが、特に困ることはなかった。ウワサ通り <code>node_modules</code> は猛烈に flat になったし、インストールや run-script の実行なんかでもプログレスバーがアニメーションするようになったりして気持ちよかった。Docker Hub にもリリースされているので、Wercker でこれを使ってビルドしたがこちらも遜色なく。</p>
+<h2>その他</h2>
+<p>使っている PureCSS をアップデートしたり、gulp から npm-run-all に切り替えたり、aja を isomorphic-fetch に換えたりした。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

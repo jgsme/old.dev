@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><title>#kosenvj を支える技術(フロント編) - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="#kosenvj を支える技術(フロント編)"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2014/12/01/the-technology-behind-vj.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="https://twitter.com/asonas/status/538995926514167808
+
+顧問が書けって言ってるので書く。"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2014/12/01/the-technology-behind-vj.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2014-12-01" pubdate><span class="date-year"><a href="/archives/2014.html">2014</a></span><span class="date-month"><a href="/archives/2014-12.html">12</a></span><span class="date-day">01</span></time></div><div class="markdown-body"><h1><a href="/2014/12/01/the-technology-behind-vj.html">#kosenvj を支える技術(フロント編)</a></h1>
+<p><a href="https://twitter.com/asonas/status/538995926514167808">https://twitter.com/asonas/status/538995926514167808</a></p>
+<p>顧問が書けって言ってるので書く。</p>
+<p><a href="http://kosendj-bu.in/">http://kosendj-bu.in/</a></p>
+<p>高専DJ部という部活動で副部長をやっていて、勝手に自分がエモくなる話をして勝手に泣いたりGIFでVJをしたりしている。#1ではtumblrと連動させたシステムを構築したけれど、いまいち不評だったのとそのときにVJをしていた @mactkg が不在だったのでフルスクラッチした経緯のものです。</p>
+<p><a href="https://github.com/kosendj/gj">https://github.com/kosendj/gj</a></p>
+<p>GIF-Jockey部でGJ(bu)。安直なネーミングである。</p>
+<p>大まかな流れとしては</p>
+<ol>
+<li>誰かがGIFのURLを投稿する</li>
+<li>バックエンドでGIFかどうかを確認する</li>
+<li>GIFだったらURLをRedisにつっこむ</li>
+<li>それをトリガーにWebsocketでスクリーンに通知おくる</li>
+<li>スクリーン側はキューを更新する</li>
+</ol>
+<p>というフローでGIFが追加されるのでスクリーン側ではそれをランダムに差し替えることでVJっぽいことをしている。このあたりはあまりつっこんだことをしていなくて、どちらかというと @sorah がキャッシュとかいろいろがんばってくれてるのでその辺のことは任せたい。今度は箱にネットワーク構築してGIF配信するみたいなこと言ってたので期待。</p>
+<h1>フロント側でがんばっているところ</h1>
+<h2>エフェクト</h2>
+<p>フロント側でたぶん一番いいところはGIFのエフェクトをCSSでかけてるとこだとおもう。CSS3のフィルタを適当に調べて、使えそうなやつをピックアップしてランダムに効果をかけることでエフェクトを反映している。</p>
+<p><a href="https://github.com/kosendj/gj/blob/master/public/js/screen.coffee#L2-L45">https://github.com/kosendj/gj/blob/master/public/js/screen.coffee#L2-L45</a></p>
+<p>こんな感じ。(すげー雑)</p>
+<p>最初はGIFのバイナリを書き換えようとしてたんだけどめんどくさすぎて断念した。CSSフィルタ最高！！切り替えは <code>opacity</code> を切り替えるので対応してるだけなので、もうちょいアニメーションな感じにしたいとおもっていたりいなかったり。</p>
+<h2>GIFの表示</h2>
+<p>GIFの加工や速度調整は最初につっかかった関門で、更新が腐ってたりとかNodeでしか使えなかったりするやつが多くていろいろ試行錯誤した結果<a href="http://geelen.github.io/x-gif">x-gif</a>に落ち着いた。ただこれでも結構かゆいところに手が届かないことがままあるのでなんとかしたいとはおもっている。</p>
+<h2>UI</h2>
+<p>シンプルイズベストな感じでモバイルを念頭につくった。<code>README</code> のGIF等を参照のこと。</p>
+<p>Viewのフレームワークに<a href="http://vuejs.org/">Vue.js</a>を使っているだけであとは特になにもいれてない。AjaxとCSSの値いじったりするのにjQueryを使っているくらい。</p>
+<h2>GIFの選定</h2>
+<p>当日はひたすらGIFを探してつっこむのが仕事になる。アニメ方面はこれはまた @sorah に任せているので自分はHardcoreがかかったときにParty Hard投げたり、VJっぽいループ素材を投げたりしている。だいたいGiphyかTumblrあたりで素材探しは事足りている。Chromeでポイポイ投げられる拡張つくろうかとおもったけど、普通にコピペするだけでいいので特になんの工夫もしていない。</p>
+<h2>ハッシュタグ付きのツイートを流す</h2>
+<p>部長の要請でスクリーンにハッシュタグ付きのツイートを流す機能をつけた。もともとコメント流すように作ったやつの流用である。ここもWebsocketを使ったりしている。</p>
+<h1>おわりに</h1>
+<p>お手軽にVJっぽいものをするという面ではGIF-Jockey部とても便利。まだまだ開発途上なのでこれからもイベントドリブンで(jsだけに)開発を続けていきます。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

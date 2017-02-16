@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><title>tmpl という scaffold generator をつくった - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="tmpl という scaffold generator をつくった"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/01/06/created-tmpl.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="https://github.com/e-jigsaw/tmpl
+
+今までに何度か Scaffold generator みたいなやつを作ろうと試みるも、使うモジュールのアップデートとかもまあまああるし、Scaffold generator を作るコストの方が使って楽できるメリットを上回る気がしなくて作ってこなかった。けれど、最近ぱぱっと作ることが多くなってきて、いよいよ最初に `gulpfile` 書いたりとか、`README` 書いたりするのがめんどくさくなってきたので勢いでつくった。"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/01/06/created-tmpl.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-01-06" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-01.html">01</a></span><span class="date-day">06</span></time></div><div class="markdown-body"><h1><a href="/2015/01/06/created-tmpl.html">tmpl という scaffold generator をつくった</a></h1>
+<p><a href="https://github.com/e-jigsaw/tmpl">https://github.com/e-jigsaw/tmpl</a></p>
+<p>今までに何度か Scaffold generator みたいなやつを作ろうと試みるも、使うモジュールのアップデートとかもまあまああるし、Scaffold generator を作るコストの方が使って楽できるメリットを上回る気がしなくて作ってこなかった。けれど、最近ぱぱっと作ることが多くなってきて、いよいよ最初に <code>gulpfile</code> 書いたりとか、<code>README</code> 書いたりするのがめんどくさくなってきたので勢いでつくった。</p>
+<ol>
+<li>どのテンプレートから生成するかのプロンプト(<code>Tmpls</code> のディレクトリ名を出してるだけ)</li>
+<li>選択されたテンプレートの <code>question</code> を元にプロンプトを出す</li>
+<li>必要事項が入力されたらテンプレートの <code>actions</code> がキックされる</li>
+</ol>
+<p>という単純な仕組みである。<code>README</code> にも書いた通り、<code>question</code> は <code>inquirer</code> というプロンプトライブラリのオプションオブジェクトでしかないし、<code>actions</code> はいくつかのメソッドが呼び出せるだけの単純な関数だ。</p>
+<p>Github pages の Scaffold であればこれだけで良い</p>
+<pre><code class="language-coffee">exports.questions = [
+  {
+    type: 'input'
+    name: 'name'
+    message: 'name'
+    default: process.cwd().split('/')[process.cwd().split('/').length-1]
+  }
+  {
+    type: 'input'
+    name: 'description'
+    message: 'description'
+  }
+]
+
+exports.actions = (answers)-&gt;
+  @mkdir 'src'
+  @template 'README.md',
+    name: answers.name
+    description: answers.description
+    partition: answers.name.replace /./g, '='
+  @template 'package.json',
+    name: answers.name
+    description: answers.description
+  @template 'src/index.jade',
+    name: answers.name
+  @copy '_gitignore', '.gitignore'
+  @copy 'gulpfile.coffee'
+  @copy 'src/index.coffee'
+  @copy 'src/index.styl'
+</code></pre>
+<p>読んでそのままという感じだが、<code>@mkdir</code> はディレクトリを作る(<code>@copy</code> と <code>@template</code> だけにしようかなとおもってる, 出力先のパス見て勝手に <code>mkdir</code> してくれればいいだけだし)関数で、<code>@template</code> は handlebars のテンプレートをローカル変数を元に生成する関数、<code>@copy</code> は単純なコピーをする関数である。</p>
+<p>これらを用意しておくだけでなにかを作るときの初期コストがぐっと下がって、目的にものをすぐ作れるようになるのでとても良い。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

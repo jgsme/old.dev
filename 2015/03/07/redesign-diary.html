@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><title>diary のデザインを刷新した - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="diary のデザインを刷新した"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2015/03/07/redesign-diary.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="http://diary.jgs.me
+
+![](https://cloud.githubusercontent.com/assets/557961/6541502/5c7860ca-c518-11e4-8773-e708cc089468.png)"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2015/03/07/redesign-diary.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2015-03-07" pubdate><span class="date-year"><a href="/archives/2015.html">2015</a></span><span class="date-month"><a href="/archives/2015-03.html">03</a></span><span class="date-day">07</span></time></div><div class="markdown-body"><h1><a href="/2015/03/07/redesign-diary.html">diary のデザインを刷新した</a></h1>
+<p><a href="http://diary.jgs.me">http://diary.jgs.me</a></p>
+<p><img src="https://cloud.githubusercontent.com/assets/557961/6541502/5c7860ca-c518-11e4-8773-e708cc089468.png" alt=""></p>
+<p>Tumblr は独自のマークアップ <code>{block:Post}</code> みたいなのをふんだんに使ったマークアップを一枚絵にして出さないといけないので結構大変。2013年の4月から使っている前のテーマは、適当なシンプルなテーマから足し引きしたりして当時の自分にイイ感じのスタイルにしていた。すると <a href="http://diary.jgs.me/post/112567782834/toihrk-toihrk-nikki">toihrk に参考にされていて</a>結構嬉しくなった。</p>
+<p>とはいえ、もう2年近く同じスタイルで使い続けていたのでさすがに飽きてきてたのもあったし、イチから自分用のマークアップを書きたい欲求もあったのでごっそり書き起こした。</p>
+<p><a href="http://github.com/jgsme/diary">http://github.com/jgsme/diary</a></p>
+<p>さすがにこの2015年にあの一枚絵をモリッと書いていくのはハートブロークンなので Jade と Stylus でひたすらに切り刻んで見通しを良くした。全体のレイアウトは <a href="https://github.com/jgsme/diary/blob/db976532f04bf0a4cb1af8ec5015a96c175927ea/src/index.jade">index.jade</a> のようなひたすら include するやつにして、各パーツで <a href="https://github.com/jgsme/diary/blob/db976532f04bf0a4cb1af8ec5015a96c175927ea/src/posts/photo/template.jade">posts/photo/template.jade</a> と <a href="https://github.com/jgsme/diary/blob/db976532f04bf0a4cb1af8ec5015a96c175927ea/src/posts/photo/style.styl">posts/photo/style.styl</a> のような簡単な Jade と Stylus を持つようにして全体の見通しをめっちゃ良くした。</p>
+<p>gulp で例の一枚絵を錬成してそれを Tumblr の Theme editor にコピペして確認して〜という作業をひたすら繰り返す。ここらへんもいっそライブプレビューぐらいできるようにしようかとおもったが、そっちの方にコストがかかりそうだったので愚直にコピペを繰り返した。</p>
+<p>個人的な要件として</p>
+<ul>
+<li>コンテンツをデカく表示したい</li>
+<li>Tumblr のどの種類の投稿なのか見やすくしたい</li>
+<li>字が読みやすい</li>
+</ul>
+<p>あたりが大きかったのでそれぞれ</p>
+<ul>
+<li>コンテンツをデカく表示したい
+<ul>
+<li>-&gt; 写真は横1024pxのやつを持ってきて100%表示</li>
+<li>-&gt; その他コンテンツも100%っぽい表示に</li>
+</ul>
+</li>
+<li>Tumblr のどの種類の投稿なのか見やすくしたい
+<ul>
+<li>-&gt; 日付のバーを Tumblr の投稿種別アイコンの色に</li>
+<li>-&gt; Link や Video はコンテンツの隙間を種別色と同じで埋める</li>
+</ul>
+</li>
+<li>字が読みやすい
+<ul>
+<li>-&gt; 大きめ明朝体が自分の中でブームなのでそういう感じ</li>
+</ul>
+</li>
+</ul>
+<p>というような対応をした。だいぶ気に入ってるのでしばらくはこれでいきます。あと、リポジトリのコード類もまあまあ再利用効くとおもうので fork して自分の好きなようにスタイルを変えたり構成を変えたりして使えるかとおもうのでよろしければ。ただ、自分が全然使わない Chat とか Audio あたりは手抜き状態なのでそこだけはお気をつけくださいー。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>

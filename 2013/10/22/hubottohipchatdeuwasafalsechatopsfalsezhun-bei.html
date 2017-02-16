@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><title>hubotとhipchatでウワサのChatOpsの準備 - Kaihatsu</title><link href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet" type="text/css"><link href="/layout.css" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-TileImage" content="/mstile-144x144.png"><meta property="og:title" content="hubotとhipchatでウワサのChatOpsの準備"><meta property="og:type" content="article"><meta property="og:url" content="http://dev.jgs.me/ /2013/10/22/hubottohipchatdeuwasafalsechatopsfalsezhun-bei.html"><meta property="og:image" content="http://dev.jgs.me/icon.png"><meta property="og:description" content="むかし見かけたけど、あまり便利さがわからなかったのでスルーしていた `hubot` が面白そうだったので、ちょっと触ってみることにした。
+
+目標は、サービスのデプロイや、通知なんかを一手に管理できる状態。"><meta property="og:locale" content="ja_JP"><link href="/github-markdown.css" rel="stylesheet" type="text/css"><link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css" rel="stylesheet" type="text/css"><link href="/page.css" rel="stylesheet" type="text/css"><link href=" /2013/10/22/hubottohipchatdeuwasafalsechatopsfalsezhun-bei.html" rel="canonical"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js" type="text/javascript"></script></head><body><header class="pure-u-1-1"><a href="/"><h1>Kaihatsu</h1></a></header><div id="articleContainer"><article><div class="publish-date"><time datetime="2013-10-22" pubdate><span class="date-year"><a href="/archives/2013.html">2013</a></span><span class="date-month"><a href="/archives/2013-10.html">10</a></span><span class="date-day">22</span></time></div><div class="markdown-body"><h1><a href="/2013/10/22/hubottohipchatdeuwasafalsechatopsfalsezhun-bei.html">hubotとhipchatでウワサのChatOpsの準備</a></h1>
+<p>むかし見かけたけど、あまり便利さがわからなかったのでスルーしていた <code>hubot</code> が面白そうだったので、ちょっと触ってみることにした。</p>
+<p>目標は、サービスのデプロイや、通知なんかを一手に管理できる状態。</p>
+<p><code>hubot</code> のインストールは簡単で <code>npm</code> からインストールするだけ。</p>
+<p><code>% npm install -g hubot</code></p>
+<p>インストールしたら</p>
+<p><code>% mkdir YOUR_BOT_NAME % hubot --create YOUR_BOT_NAME</code></p>
+<p>でテンプレートを展開してくれる。<code>coffee</code> がないよ！って言われるときは <code>% npm install -g coffee-script</code> してやればOK。</p>
+<p>初期状態だと <code>redis-brain</code> という保存用の <code>redis</code> が走るようになっているので <code>hubot-scripts.json</code> から <code>redis-brain.coffee</code> を削除してから起動してみる。</p>
+<pre><code>% hubot -n Alfred
+</code></pre>
+<p><code>-n</code> で名前を指定できるので適当に指定してやる。シェルで起動したら</p>
+<pre><code>Alfred&gt; @Alfred ping
+Alfred&gt; PONG
+</code></pre>
+<p>みたいな感じで確認できる。</p>
+<p>うまいことウェブから操作できないかなあ、といろいろ探してみたところ <code>hiptchat</code> をインターフェイスにするのがよさげだったので <a href="http://www.hipchat.com">http://www.hipchat.com</a> から適当に登録。チャットルームにBOTを追加するのが意外と面倒で、<code>hipchat</code> の <code>Room</code> の設定ページから <code>invite url</code> を取得してきて、<code>Sign out</code> してから <code>invite url</code> を踏んでBOT用のアカウントを登録する。メアドめんどくさいときには <code>your_name+botname@gmail.com</code> みたいな感じで <code>Gmail</code> の便利機能を使えばよい。</p>
+<p>あとは、<code>hubot</code> のディレクトリで</p>
+<pre><code>% npm install hubot-hipchat --save
+</code></pre>
+<p>としてやって <code>adapter</code> をインストールして環境変数を設定する。面倒なのでシェルスクリプトを作っておくとよい。</p>
+<pre><code>export HUBOT_HIPCHAT_TOKEN=&quot;RoomのAdminのToken&quot;
+export HUBOT_HIPCHAT_JID=&quot;BotのアカウントのJabbr ID&quot;
+export HUBOT_HIPCHAT_PASSWORD=&quot;BotアカウントのPassword&quot;
+export HUBOT_HIPCHAT_ROOMS=&quot;Roomの名前&quot;
+
+exec bin/hubot &quot;$@&quot; -n BOT_NAME -a hipchat
+</code></pre>
+<p>みたいな <code>start.sh</code> を準備して</p>
+<pre><code>% sh start.sh
+</code></pre>
+<p>としてやれば起動する。あとは <code>hipchat</code> 側で <code>@alfred ping</code> してやれば <code>PONG</code> が返ってくる。</p>
+<p>ひとまずこれで準備は完了。意外と <code>hipchat</code> の設定がダルくて、事前にボット用のアカウントを作成しておくと、それを <code>Room</code> に追加する手段がなくて消して <code>invite url</code> から作りなおしたらいけた。</p>
+</div><div id="comments"><div id="disqus_thread"></div></div><script type="text/javascript">if(location.pathname !== '/') { var disqus_shortname = 'kaihatsu2'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); }</script><script src="/page.js" type="text/javascript"></script></article></div><footer class="pure-u-1-1"><ul><li><a href="/archives" class="button">Archives</a></li><li><a href="http://jgs.me" class="button">About me</a></li><li><a href="https://github.com/jgsme/dev" class="button">Github repository</a></li></ul></footer></body></html>
