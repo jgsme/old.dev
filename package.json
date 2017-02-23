@@ -37,7 +37,7 @@
   "dependencies": {
     "github-markdown-css": "^2.2.1",
     "glob": "^7.0.0",
-    "inquirer": "^3.0.1",
+    "inquirer": "^3.0.3",
     "jade": "^1.11.0",
     "livescript": "^1.4.0",
     "lodash": "^4.17.3",
