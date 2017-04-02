@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/jgsme/log",
   "dependencies": {
-    "github-markdown-css": "^2.2.1",
+    "github-markdown-css": "^2.6.0",
     "glob": "^7.0.0",
     "inquirer": "^3.0.1",
     "jade": "^1.11.0",
