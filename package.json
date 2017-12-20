@@ -25,15 +25,15 @@
     "write": "lsc scripts/write.ls"
   },
   "repository": {
-    "url": "https://github.com/jgsme/log.git",
+    "url": "https://github.com/jgsme/dev.git",
     "type": "git"
   },
   "author": "jigsaw (http://jgs.me)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jgsme/log/issues"
+    "url": "https://github.com/jgsme/dev/issues"
   },
-  "homepage": "https://github.com/jgsme/log",
+  "homepage": "https://github.com/jgsme/dev",
   "dependencies": {
     "github-markdown-css": "^2.9.0",
     "glob": "^7.1.2",
